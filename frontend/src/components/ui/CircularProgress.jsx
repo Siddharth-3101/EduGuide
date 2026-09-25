@@ -5,8 +5,9 @@ export const CircularProgress = ({
   size = 110,
   strokeWidth = 9,
   label = 'Coverage',
-  color = '#2563eb', // Indigo / Blue
-  trackColor = '#f1f5f9'
+  color = 'var(--accent-terracotta)',
+  trackColor = 'currentColor',
+  trackOpacity = 0.12
 }) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
@@ -22,6 +23,7 @@ export const CircularProgress = ({
           cy={size / 2}
           r={radius}
           stroke={trackColor}
+          strokeOpacity={trackOpacity}
           strokeWidth={strokeWidth}
           fill="none"
         />
@@ -40,8 +42,8 @@ export const CircularProgress = ({
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-        <span className="text-xl font-bold text-slate-900 tracking-tight leading-none">{value}%</span>
-        {label && <span className="text-[10px] font-medium text-slate-500 mt-0.5 uppercase tracking-wider">{label}</span>}
+        <span className="font-editorial-title text-xl font-bold tracking-tight leading-none text-[var(--text-primary)]">{value}%</span>
+        {label && <span className="font-editorial-mono text-[9px] font-semibold opacity-60 mt-0.5 uppercase tracking-wider">{label}</span>}
       </div>
     </div>
   );

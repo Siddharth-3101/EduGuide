@@ -56,12 +56,12 @@ export const DashboardPage = () => {
     <div className="space-y-6">
       {/* Dashboard Top Greeting Header */}
       <div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
-          Good morning, {studentName} 👋
+        <h1 className="font-editorial-title text-2xl sm:text-3xl font-bold tracking-tight uppercase">
+          Good morning, {studentName}
         </h1>
-        <p className="text-sm text-slate-500 mt-1">
+        <p className="text-sm opacity-70 mt-1">
           Here's your progress toward your target career as a{' '}
-          <span className="font-semibold text-slate-800">
+          <span className="font-semibold underline decoration-[var(--accent-terracotta)] underline-offset-4">
             {stats?.targetRoleTitle || 'Backend Developer'}
           </span>
           .

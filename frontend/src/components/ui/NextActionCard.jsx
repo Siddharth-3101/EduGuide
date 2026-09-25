@@ -10,7 +10,7 @@ export const NextActionCard = ({
   actionText = 'Start Assessment',
   actionRoute = '/assessments/asm-docker',
   onActionClick,
-  variant = 'highlight', // 'highlight' | 'default' | 'compact'
+  variant = 'highlight',
   icon
 }) => {
   const navigate = useNavigate();
@@ -24,29 +24,34 @@ export const NextActionCard = ({
   };
 
   return (
-    <div className="relative overflow-hidden rounded-xl border border-blue-200/90 bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-slate-50 p-5 shadow-xs">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div className="flex items-start gap-3.5">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white shadow-xs">
-            {icon ? icon : <Sparkles className="h-5 w-5" />}
+    <div className="relative overflow-hidden rounded-md border border-[var(--border-line)] bg-current/5 p-6 shadow-2xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+        <div className="flex items-start gap-4">
+          {/* Survey coordinate marker dot */}
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-[#7c4422] dark:bg-amber-600 text-white shadow-xs">
+            {icon ? icon : <Sparkles className="h-4 w-4" />}
           </div>
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="inline-flex items-center text-[11px] font-semibold text-blue-700 uppercase tracking-wider">
+              <span className="font-editorial-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#7c4422] dark:text-amber-400">
                 {badge}
               </span>
             </div>
-            <h4 className="text-base font-semibold text-slate-900 leading-snug">{title}</h4>
-            <p className="text-sm text-slate-600 mt-1 max-w-xl leading-relaxed">{description}</p>
+            <h4 className="font-editorial-title text-base sm:text-lg font-bold uppercase tracking-tight leading-snug">
+              {title}
+            </h4>
+            <p className="font-editorial-serif text-sm italic opacity-80 mt-1 max-w-xl leading-relaxed">
+              {description}
+            </p>
           </div>
         </div>
 
         <div className="shrink-0 sm:self-center">
           <Button
-            variant="primary"
+            variant="terracotta"
             onClick={handleAction}
             iconRight={ArrowRight}
-            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium shadow-xs"
+            className="w-full sm:w-auto"
           >
             {actionText}
           </Button>

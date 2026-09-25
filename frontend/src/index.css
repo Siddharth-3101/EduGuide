@@ -2,70 +2,130 @@
 
 @layer base {
   :root {
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    --font-heading: 'Plus Jakarta Sans', var(--font-sans);
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: 'Space Grotesk', 'Plus Jakarta Sans', var(--font-sans);
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-mono: 'JetBrains Mono', monospace;
+
+    /* Architectural Warm Parchment Theme Tokens */
+    --bg-page: #ece7de;
+    --text-primary: #1d1b19;
+    --card-surface: #f7f4ed;
+    --border-line: #d8d1c4;
+    --border-grid: #dfd8cb;
+    --accent-terracotta: #7c4422;
+  }
+
+  html.dark {
+    /* Midnight Blueprint Theme Tokens */
+    --bg-page: #121110;
+    --text-primary: #f4efe6;
+    --card-surface: #181716;
+    --border-line: #2e2b28;
+    --border-grid: #242220;
+    --accent-terracotta: #d97736;
   }
 
   body {
     font-family: var(--font-sans);
-    color: #0f172a;
-    background-color: #f8fafc;
+    color: var(--text-primary);
+    background-color: var(--bg-page);
     -webkit-font-smoothing: antialiased;
+    transition: background-color 300ms ease, color 300ms ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.035em;
   }
 }
 
 /* Custom scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: rgba(120, 100, 80, 0.25);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: rgba(120, 100, 80, 0.45);
 }
 
-/* Card subtle border and elevation */
+/* Architectural Grid Lines Overlay */
+.blueprint-grid-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  opacity: 0.7;
+}
+
+.blueprint-grid-col {
+  height: 100%;
+  border-right: 1px solid var(--border-grid);
+}
+
+/* Editorial Typography Utility Classes */
+.font-editorial-title {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+}
+
+.font-editorial-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+}
+
+.font-editorial-mono {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.16em;
+}
+
+/* Card Surface Tokens */
 .card-subtle {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.02);
+  background-color: var(--card-surface);
+  border: 1px solid var(--border-line);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: all 200ms ease;
 }
 
 .card-subtle:hover {
-  border-color: #cbd5e1;
+  border-color: rgba(120, 100, 80, 0.4);
 }
 
-/* Interactive elements */
+/* Buttons with Architectural Polish */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
-  border-radius: 0.5rem;
-  background-color: #0f172a;
+  font-weight: 600;
+  border-radius: 0.375rem;
+  background-color: #1d1b19;
   color: #ffffff;
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
-  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 150ms ease;
+  border: 1px solid transparent;
+}
+
+html.dark .btn-primary {
+  background-color: #f4efe6;
+  color: #121110;
 }
 
 .btn-primary:hover {
-  background-color: #1e293b;
+  opacity: 0.9;
   transform: translateY(-0.5px);
 }
 
@@ -74,17 +134,15 @@
   align-items: center;
   justify-content: center;
   font-weight: 500;
-  border-radius: 0.5rem;
-  background-color: #ffffff;
-  color: #334155;
-  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  background-color: var(--card-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-line);
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
-  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 150ms ease;
 }
 
 .btn-secondary:hover {
-  background-color: #f8fafc;
-  border-color: #cbd5e1;
-  color: #0f172a;
+  border-color: var(--accent-terracotta);
 }

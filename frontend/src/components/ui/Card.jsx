@@ -10,8 +10,8 @@ export const Card = ({
   return (
     <div
       onClick={onClick}
-      className={`bg-white rounded-xl border border-slate-200 shadow-xs transition-all duration-200 ${
-        hoverEffect ? 'hover:border-slate-300 hover:shadow-sm cursor-pointer' : ''
+      className={`bg-[var(--card-surface)] text-inherit rounded-md border border-[var(--border-line)] shadow-2xs transition-all duration-200 ${
+        hoverEffect ? 'hover:border-[var(--accent-terracotta)] hover:shadow-xs cursor-pointer' : ''
       } ${padding} ${className}`}
     >
       {children}
@@ -21,10 +21,10 @@ export const Card = ({
 
 export const CardHeader = ({ title, subtitle, action, className = '' }) => {
   return (
-    <div className={`flex items-start justify-between gap-4 pb-4 border-b border-slate-100 mb-4 ${className}`}>
+    <div className={`flex items-start justify-between gap-4 pb-4 border-b border-current/10 mb-4 ${className}`}>
       <div>
-        <h3 className="text-base font-semibold text-slate-900 leading-snug">{title}</h3>
-        {subtitle && <p className="text-sm text-slate-500 mt-0.5">{subtitle}</p>}
+        <h3 className="font-editorial-title text-base font-bold uppercase tracking-tight leading-snug">{title}</h3>
+        {subtitle && <p className="font-editorial-serif text-sm italic opacity-75 mt-0.5">{subtitle}</p>}
       </div>
       {action && <div className="shrink-0">{action}</div>}
     </div>

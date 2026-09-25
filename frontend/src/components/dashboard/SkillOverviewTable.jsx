@@ -47,53 +47,53 @@ export const SkillOverviewTable = ({ skills = [] }) => {
   };
 
   return (
-    <Card className="bg-white border border-slate-200">
-      <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+    <Card>
+      <div className="flex items-center justify-between pb-3 border-b border-current/10">
         <div>
-          <h3 className="text-base font-bold text-slate-900 tracking-tight">Skill Competency Overview</h3>
-          <p className="text-xs text-slate-500 mt-0.5">Verification status mapped to your Backend Developer roadmap</p>
+          <h3 className="font-editorial-title text-base font-bold uppercase tracking-tight">Skill Competency Overview</h3>
+          <p className="text-xs font-editorial-serif italic opacity-70 mt-0.5">Verification status mapped to your Backend Developer roadmap</p>
         </div>
         <Link
           to="/skills"
-          className="text-xs font-semibold text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-0.5"
+          className="text-xs font-editorial-mono font-medium hover:text-[var(--accent-terracotta)] hover:underline flex items-center gap-0.5"
         >
           All Skills <ChevronRight className="h-3 w-3" />
         </Link>
       </div>
 
-      <div className="mt-3 divide-y divide-slate-100">
+      <div className="mt-3 divide-y divide-current/10">
         {displaySkills.map((skill) => {
           const action = getActionForSkill(skill);
           return (
             <div
               key={skill.id}
               onClick={() => navigate(`/skills/${skill.id}`)}
-              className="group flex items-center justify-between py-3 px-1.5 rounded-lg hover:bg-slate-50/80 transition-colors cursor-pointer"
+              className="group flex items-center justify-between py-3 px-1.5 rounded hover:bg-current/5 transition-colors cursor-pointer"
             >
               <div className="flex items-center gap-3">
                 <span
-                  className={`h-2.5 w-2.5 rounded-full ${
+                  className={`h-2 w-2 rounded-full ${
                     skill.status === 'verified'
-                      ? 'bg-emerald-500 ring-2 ring-emerald-100'
+                      ? 'bg-emerald-500'
                       : skill.status === 'partial'
-                      ? 'bg-amber-500 ring-2 ring-amber-100'
-                      : 'bg-rose-500 ring-2 ring-rose-100'
+                      ? 'bg-amber-500'
+                      : 'bg-rose-500'
                   }`}
                 />
                 <div>
                   <div className="flex items-center gap-2">
-                    <p className="text-sm font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
+                    <p className="text-sm font-semibold uppercase font-editorial-title group-hover:text-[var(--accent-terracotta)] transition-colors">
                       {skill.name}
                     </p>
-                    <span className="text-[11px] text-slate-400">· {skill.level}</span>
+                    <span className="text-[10px] font-editorial-mono opacity-50">· {skill.level}</span>
                   </div>
-                  <p className="text-[11px] text-slate-500 line-clamp-1">{skill.category}</p>
+                  <p className="text-[11px] opacity-60 line-clamp-1">{skill.category}</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-3">
                 {getStatusBadge(skill.status)}
-                <span className="text-xs text-slate-400 group-hover:text-slate-700 hidden sm:inline-flex items-center gap-0.5">
+                <span className="text-xs font-editorial-mono opacity-50 group-hover:opacity-100 hidden sm:inline-flex items-center gap-0.5">
                   {action.text} <ArrowUpRight className="h-3 w-3" />
                 </span>
               </div>

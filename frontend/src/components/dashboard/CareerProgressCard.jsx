@@ -11,45 +11,45 @@ export const CareerProgressCard = ({ stats, targetRole = 'Backend Developer' }) 
   const coverage = stats?.competencyCoverage || 67;
 
   return (
-    <Card className="flex flex-col justify-between h-full bg-white border border-slate-200">
+    <Card className="flex flex-col justify-between h-full">
       <div>
-        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+        <div className="flex items-center justify-between pb-3 border-b border-current/10">
           <div className="flex items-center gap-2">
-            <span className="flex h-7 w-7 items-center justify-center rounded-md bg-blue-50 text-blue-600">
+            <span className="flex h-7 w-7 items-center justify-center rounded border border-current/20 bg-[var(--bg-page)] text-[var(--accent-terracotta)]">
               <Target className="h-4 w-4" />
             </span>
-            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+            <span className="text-[10px] font-editorial-mono font-bold uppercase tracking-[0.2em] opacity-70">
               Career Progress
             </span>
           </div>
           <Link
             to="/career"
-            className="text-xs font-medium text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-0.5"
+            className="text-xs font-editorial-mono font-medium hover:text-[var(--accent-terracotta)] hover:underline flex items-center gap-0.5"
           >
-            View Roadmap <ChevronRight className="h-3 w-3" />
+            Roadmap <ChevronRight className="h-3 w-3" />
           </Link>
         </div>
 
         <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="text-xl font-bold text-slate-900 tracking-tight">{targetRole}</h3>
-            <p className="text-xs text-slate-500 mt-0.5">Competency Coverage</p>
+            <h3 className="font-editorial-title text-xl font-bold uppercase tracking-tight">{targetRole}</h3>
+            <p className="text-xs font-editorial-serif italic opacity-75 mt-0.5">Competency Coverage Index</p>
 
-            <div className="mt-4 flex items-center gap-4 text-xs">
+            <div className="mt-4 flex items-center gap-4 text-xs font-editorial-mono">
               <div className="flex items-center gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
-                <span className="font-semibold text-slate-800">{verified}</span>
-                <span className="text-slate-500">Verified</span>
+                <span className="h-2 w-2 rounded-full bg-emerald-500"></span>
+                <span className="font-bold">{verified}</span>
+                <span className="opacity-60 text-[10px]">VERIFIED</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-amber-500"></span>
-                <span className="font-semibold text-slate-800">{partial}</span>
-                <span className="text-slate-500">Partial</span>
+                <span className="h-2 w-2 rounded-full bg-amber-500"></span>
+                <span className="font-bold">{partial}</span>
+                <span className="opacity-60 text-[10px]">PARTIAL</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-rose-500"></span>
-                <span className="font-semibold text-slate-800">{missing}</span>
-                <span className="text-slate-500">Missing</span>
+                <span className="h-2 w-2 rounded-full bg-rose-500"></span>
+                <span className="font-bold">{missing}</span>
+                <span className="opacity-60 text-[10px]">MISSING</span>
               </div>
             </div>
           </div>
@@ -60,9 +60,9 @@ export const CareerProgressCard = ({ stats, targetRole = 'Backend Developer' }) 
         </div>
       </div>
 
-      <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-        <span>Target benchmark: 80% for verified interviews</span>
-        <span className="font-medium text-blue-600">+{13}% to target</span>
+      <div className="mt-5 pt-3 border-t border-current/10 flex items-center justify-between text-xs font-editorial-mono opacity-70">
+        <span>Target: 80% for interviews</span>
+        <span className="font-bold text-[var(--accent-terracotta)]">+{13}% to target</span>
       </div>
     </Card>
   );

@@ -15,20 +15,21 @@ export const NextBestAction = ({ action }) => {
   const icon = action?.icon || '🎯';
 
   return (
-    <div className="relative overflow-hidden rounded-xl border border-blue-200/90 bg-gradient-to-r from-blue-50/80 via-indigo-50/40 to-white p-6 shadow-xs">
+    <div className="relative overflow-hidden rounded-md border border-[var(--border-line)] bg-[var(--card-surface)] p-6 shadow-2xs">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
         <div className="flex items-start gap-4">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-lg shadow-xs text-white">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded border border-current/20 bg-[var(--bg-page)] text-lg text-[var(--accent-terracotta)]">
             {icon}
           </div>
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-700 uppercase tracking-wider">
-                <Sparkles className="h-3 w-3" /> Your Next Best Action
+              <span className="inline-flex items-center gap-1.5 text-[10px] font-editorial-mono font-bold text-[var(--accent-terracotta)] uppercase tracking-[0.2em]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent-terracotta)]"></span>
+                Next Recommended Step [01 // ACTION]
               </span>
             </div>
-            <h3 className="text-lg font-bold text-slate-900 tracking-tight">{title}</h3>
-            <p className="text-sm text-slate-600 mt-1 max-w-xl leading-relaxed">{description}</p>
+            <h3 className="font-editorial-title text-lg font-bold text-[var(--text-primary)] uppercase tracking-tight">{title}</h3>
+            <p className="text-sm opacity-75 mt-1 max-w-xl leading-relaxed">{description}</p>
           </div>
         </div>
 
@@ -37,7 +38,7 @@ export const NextBestAction = ({ action }) => {
             variant="primary"
             onClick={() => navigate(route)}
             iconRight={ArrowRight}
-            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 shadow-sm"
+            className="w-full sm:w-auto"
           >
             {buttonText}
           </Button>

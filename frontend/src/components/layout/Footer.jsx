@@ -4,22 +4,24 @@ import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
-    <footer className="border-t border-slate-200 bg-white py-8 px-4 sm:px-6">
-      <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-        <div className="flex items-center gap-2">
-          <div className="flex h-6 w-6 items-center justify-center rounded bg-slate-900 text-white font-bold">
-            <Compass className="h-3.5 w-3.5" />
-          </div>
-          <span className="font-semibold text-slate-800">SkillBridge</span>
-          <span>— Bridge the gap between your skills and your career.</span>
+    <footer className="border-t border-current/15 bg-[var(--card-surface)] py-8 px-4 sm:px-6 relative z-10 transition-colors duration-300">
+      <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4 text-xs opacity-70">
+        <div className="flex items-center gap-2.5">
+          <span className="font-editorial-mono text-[10px] font-bold tracking-[0.2em] px-1.5 py-0.5 rounded border border-current/25">
+            S / B
+          </span>
+          <span className="font-editorial-title font-bold tracking-tight uppercase">SkillBridge</span>
+          <span className="hidden md:inline font-editorial-serif italic text-sm opacity-80">
+            — bridge the gap between your skills and your career, verified whole.
+          </span>
         </div>
 
-        <div className="flex items-center gap-6">
-          <Link to="/career" className="hover:text-slate-900 transition-colors">Career Roadmap</Link>
-          <Link to="/skills" className="hover:text-slate-900 transition-colors">Skill Library</Link>
-          <Link to="/assessments" className="hover:text-slate-900 transition-colors">Assessments</Link>
-          <Link to="/jobs" className="hover:text-slate-900 transition-colors">Job Matching</Link>
-          <Link to="/portfolio" className="hover:text-slate-900 transition-colors">Skill Passport</Link>
+        <div className="flex flex-wrap items-center gap-5 font-editorial-mono text-[11px] uppercase tracking-wider">
+          <Link to="/career" className="hover:text-[var(--accent-terracotta)] transition-colors">Roadmap</Link>
+          <Link to="/skills" className="hover:text-[var(--accent-terracotta)] transition-colors">Skills</Link>
+          <Link to="/assessments" className="hover:text-[var(--accent-terracotta)] transition-colors">Assessments</Link>
+          <Link to="/jobs" className="hover:text-[var(--accent-terracotta)] transition-colors">Matching</Link>
+          <Link to="/portfolio" className="hover:text-[var(--accent-terracotta)] transition-colors">Passport</Link>
         </div>
       </div>
     </footer>

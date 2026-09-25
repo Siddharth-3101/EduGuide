@@ -19,29 +19,29 @@ export const CareerActivityTimeline = ({ activities = [] }) => {
   };
 
   return (
-    <Card className="bg-white border border-slate-200">
-      <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+    <Card>
+      <div className="flex items-center justify-between pb-3 border-b border-current/10 mb-4">
         <div>
-          <h3 className="text-base font-bold text-slate-900 tracking-tight">Recent Career Activity</h3>
-          <p className="text-xs text-slate-500 mt-0.5">Verification events, project milestones and suggestions</p>
+          <h3 className="font-editorial-title text-base font-bold uppercase tracking-tight">Recent Career Activity</h3>
+          <p className="text-xs font-editorial-serif italic opacity-70 mt-0.5">Verification events, project milestones and suggestions</p>
         </div>
-        <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Timeline</span>
+        <span className="text-[10px] font-editorial-mono font-bold opacity-50 uppercase tracking-[0.2em]">Timeline</span>
       </div>
 
-      <div className="relative pl-6 space-y-5 before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-200">
+      <div className="relative pl-6 space-y-5 before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-px before:bg-current/15">
         {activities.map((act) => (
           <div key={act.id} className="relative group">
             {/* Timeline node dot */}
-            <div className="absolute -left-6 top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-white ring-4 ring-white shadow-xs">
+            <div className="absolute -left-6 top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[var(--card-surface)] border border-current/20 shadow-2xs">
               {getIcon(act.type)}
             </div>
 
             <div>
               <div className="flex items-center justify-between gap-2">
-                <h4 className="text-xs font-semibold text-slate-900">{act.title}</h4>
-                <span className="text-[10px] text-slate-400 shrink-0">{act.timestamp}</span>
+                <h4 className="text-xs font-editorial-title font-semibold uppercase">{act.title}</h4>
+                <span className="text-[10px] font-editorial-mono opacity-50 shrink-0">{act.timestamp}</span>
               </div>
-              <p className="text-xs text-slate-600 mt-0.5">{act.description}</p>
+              <p className="text-xs opacity-75 mt-0.5">{act.description}</p>
             </div>
           </div>
         ))}
