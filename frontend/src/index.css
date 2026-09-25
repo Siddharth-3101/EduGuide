@@ -14,6 +14,27 @@
     --border-line: #d8d1c4;
     --border-grid: #dfd8cb;
     --accent-terracotta: #7c4422;
+
+    /* Standard Design Tokens */
+    --background: #ece7de;
+    --foreground: #1d1b19;
+    --card: #f7f4ed;
+    --card-foreground: #1d1b19;
+    --border: #d8d1c4;
+    --muted: #e2dbce;
+    --muted-foreground: #6b635b;
+    --primary: #1d1b19;
+    --primary-foreground: #f4efe6;
+    --secondary: #e6dfd3;
+    --secondary-foreground: #1d1b19;
+    --success: #166534;
+    --success-bg: #dcfce7;
+    --warning: #854d0e;
+    --warning-bg: #fef9c3;
+    --danger: #991b1b;
+    --danger-bg: #fee2e2;
+    --info: #7c4422;
+    --info-bg: #f5ebe6;
   }
 
   html.dark {
@@ -24,6 +45,27 @@
     --border-line: #2e2b28;
     --border-grid: #242220;
     --accent-terracotta: #d97736;
+
+    /* Standard Design Tokens (Dark) */
+    --background: #121110;
+    --foreground: #f4efe6;
+    --card: #181716;
+    --card-foreground: #f4efe6;
+    --border: #2e2b28;
+    --muted: #22201e;
+    --muted-foreground: #a39c94;
+    --primary: #f4efe6;
+    --primary-foreground: #121110;
+    --secondary: #242220;
+    --secondary-foreground: #f4efe6;
+    --success: #4ade80;
+    --success-bg: #052e16;
+    --warning: #facc15;
+    --warning-bg: #422006;
+    --danger: #f87171;
+    --danger-bg: #450a0a;
+    --info: #d97736;
+    --info-bg: #2a1b12;
   }
 
   body {
@@ -145,4 +187,37 @@ html.dark .btn-primary {
 
 .btn-secondary:hover {
   border-color: var(--accent-terracotta);
+}
+
+/* Futuristic AI & Modern SaaS Utilities */
+.ai-glow-terracotta {
+  box-shadow: 0 0 35px -8px rgba(217, 119, 54, 0.35);
+}
+
+.ai-glow-emerald {
+  box-shadow: 0 0 30px -8px rgba(74, 222, 128, 0.3);
+}
+
+.ai-glow-blue {
+  box-shadow: 0 0 30px -8px rgba(59, 130, 246, 0.3);
+}
+
+.glass-panel {
+  background: var(--card-surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-line);
+}
+
+.cyber-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(120, 100, 80, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(120, 100, 80, 0.08) 1px, transparent 1px);
+}
+
+html.dark .cyber-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }

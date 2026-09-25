@@ -17,8 +17,8 @@ import {
 
 export const Navbar = ({ onToggleSidebar }) => {
   const { user, logout } = useAuth();
-  const { stats, targetRoleId } = useCareer();
-  const { isDark, toggleTheme } = useTheme();
+  const { stats } = useCareer();
+  const { isDark, toggleTheme, themeMode, setThemeMode } = useTheme();
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -208,6 +208,37 @@ export const Navbar = ({ onToggleSidebar }) => {
                   <Settings className="h-3.5 w-3.5 opacity-60" />
                   Settings
                 </Link>
+              </div>
+
+              {/* Theme Selector inside profile menu */}
+              <div className="border-t border-current/10 px-3.5 py-2 font-editorial-mono text-[11px]">
+                <p className="opacity-50 uppercase tracking-widest text-[9px] mb-1.5">Theme Preference</p>
+                <div className="grid grid-cols-3 gap-1 p-0.5 rounded border border-current/20 bg-current/5">
+                  <button
+                    onClick={() => setThemeMode('light')}
+                    className={`py-1 rounded text-center transition-all ${
+                      themeMode === 'light' ? 'bg-[var(--card-surface)] font-bold shadow-2xs border border-current/20' : 'opacity-60 hover:opacity-100'
+                    }`}
+                  >
+                    Light
+                  </button>
+                  <button
+                    onClick={() => setThemeMode('dark')}
+                    className={`py-1 rounded text-center transition-all ${
+                      themeMode === 'dark' ? 'bg-[var(--card-surface)] font-bold shadow-2xs border border-current/20' : 'opacity-60 hover:opacity-100'
+                    }`}
+                  >
+                    Dark
+                  </button>
+                  <button
+                    onClick={() => setThemeMode('system')}
+                    className={`py-1 rounded text-center transition-all ${
+                      themeMode === 'system' ? 'bg-[var(--card-surface)] font-bold shadow-2xs border border-current/20' : 'opacity-60 hover:opacity-100'
+                    }`}
+                  >
+                    Auto
+                  </button>
+                </div>
               </div>
 
               <div className="border-t border-current/10 pt-1 font-editorial-mono text-xs">

@@ -20,6 +20,8 @@ import { LearningPage } from '../pages/learning/LearningPage';
 import { CourseDetailPage } from '../pages/learning/CourseDetailPage';
 import { ProjectsPage } from '../pages/projects/ProjectsPage';
 import { ProjectDetailPage } from '../pages/projects/ProjectDetailPage';
+import { InterviewsDashboardPage } from '../pages/interviews/InterviewsDashboardPage';
+import { InterviewDetailPage } from '../pages/interviews/InterviewDetailPage';
 import { JobsPage } from '../pages/jobs/JobsPage';
 import { JobDetailPage } from '../pages/jobs/JobDetailPage';
 import { PortfolioPage } from '../pages/portfolio/PortfolioPage';
@@ -57,6 +59,9 @@ export const AppRoutes = () => {
 
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:projectId" element={<ProjectDetailPage />} />
+
+          <Route path="/interviews" element={<InterviewsDashboardPage />} />
+          <Route path="/interviews/:interviewId" element={<InterviewDetailPage />} />
 
           <Route path="/jobs" element={<JobsPage />} />
           <Route path="/jobs/:jobId" element={<JobDetailPage />} />

@@ -1,133 +1,132 @@
 export const MOCK_JOBS = [
   {
     id: 'job-1',
-    title: 'Junior Backend Developer',
-    company: 'TechNova Solutions',
-    logoUrl: 'TN',
-    location: 'Bangalore, India',
-    workplaceType: 'Hybrid',
-    employmentType: 'Full-time',
-    experienceLevel: 'Entry Level (0-2 yrs)',
-    salaryRange: '₹8,50,000 - ₹12,000,000 / yr',
-    postedDate: '2 days ago',
-    competencyMatch: 78,
-    roleCategory: 'Backend Developer',
-    matchingSkills: ['Python', 'SQL', 'REST API'],
-    partialSkills: ['Spring Boot'],
-    missingSkills: ['Docker'],
-    requiredCompetencies: [
-      { name: 'Python', level: 'Intermediate', status: 'verified', matchText: 'Strong Match' },
-      { name: 'SQL', level: 'Intermediate', status: 'verified', matchText: 'Strong Match' },
-      { name: 'REST API', level: 'Intermediate', status: 'verified', matchText: 'Strong Match' },
-      { name: 'Spring Boot', level: 'Beginner', status: 'partial', matchText: 'Partial (In Progress)' },
-      { name: 'Docker', level: 'Intermediate', status: 'missing', matchText: 'Gap (Requires Verification)' }
+    title: 'Backend Developer',
+    company: 'TechNova',
+    source: 'LinkedIn',
+    sourceUrl: 'https://www.linkedin.com/jobs/view/technova-backend-dev-391',
+    location: 'Bangalore',
+    workMode: 'Hybrid',
+    experience: '0–2 years',
+    salary: '₹8,50,000 – ₹12,00,000 / yr',
+    skills: ['Python', 'SQL', 'REST API', 'Git', 'Docker', 'AWS'],
+    postedDate: '2 hours ago',
+    matchPercentage: 82,
+    matchingSkills: ['Python', 'SQL', 'REST API', 'Git'],
+    missingSkills: ['Docker', 'AWS'],
+    recommendedPreparation: [
+      'Learn Docker Fundamentals',
+      'Complete Docker competency assessment',
+      'Build containerized API project with Docker Compose'
     ],
-    description: 'TechNova is scaling its payments and core ledger engineering group. We are looking for an ambitious junior backend engineer who understands clean API contracts, relational modeling, and asynchronous event processing.',
-    responsibilities: [
+    roleCategory: 'Backend Developer',
+    description: 'TechNova is scaling its payments and core ledger engineering group. We are looking for an ambitious backend engineer who understands clean REST API contracts, relational modeling, and asynchronous event processing.',
+    requirements: [
       'Write modular, well-tested Python endpoints for customer ledger transactions.',
-      'Optimize relational database queries in PostgreSQL with appropriate indexing and connection pooling.',
-      'Collaborate with DevOps engineers to containerize backend services and deploy to staging environments.',
-      'Participate in peer code reviews and contribute to architecture design documentation.'
+      'Optimize relational database queries in PostgreSQL with appropriate indexing.',
+      'Containerize backend services using Docker and maintain staging infrastructure on AWS.',
+      'Collaborate in peer code reviews via Git and contribute to architecture documentation.'
     ],
     benefits: [
       'Flexible hybrid working model (2 days office / 3 days remote)',
       'Comprehensive health insurance & wellness allowance',
-      'Annual learning stipend for technical certifications and books',
-      'Modern M3 MacBook Pro provided'
-    ],
-    applyUrl: 'https://careers.technova.example/jobs/backend-junior-091'
+      'Annual learning stipend for technical certifications and books'
+    ]
   },
   {
     id: 'job-2',
-    title: 'Associate Cloud & Platform Engineer',
+    title: 'Cloud & Platform Engineer',
     company: 'NexaCloud Systems',
-    logoUrl: 'NC',
-    location: 'Bengaluru / Remote',
-    workplaceType: 'Remote',
-    employmentType: 'Full-time',
-    experienceLevel: 'Entry Level',
-    salaryRange: '₹10,00,000 - ₹14,00,000 / yr',
-    postedDate: '5 days ago',
-    competencyMatch: 85,
-    roleCategory: 'Cloud Engineer',
+    source: 'Naukri',
+    sourceUrl: 'https://www.naukri.com/job-listings-cloud-platform-nexacloud-8821',
+    location: 'Bangalore',
+    workMode: 'Remote',
+    experience: '1–3 years',
+    salary: '₹10,00,000 – ₹14,00,000 / yr',
+    skills: ['Python', 'REST API', 'Git', 'Docker', 'Kubernetes', 'AWS'],
+    postedDate: '1 day ago',
+    matchPercentage: 74,
     matchingSkills: ['Python', 'REST API', 'Git'],
-    partialSkills: ['Redis'],
-    missingSkills: ['AWS', 'Docker'],
-    requiredCompetencies: [
-      { name: 'Python', level: 'Intermediate', status: 'verified', matchText: 'Strong Match' },
-      { name: 'REST API', level: 'Intermediate', status: 'verified', matchText: 'Strong Match' },
-      { name: 'Git', level: 'Intermediate', status: 'verified', matchText: 'Strong Match' },
-      { name: 'Docker', level: 'Intermediate', status: 'missing', matchText: 'Gap' },
-      { name: 'AWS', level: 'Beginner', status: 'missing', matchText: 'Gap' }
+    missingSkills: ['Docker', 'AWS', 'Kubernetes'],
+    recommendedPreparation: [
+      'Complete Docker practical exercises',
+      'Review AWS cloud infrastructure core services',
+      'Pass container orchestration assessment'
     ],
-    description: 'NexaCloud provides autonomous multi-cloud infrastructure orchestration for fintech enterprises. Looking for junior engineers enthusiastic about reliability engineering.',
-    responsibilities: [
+    roleCategory: 'Cloud Engineer',
+    description: 'NexaCloud provides autonomous multi-cloud infrastructure orchestration for fintech enterprises. Looking for engineers enthusiastic about platform engineering and container workflows.',
+    requirements: [
       'Build internal platform automation scripts using Python.',
       'Maintain continuous delivery pipelines and monitor infrastructure telemetry.',
-      'Help standardize Docker container configurations across service repositories.'
+      'Standardize Docker container configurations across service repositories.'
     ],
-    benefits: ['100% remote', 'Home office budget', 'Annual performance bonus'],
-    applyUrl: 'https://nexacloud.example/careers/platform-assoc'
+    benefits: [
+      '100% remote flexibility across India',
+      'Home office hardware budget',
+      'Annual performance bonus'
+    ]
   },
   {
     id: 'job-3',
-    title: 'Python Backend Software Engineer',
+    title: 'Python Software Engineer',
     company: 'ScaleOps Technologies',
-    logoUrl: 'SO',
-    location: 'Hyderabad, India',
-    workplaceType: 'On-site',
-    employmentType: 'Full-time',
-    experienceLevel: 'Student / New Grad',
-    salaryRange: '₹9,00,000 - ₹13,50,000 / yr',
-    postedDate: '1 day ago',
-    competencyMatch: 92,
-    roleCategory: 'Backend Developer',
+    source: 'LinkedIn',
+    sourceUrl: 'https://www.linkedin.com/jobs/view/scaleops-python-dev-1029',
+    location: 'Hyderabad',
+    workMode: 'On-site',
+    experience: '0–1 years',
+    salary: '₹9,00,000 – ₹13,50,000 / yr',
+    skills: ['Python', 'SQL', 'REST API', 'Git', 'Redis'],
+    postedDate: '3 days ago',
+    matchPercentage: 91,
     matchingSkills: ['Python', 'SQL', 'REST API', 'Git'],
-    partialSkills: [],
     missingSkills: ['Redis'],
-    requiredCompetencies: [
-      { name: 'Python', level: 'Advanced', status: 'verified', matchText: 'Strong Match' },
-      { name: 'SQL', level: 'Intermediate', status: 'verified', matchText: 'Strong Match' },
-      { name: 'REST API', level: 'Intermediate', status: 'verified', matchText: 'Strong Match' },
-      { name: 'Git', level: 'Intermediate', status: 'verified', matchText: 'Strong Match' },
-      { name: 'Redis', level: 'Beginner', status: 'partial', matchText: 'Partial Match' }
+    recommendedPreparation: [
+      'Review Redis caching patterns and TTL policies',
+      'Complete asynchronous task queue mini-project'
     ],
+    roleCategory: 'Backend Developer',
     description: 'ScaleOps builds high-throughput observability agents. We love applicants with demonstrable GitHub projects and verified algorithmic fundamentals.',
-    responsibilities: [
+    requirements: [
       'Develop high-throughput REST and WebSocket servers in Python.',
-      'Implement indexing and partitioning on high-volume time-series SQL tables.'
+      'Implement indexing and partitioning on high-volume time-series SQL tables.',
+      'Leverage Redis for low-latency session caching and worker task queues.'
     ],
-    benefits: ['Competitive equity package', 'Free catered gourmet lunch', 'Relocation bonus'],
-    applyUrl: 'https://scaleops.example/careers/python-engineer'
+    benefits: [
+      'Competitive equity stock options',
+      'Free catered gourmet lunch & snacks',
+      'Relocation assistance'
+    ]
   },
   {
     id: 'job-4',
-    title: 'API & Microservices Specialist',
+    title: 'Junior API & Microservices Developer',
     company: 'FinPulse Systems',
-    logoUrl: 'FP',
-    location: 'Mumbai, India',
-    workplaceType: 'Hybrid',
-    employmentType: 'Full-time',
-    experienceLevel: 'Entry Level (1-2 yrs)',
-    salaryRange: '₹11,00,000 - ₹15,00,000 / yr',
-    postedDate: '3 days ago',
-    competencyMatch: 70,
+    source: 'Employer Direct',
+    sourceUrl: 'https://finpulse.example.com/careers/junior-api-dev',
+    location: 'Mumbai',
+    workMode: 'Hybrid',
+    experience: '0–2 years',
+    salary: '₹11,00,000 – ₹15,00,000 / yr',
+    skills: ['REST API', 'SQL', 'Python', 'Docker', 'Kafka'],
+    postedDate: '4 days ago',
+    matchPercentage: 70,
+    matchingSkills: ['Python', 'SQL', 'REST API'],
+    missingSkills: ['Docker', 'Kafka'],
+    recommendedPreparation: [
+      'Bridge Docker verification gap',
+      'Practice event streaming fundamentals with Kafka'
+    ],
     roleCategory: 'Backend Developer',
-    matchingSkills: ['REST API', 'SQL'],
-    partialSkills: ['Spring Boot', 'Redis'],
-    missingSkills: ['Docker', 'AWS'],
-    requiredCompetencies: [
-      { name: 'REST API', level: 'Intermediate', status: 'verified', matchText: 'Strong Match' },
-      { name: 'SQL', level: 'Intermediate', status: 'verified', matchText: 'Strong Match' },
-      { name: 'Spring Boot', level: 'Intermediate', status: 'partial', matchText: 'Partial' },
-      { name: 'Docker', level: 'Intermediate', status: 'missing', matchText: 'Gap' }
+    description: 'Help build open banking APIs that power millions of real-time transactions daily with strict idempotency and resilience.',
+    requirements: [
+      'Design idempotent banking APIs following REST and OpenAPI schemas.',
+      'Maintain rigorous unit and integration test coverage above 85% with Dockerized test environments.'
     ],
-    description: 'Help build open banking APIs that power millions of real-time transactions daily.',
-    responsibilities: [
-      'Design idempotent banking APIs following ISO20022 schemas.',
-      'Maintain rigorous unit and integration test coverage above 85%.'
-    ],
-    benefits: ['Medical coverage for family', 'Stock purchase plan', '401k match'],
-    applyUrl: 'https://finpulse.example/jobs/api-specialist'
+    benefits: [
+      'Comprehensive family medical coverage',
+      'Stock purchase plan',
+      'Annual conference travel stipend'
+    ]
   }
 ];

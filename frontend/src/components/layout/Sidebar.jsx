@@ -10,7 +10,9 @@ import {
   Briefcase,
   Award,
   Sparkles,
-  ChevronRight
+  ChevronRight,
+  MessagesSquare,
+  User
 } from 'lucide-react';
 import { useCareer } from '../../context/CareerContext';
 
@@ -24,8 +26,10 @@ export const Sidebar = ({ isOpen, onClose }) => {
     { label: 'Assessments', path: '/assessments', icon: CheckSquare, badge: '1 Due' },
     { label: 'Learning', path: '/learning', icon: BookOpen },
     { label: 'Projects', path: '/projects', icon: FolderGit2 },
+    { label: 'Interviews', path: '/interviews', icon: MessagesSquare, badge: 'Practice' },
     { label: 'Jobs', path: '/jobs', icon: Briefcase, badge: '78% Match' },
-    { label: 'Skill Passport', path: '/portfolio', icon: Award }
+    { label: 'Skill Passport', path: '/portfolio', icon: Award },
+    { label: 'Profile', path: '/profile', icon: User }
   ];
 
   return (
