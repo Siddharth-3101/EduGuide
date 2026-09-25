@@ -284,6 +284,7 @@ const RoadmapGraphContent = ({ initialData }) => {
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onNodeClick={handleNodeClick}
+          onPaneClick={() => setDrawerOpen(false)}
           defaultViewport={{ x: 50, y: 80, zoom: 0.8 }}
           minZoom={0.3}
           maxZoom={1.5}
