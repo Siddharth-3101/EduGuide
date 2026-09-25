@@ -1,0 +1,9 @@
+fastapi>=0.115.0
+uvicorn>=0.30.0
+python-multipart>=0.0.12
+pydantic>=2.9.0
+pypdfium2>=4.30.0
+surya-ocr>=0.22.1
+xhtml2pdf>=0.2.15
+reportlab>=4.2.0
+pillow>=10.4.0
