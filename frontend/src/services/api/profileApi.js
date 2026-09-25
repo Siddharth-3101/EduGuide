@@ -10,8 +10,20 @@ export const profileApi = {
       await delay(150);
       return { ...localProfileState };
     }
-    const response = await apiClient.get('/profile');
-    return response.data;
+    const response = await apiClient.get('/api/profile');
+    const p = response.data?.data || response.data;
+    return {
+      fullName: p.fullName || 'Student',
+      email: p.email,
+      phone: p.phone,
+      headline: p.headline || 'Student Developer',
+      bio: p.bio,
+      education: p.education || 'B.Tech Computer Science',
+      experienceLevel: p.experienceLevel || 'Intermediate',
+      targetRoleId: p.targetRoleId || 'backend-developer',
+      targetRoleTitle: p.targetRoleTitle || 'Backend Developer',
+      resumeUrl: p.resumeUrl
+    };
   },
 
   async updateProfile(updates) {
@@ -20,8 +32,8 @@ export const profileApi = {
       localProfileState = { ...localProfileState, ...updates };
       return { ...localProfileState };
     }
-    const response = await apiClient.put('/profile', updates);
-    return response.data;
+    const response = await apiClient.put('/api/profile', updates);
+    return response.data?.data || response.data;
   },
 
   async getActivities() {
@@ -29,21 +41,34 @@ export const profileApi = {
       await delay(120);
       return [...MOCK_ACTIVITIES];
     }
-    const response = await apiClient.get('/profile/activities');
-    return response.data;
+    try {
+      const response = await apiClient.get('/api/analytics/activity');
+      const list = response.data?.data || response.data || [];
+      return list.map(a => ({
+        id: String(a.id),
+        type: a.activityType ? a.activityType.toLowerCase() : 'assessment',
+        title: a.title,
+        description: a.description,
+        timestamp: a.createdAt || 'Recently'
+      }));
+    } catch (e) {
+      return MOCK_ACTIVITIES;
+    }
   },
 
-  async updateCareerPreferences(preferences) {
+  async addEvidence(evidenceData) {
     if (USE_MOCK) {
       await delay(200);
-      localProfileState = {
-        ...localProfileState,
-        targetRole: preferences.targetRole || localProfileState.targetRole,
-        targetRoles: preferences.targetRoles || localProfileState.targetRoles
-      };
-      return { ...localProfileState };
+      return { id: 'ev-' + Date.now(), ...evidenceData };
     }
-    const response = await apiClient.put('/profile/preferences', preferences);
-    return response.data;
+    const response = await apiClient.post('/api/evidence', {
+      skillId: evidenceData.skillId || 'java',
+      title: evidenceData.title || evidenceData.name || 'Certificate Evidence',
+      name: evidenceData.name || evidenceData.title || 'Certificate Evidence',
+      type: (evidenceData.type || 'CERTIFICATE').toUpperCase(),
+      fileUrl: evidenceData.url || evidenceData.fileUrl || 'https://skillbridge.internal/evidence',
+      score: evidenceData.score || 'Pass'
+    });
+    return response.data?.data || response.data;
   }
 };

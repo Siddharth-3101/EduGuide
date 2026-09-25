@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.skillbridge</groupId>
+        <artifactId>skillbridge-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>skillbridge-runner</artifactId>
+    <name>SkillBridge Unified Runner Module</name>
+    <description>Unified single-process runner for all SkillBridge services (Port 8080)</description>
+
+    <dependencies>
+        <dependency><groupId>com.skillbridge</groupId><artifactId>auth-service</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>com.skillbridge</groupId><artifactId>profile-service</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>com.skillbridge</groupId><artifactId>career-service</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>com.skillbridge</groupId><artifactId>skill-service</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>com.skillbridge</groupId><artifactId>evidence-service</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>com.skillbridge</groupId><artifactId>assessment-service</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>com.skillbridge</groupId><artifactId>learning-service</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>com.skillbridge</groupId><artifactId>project-service</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>com.skillbridge</groupId><artifactId>job-service</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>com.skillbridge</groupId><artifactId>portfolio-service</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>com.skillbridge</groupId><artifactId>notification-service</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>com.skillbridge</groupId><artifactId>analytics-service</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>com.skillbridge</groupId><artifactId>readiness-service</artifactId><version>${project.version}</version></dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

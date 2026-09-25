@@ -7,8 +7,8 @@ export const careerApi = {
       await delay(120);
       return [...MOCK_ROLES];
     }
-    const response = await apiClient.get('/career/roles');
-    return response.data;
+    const response = await apiClient.get('/api/careers');
+    return response.data?.data || response.data;
   },
 
   async getRoleById(roleId) {
@@ -17,8 +17,8 @@ export const careerApi = {
       const role = MOCK_ROLES.find((r) => r.id === roleId) || MOCK_ROLES[0];
       return role;
     }
-    const response = await apiClient.get(`/career/roles/${roleId}`);
-    return response.data;
+    const response = await apiClient.get(`/api/careers/${roleId}`);
+    return response.data?.data || response.data;
   },
 
   async getRoleRoadmap(roleId = 'backend-developer') {
@@ -38,7 +38,12 @@ export const careerApi = {
         }
       };
     }
-    const response = await apiClient.get(`/career/roles/${roleId}/roadmap`);
-    return response.data;
+    const response = await apiClient.get(`/api/careers/${roleId}/roadmap`);
+    return response.data?.data || response.data;
+  },
+
+  async selectTargetRole(roleId) {
+    const response = await apiClient.post('/api/careers/target', { roleId });
+    return response.data?.data || response.data;
   }
 };

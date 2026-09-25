@@ -1,0 +1,478 @@
+{
+  "info": {
+    "name": "SkillBridge Microservices API Collection",
+    "description": "Complete Postman Collection to test all 67 SkillBridge Backend APIs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth Service",
+      "item": [
+        {
+          "name": "Register Student",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Swagger QA Student\",\n  \"email\": \"student_qa@skillbridge.test\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login Student",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"student@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "me"]
+            }
+          }
+        },
+        {
+          "name": "Forgot Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"student@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/forgot-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "forgot-password"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Career Service",
+      "item": [
+        {
+          "name": "Get All Careers",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/careers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "careers"]
+            }
+          }
+        },
+        {
+          "name": "Get Career by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/careers/backend-developer",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "careers", "backend-developer"]
+            }
+          }
+        },
+        {
+          "name": "Get Career Roadmap",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/careers/backend-developer/roadmap",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "careers", "backend-developer", "roadmap"]
+            }
+          }
+        },
+        {
+          "name": "Set Target Career Role",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roleId\": \"backend-developer\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/careers/target",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "careers", "target"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Profile Service",
+      "item": [
+        {
+          "name": "Get Student Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "profile"]
+            }
+          }
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Sankari Ganeshan\",\n  \"headline\": \"Senior Full Stack & Backend Specialist\",\n  \"phone\": \"+91 9876543210\",\n  \"bio\": \"Passionate software engineer building microservices with Spring Boot.\",\n  \"education\": \"B.Tech Computer Science\",\n  \"experienceLevel\": \"Intermediate (1-2 years)\",\n  \"targetRoleId\": \"backend-developer\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "profile"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Skill Service",
+      "item": [
+        {
+          "name": "Get Master Skills",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/skills",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "skills"]
+            }
+          }
+        },
+        {
+          "name": "Get Student Skills",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/skills/student",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "skills", "student"]
+            }
+          }
+        },
+        {
+          "name": "Verify Skill Competency",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verificationSource\": \"ASSESSMENT\",\n  \"name\": \"Docker Fundamentals Verified\",\n  \"score\": \"90%\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/skills/docker/verify",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "skills", "docker", "verify"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Evidence Service",
+      "item": [
+        {
+          "name": "Submit New Evidence",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"skillId\": \"docker\",\n  \"name\": \"Docker Certified Associate Certificate\",\n  \"type\": \"CERTIFICATE\",\n  \"fileUrl\": \"https://skillbridge.internal/certificates/dca_123.pdf\",\n  \"score\": \"95%\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/evidence",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "evidence"]
+            }
+          }
+        },
+        {
+          "name": "Get All Evidence",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/evidence",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "evidence"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Assessment Service",
+      "item": [
+        {
+          "name": "Get Assessments List",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/assessments",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "assessments"]
+            }
+          }
+        },
+        {
+          "name": "Start Assessment Attempt",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/assessments/1/start",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "assessments", "1", "start"]
+            }
+          }
+        },
+        {
+          "name": "Submit Assessment Answers",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"attemptId\": 1,\n  \"answers\": {\n    \"1\": 3,\n    \"2\": 0\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/assessments/1/submit",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "assessments", "1", "submit"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Readiness Engine Service",
+      "item": [
+        {
+          "name": "Calculate Target Role Readiness",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/readiness",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "readiness"]
+            }
+          }
+        },
+        {
+          "name": "Get Skill Gaps",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/readiness/gaps",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "readiness", "gaps"]
+            }
+          }
+        },
+        {
+          "name": "Get Next Best Action",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/readiness/next-action",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "readiness", "next-action"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Project Service",
+      "item": [
+        {
+          "name": "Submit Project GitHub URL",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"githubRepoUrl\": \"https://github.com/skillbridge/docker-rest-api\",\n  \"submissionNotes\": \"Containerized Spring Boot microservice backed by PostgreSQL.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects/1/submit",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects", "1", "submit"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Learning Service",
+      "item": [
+        {
+          "name": "Update Course Progress",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"progressPercentage\": 75,\n  \"status\": \"IN_PROGRESS\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/learning/1/progress",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "learning", "1", "progress"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Portfolio Service",
+      "item": [
+        {
+          "name": "Update Portfolio Settings",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bio\": \"Senior Backend Specialist with verified Spring Boot & Docker credentials.\",\n  \"isPublic\": true,\n  \"username\": \"student\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/portfolio",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "portfolio"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Analytics Service",
+      "item": [
+        {
+          "name": "Get Dashboard Metrics",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/analytics/dashboard",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "analytics", "dashboard"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -16,6 +16,14 @@ dist-ssr/
 frontend/dist-ssr/
 *.local
 
+# Java / Maven build output
+**/target/
+target/
+*.class
+*.jar
+*.war
+*.ear
+
 # Environment files
 .env
 .env.local

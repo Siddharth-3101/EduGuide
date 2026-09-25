@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://api.skillbridge.internal/v1';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -27,14 +27,14 @@ apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      // Handle unauthorized / token expired
       console.warn('Unauthorized request. Session may be expired.');
     }
     return Promise.reject(error);
   }
 );
 
-export const USE_MOCK = import.meta.env.VITE_USE_MOCK_DATA !== 'false';
+export const USE_MOCK = import.meta.env.VITE_USE_MOCK_DATA === 'true';
 
-// Helper to simulate network latency for realistic UX feel
+// Helper to simulate network latency if ever needed
 export const delay = (ms = 180) => new Promise((resolve) => setTimeout(resolve, ms));
+

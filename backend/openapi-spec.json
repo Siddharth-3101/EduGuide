@@ -1,0 +1,4098 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "SkillBridge API Ecosystem",
+    "description": "Skill Intelligence and Career Readiness Platform API Specifications",
+    "contact": {
+      "name": "SkillBridge Development Team",
+      "email": "support@skillbridge.internal"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://springdoc.org"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Notification Service",
+      "description": "Endpoints for managing in-app notifications and email preferences"
+    },
+    {
+      "name": "Career Readiness & Skill Gap Engine",
+      "description": "Core intelligence service evaluating competency coverage, skill gaps, priority levels, and next best action"
+    },
+    {
+      "name": "Evidence & Verification Service",
+      "description": "Endpoints for managing student evidence items and skill verification records"
+    },
+    {
+      "name": "Learning Recommendation Service",
+      "description": "Endpoints for course discovery, skill gap learning recommendations, and progress tracking"
+    },
+    {
+      "name": "Career Intelligence Service",
+      "description": "Endpoints for discovering target roles, competencies, and career roadmaps"
+    },
+    {
+      "name": "Skill Service",
+      "description": "Endpoints for discovering skills, categories, student skills, and verifying skill competencies"
+    },
+    {
+      "name": "Profile Service",
+      "description": "Endpoints for managing student profile, resume uploads, and certificates"
+    },
+    {
+      "name": "Portfolio / Skill Passport Service",
+      "description": "Endpoints for generating public Skill Passport profiles, sharing verified credentials, and portfolio management"
+    },
+    {
+      "name": "Project Service",
+      "description": "Endpoints for project discovery, GitHub repository submission, and automated evaluation"
+    },
+    {
+      "name": "Assessment Service",
+      "description": "Endpoints for skill assessments, quiz sessions, submission evaluation, and skill verification"
+    },
+    {
+      "name": "Authentication Service",
+      "description": "Endpoints for user registration, login, token refresh, and session management"
+    },
+    {
+      "name": "Analytics Service",
+      "description": "Endpoints for aggregate dashboard data, competency progress, and student activity timeline"
+    },
+    {
+      "name": "Job Service",
+      "description": "Endpoints for job postings discovery, skill matching, and competency alignment metrics"
+    }
+  ],
+  "paths": {
+    "/api/projects/{projectId}/progress": {
+      "put": {
+        "tags": [
+          "Project Service"
+        ],
+        "summary": "Update project completion progress",
+        "operationId": "updateProgress",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectProgressRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseProjectProgress"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/profile": {
+      "get": {
+        "tags": [
+          "Profile Service"
+        ],
+        "summary": "Get authenticated student profile",
+        "operationId": "getProfile",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseProfileDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Profile Service"
+        ],
+        "summary": "Update student profile information",
+        "operationId": "updateProfile",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseProfileDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/portfolio": {
+      "get": {
+        "tags": [
+          "Portfolio / Skill Passport Service"
+        ],
+        "summary": "Get authenticated student's full Skill Passport portfolio",
+        "operationId": "getPortfolio",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponsePortfolioDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Portfolio / Skill Passport Service"
+        ],
+        "summary": "Update portfolio bio and visibility settings",
+        "operationId": "updatePortfolio",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PortfolioUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponsePortfolioDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/notifications/{id}/read": {
+      "put": {
+        "tags": [
+          "Notification Service"
+        ],
+        "summary": "Mark specific notification as read",
+        "operationId": "markAsRead",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseNotification"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/notifications/read-all": {
+      "put": {
+        "tags": [
+          "Notification Service"
+        ],
+        "summary": "Mark all notifications as read",
+        "operationId": "markAllAsRead",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/notifications/preferences": {
+      "get": {
+        "tags": [
+          "Notification Service"
+        ],
+        "summary": "Get notification preferences",
+        "operationId": "getPreferences",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseNotificationPreference"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Notification Service"
+        ],
+        "summary": "Update notification preferences",
+        "operationId": "updatePreferences",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificationPreference"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseNotificationPreference"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/skills/{skillId}/verify": {
+      "post": {
+        "tags": [
+          "Skill Service"
+        ],
+        "summary": "Verify student skill competency",
+        "operationId": "verifySkill",
+        "parameters": [
+          {
+            "name": "skillId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifySkillRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseStudentSkill"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{projectId}/submit": {
+      "post": {
+        "tags": [
+          "Project Service"
+        ],
+        "summary": "Submit GitHub repository URL for project evaluation",
+        "operationId": "submitProject",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectSubmissionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseProjectProgress"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{projectId}/start": {
+      "post": {
+        "tags": [
+          "Project Service"
+        ],
+        "summary": "Start working on a project",
+        "operationId": "startProject",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseProjectProgress"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/profile/resume": {
+      "post": {
+        "tags": [
+          "Profile Service"
+        ],
+        "summary": "Upload resume for skill extraction and evidence verification",
+        "operationId": "uploadResume",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseEvidence"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/profile/certificates": {
+      "post": {
+        "tags": [
+          "Profile Service"
+        ],
+        "summary": "Upload certificate for skill verification",
+        "operationId": "uploadCertificate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseEvidence"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/portfolio/share": {
+      "post": {
+        "tags": [
+          "Portfolio / Skill Passport Service"
+        ],
+        "summary": "Generate shareable public link for Skill Passport",
+        "operationId": "sharePortfolio",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseMapStringString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/learning/{courseId}/progress": {
+      "post": {
+        "tags": [
+          "Learning Recommendation Service"
+        ],
+        "summary": "Update learning progress for a course",
+        "operationId": "updateProgress_1",
+        "parameters": [
+          {
+            "name": "courseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProgressUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseLearningProgress"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/evidence": {
+      "get": {
+        "tags": [
+          "Evidence & Verification Service"
+        ],
+        "summary": "Get all evidence items for authenticated student",
+        "operationId": "getEvidence_1",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListEvidence"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Evidence & Verification Service"
+        ],
+        "summary": "Record a new evidence item",
+        "operationId": "addEvidence",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateEvidenceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseEvidence"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/careers/target": {
+      "post": {
+        "tags": [
+          "Career Intelligence Service"
+        ],
+        "summary": "Set target career role for student profile",
+        "operationId": "selectTargetRole",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TargetRoleRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseStudentProfile"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "tags": [
+          "Authentication Service"
+        ],
+        "summary": "Register a new student user",
+        "operationId": "register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseAuthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/refresh": {
+      "post": {
+        "tags": [
+          "Authentication Service"
+        ],
+        "summary": "Refresh JWT authentication token",
+        "operationId": "refresh",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseAuthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/logout": {
+      "post": {
+        "tags": [
+          "Authentication Service"
+        ],
+        "summary": "Logout user session",
+        "operationId": "logout",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Authentication Service"
+        ],
+        "summary": "Authenticate user and issue JWT token",
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseAuthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/forgot-password": {
+      "post": {
+        "tags": [
+          "Authentication Service"
+        ],
+        "summary": "Initiate password reset request (Mocked for development)",
+        "operationId": "forgotPassword",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotPasswordRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/assessments/{id}/submit": {
+      "post": {
+        "tags": [
+          "Assessment Service"
+        ],
+        "summary": "Submit assessment responses for score evaluation and skill verification",
+        "operationId": "submitAssessment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssessmentSubmissionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseAssessmentResultDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/assessments/{id}/start": {
+      "post": {
+        "tags": [
+          "Assessment Service"
+        ],
+        "summary": "Start assessment test session",
+        "operationId": "startAssessment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseMapStringObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/skills": {
+      "get": {
+        "tags": [
+          "Skill Service"
+        ],
+        "summary": "Get all available master skills",
+        "operationId": "getSkills",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListSkill"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/skills/{skillId}": {
+      "get": {
+        "tags": [
+          "Skill Service"
+        ],
+        "summary": "Get skill details by skillId",
+        "operationId": "getSkillById",
+        "parameters": [
+          {
+            "name": "skillId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseSkill"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/skills/student": {
+      "get": {
+        "tags": [
+          "Skill Service"
+        ],
+        "summary": "Get authenticated student skills profile",
+        "operationId": "getStudentSkills",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListStudentSkill"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/skills/student/{skillId}": {
+      "get": {
+        "tags": [
+          "Skill Service"
+        ],
+        "summary": "Get student skill status for a specific skill",
+        "operationId": "getStudentSkillById",
+        "parameters": [
+          {
+            "name": "skillId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseStudentSkill"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/skills/search": {
+      "get": {
+        "tags": [
+          "Skill Service"
+        ],
+        "summary": "Search skills by query and category",
+        "operationId": "searchSkills",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListSkill"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/skills/categories": {
+      "get": {
+        "tags": [
+          "Skill Service"
+        ],
+        "summary": "Get skill categories",
+        "operationId": "getCategories",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/readiness": {
+      "get": {
+        "tags": [
+          "Career Readiness & Skill Gap Engine"
+        ],
+        "summary": "Get complete career readiness analysis for target role",
+        "operationId": "getReadiness",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseCareerReadinessDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/readiness/skills": {
+      "get": {
+        "tags": [
+          "Career Readiness & Skill Gap Engine"
+        ],
+        "summary": "Get competency breakdown by verified, partial, and missing status",
+        "operationId": "getSkillsBreakdown",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseMapStringObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/readiness/role/{roleId}": {
+      "get": {
+        "tags": [
+          "Career Readiness & Skill Gap Engine"
+        ],
+        "summary": "Get career readiness analysis for a specific role",
+        "operationId": "getReadinessForRole",
+        "parameters": [
+          {
+            "name": "roleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseCareerReadinessDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/readiness/recommendations": {
+      "get": {
+        "tags": [
+          "Career Readiness & Skill Gap Engine"
+        ],
+        "summary": "Get learning & project recommendations aligned with skill gaps",
+        "operationId": "getRecommendations",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseMapStringObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/readiness/next-action": {
+      "get": {
+        "tags": [
+          "Career Readiness & Skill Gap Engine"
+        ],
+        "summary": "Calculate student's Next Best Action",
+        "operationId": "getNextAction",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseNextActionDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/readiness/gaps": {
+      "get": {
+        "tags": [
+          "Career Readiness & Skill Gap Engine"
+        ],
+        "summary": "Get prioritized skill gap analysis",
+        "operationId": "getGaps",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListSkillGapDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects": {
+      "get": {
+        "tags": [
+          "Project Service"
+        ],
+        "summary": "Get all practical projects",
+        "operationId": "getAllProjects",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListProject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{projectId}": {
+      "get": {
+        "tags": [
+          "Project Service"
+        ],
+        "summary": "Get project details by ID",
+        "operationId": "getProjectById",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseProject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{projectId}/evaluation": {
+      "get": {
+        "tags": [
+          "Project Service"
+        ],
+        "summary": "Get project evaluation feedback",
+        "operationId": "getEvaluation",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseProjectProgress"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/recommended": {
+      "get": {
+        "tags": [
+          "Project Service"
+        ],
+        "summary": "Get recommended projects based on competency gaps",
+        "operationId": "getRecommendedProjects",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListProject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/profile/evidence": {
+      "get": {
+        "tags": [
+          "Profile Service"
+        ],
+        "summary": "Get list of evidence items for student profile",
+        "operationId": "getEvidence",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListEvidence"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/portfolio/public/{username}": {
+      "get": {
+        "tags": [
+          "Portfolio / Skill Passport Service"
+        ],
+        "summary": "Get public Skill Passport by student username",
+        "operationId": "getPublicPortfolio",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponsePortfolioDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/notifications": {
+      "get": {
+        "tags": [
+          "Notification Service"
+        ],
+        "summary": "Get user notifications",
+        "operationId": "getNotifications",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListNotification"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/learning": {
+      "get": {
+        "tags": [
+          "Learning Recommendation Service"
+        ],
+        "summary": "Get all available courses",
+        "operationId": "getAllCourses",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListCourse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/learning/{courseId}": {
+      "get": {
+        "tags": [
+          "Learning Recommendation Service"
+        ],
+        "summary": "Get course details by ID",
+        "operationId": "getCourseById",
+        "parameters": [
+          {
+            "name": "courseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseCourse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/learning/skill/{skillId}": {
+      "get": {
+        "tags": [
+          "Learning Recommendation Service"
+        ],
+        "summary": "Get courses for a specific skill",
+        "operationId": "getCoursesBySkillId",
+        "parameters": [
+          {
+            "name": "skillId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListCourse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/learning/recommended": {
+      "get": {
+        "tags": [
+          "Learning Recommendation Service"
+        ],
+        "summary": "Get recommended courses based on student skill gaps",
+        "operationId": "getRecommendedCourses",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListCourse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/jobs": {
+      "get": {
+        "tags": [
+          "Job Service"
+        ],
+        "summary": "Get all job listings",
+        "operationId": "getAllJobs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListJob"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/jobs/{jobId}": {
+      "get": {
+        "tags": [
+          "Job Service"
+        ],
+        "summary": "Get job details by ID",
+        "operationId": "getJobById",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseJob"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/jobs/{jobId}/match": {
+      "get": {
+        "tags": [
+          "Job Service"
+        ],
+        "summary": "Calculate student competency match percentage for a job posting",
+        "operationId": "getJobMatch",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseJobMatchDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/jobs/recommended": {
+      "get": {
+        "tags": [
+          "Job Service"
+        ],
+        "summary": "Get recommended jobs with competency match calculation",
+        "operationId": "getRecommendedJobs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListJobMatchDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/jobs/filters": {
+      "get": {
+        "tags": [
+          "Job Service"
+        ],
+        "summary": "Get available job search filter options",
+        "operationId": "getFilters",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseMapStringObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/evidence/{id}": {
+      "get": {
+        "tags": [
+          "Evidence & Verification Service"
+        ],
+        "summary": "Get specific evidence by ID",
+        "operationId": "getEvidenceById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseEvidence"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Evidence & Verification Service"
+        ],
+        "summary": "Delete an evidence item",
+        "operationId": "deleteEvidence_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/evidence/skill/{skillId}": {
+      "get": {
+        "tags": [
+          "Evidence & Verification Service"
+        ],
+        "summary": "Get evidence items for a specific skill",
+        "operationId": "getEvidenceBySkillId",
+        "parameters": [
+          {
+            "name": "skillId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListEvidence"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/careers": {
+      "get": {
+        "tags": [
+          "Career Intelligence Service"
+        ],
+        "summary": "Get all available career roles",
+        "operationId": "getCareers",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListCareerRole"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/careers/{roleId}": {
+      "get": {
+        "tags": [
+          "Career Intelligence Service"
+        ],
+        "summary": "Get specific career role details",
+        "operationId": "getCareer",
+        "parameters": [
+          {
+            "name": "roleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseCareerRole"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/careers/{roleId}/roadmap": {
+      "get": {
+        "tags": [
+          "Career Intelligence Service"
+        ],
+        "summary": "Get structured career development roadmap",
+        "operationId": "getRoadmap",
+        "parameters": [
+          {
+            "name": "roleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseCareerRoadmapDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/careers/{roleId}/competencies": {
+      "get": {
+        "tags": [
+          "Career Intelligence Service"
+        ],
+        "summary": "Get required competencies for a target role",
+        "operationId": "getCompetencies",
+        "parameters": [
+          {
+            "name": "roleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListCareerCompetency"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/me": {
+      "get": {
+        "tags": [
+          "Authentication Service"
+        ],
+        "summary": "Get current authenticated user profile",
+        "operationId": "getCurrentUser",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseUserDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/assessments": {
+      "get": {
+        "tags": [
+          "Assessment Service"
+        ],
+        "summary": "Get all available skill assessments",
+        "operationId": "getAssessments",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListAssessment"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/assessments/{id}": {
+      "get": {
+        "tags": [
+          "Assessment Service"
+        ],
+        "summary": "Get specific assessment details",
+        "operationId": "getAssessmentById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseAssessment"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/assessments/{id}/questions": {
+      "get": {
+        "tags": [
+          "Assessment Service"
+        ],
+        "summary": "Get questions for an assessment",
+        "operationId": "getQuestions",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListAssessmentQuestion"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/assessments/results/{resultId}": {
+      "get": {
+        "tags": [
+          "Assessment Service"
+        ],
+        "summary": "Get detailed result for an assessment attempt",
+        "operationId": "getResult",
+        "parameters": [
+          {
+            "name": "resultId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseAssessmentAttempt"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/assessments/history": {
+      "get": {
+        "tags": [
+          "Assessment Service"
+        ],
+        "summary": "Get student's historical assessment attempts",
+        "operationId": "getHistory",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListAssessmentAttempt"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/analytics/skill-progress": {
+      "get": {
+        "tags": [
+          "Analytics Service"
+        ],
+        "summary": "Get skill competency growth metrics",
+        "operationId": "getSkillProgress",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseMapStringObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/analytics/dashboard": {
+      "get": {
+        "tags": [
+          "Analytics Service"
+        ],
+        "summary": "Get complete student dashboard metrics and overview data",
+        "operationId": "getDashboard",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseDashboardResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/analytics/career-progress": {
+      "get": {
+        "tags": [
+          "Analytics Service"
+        ],
+        "summary": "Get career competency coverage progress over time",
+        "operationId": "getCareerProgress",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseMapStringObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/analytics/activity": {
+      "get": {
+        "tags": [
+          "Analytics Service"
+        ],
+        "summary": "Get student activity timeline log",
+        "operationId": "getActivityLogs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseListActivityLog"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/profile/evidence/{id}": {
+      "delete": {
+        "tags": [
+          "Profile Service"
+        ],
+        "summary": "Delete an evidence item",
+        "operationId": "deleteEvidence",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseString"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ProjectProgressRequest": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "NOT_STARTED",
+              "IN_PROGRESS",
+              "SUBMITTED",
+              "EVALUATED"
+            ]
+          },
+          "progressPercent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "githubRepoUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseProjectProgress": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ProjectProgress"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ProjectProgress": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "projectId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "NOT_STARTED",
+              "IN_PROGRESS",
+              "SUBMITTED",
+              "EVALUATED"
+            ]
+          },
+          "githubRepoUrl": {
+            "type": "string"
+          },
+          "progressPercent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "submissionNotes": {
+            "type": "string"
+          },
+          "evaluationScore": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "feedback": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ProfileUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "education": {
+            "type": "string"
+          },
+          "experienceLevel": {
+            "type": "string"
+          },
+          "targetRoleId": {
+            "type": "string"
+          },
+          "targetRoleTitle": {
+            "type": "string"
+          },
+          "resumeUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseProfileDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ProfileDto"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ProfileDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "education": {
+            "type": "string"
+          },
+          "experienceLevel": {
+            "type": "string"
+          },
+          "targetRoleId": {
+            "type": "string"
+          },
+          "targetRoleTitle": {
+            "type": "string"
+          },
+          "resumeUrl": {
+            "type": "string"
+          },
+          "certificatesJson": {
+            "type": "string"
+          }
+        }
+      },
+      "PortfolioUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "bio": {
+            "type": "string"
+          },
+          "isPublic": {
+            "type": "boolean"
+          },
+          "username": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponsePortfolioDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PortfolioDto"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "AssessmentAttempt": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "assessmentId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "assessmentTitle": {
+            "type": "string"
+          },
+          "skillId": {
+            "type": "string"
+          },
+          "score": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "competencyLevel": {
+            "type": "string"
+          },
+          "submittedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Evidence": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "skillId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "RESUME",
+              "CERTIFICATE",
+              "PROJECT",
+              "ASSESSMENT",
+              "INTERNSHIP",
+              "PRACTICAL_TASK"
+            ]
+          },
+          "fileUrl": {
+            "type": "string"
+          },
+          "verifiedAt": {
+            "type": "string"
+          },
+          "score": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "PortfolioDto": {
+        "type": "object",
+        "properties": {
+          "profile": {
+            "$ref": "#/components/schemas/StudentProfile"
+          },
+          "portfolioSettings": {
+            "$ref": "#/components/schemas/PortfolioProfile"
+          },
+          "verifiedSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudentSkill"
+            }
+          },
+          "allSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudentSkill"
+            }
+          },
+          "evidenceList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Evidence"
+            }
+          },
+          "passedAssessments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AssessmentAttempt"
+            }
+          },
+          "completedProjects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProjectProgress"
+            }
+          },
+          "shareableUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "PortfolioProfile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string"
+          },
+          "bio": {
+            "type": "string"
+          },
+          "isPublic": {
+            "type": "boolean"
+          },
+          "shareToken": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "StudentProfile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "education": {
+            "type": "string"
+          },
+          "experienceLevel": {
+            "type": "string"
+          },
+          "targetRoleId": {
+            "type": "string"
+          },
+          "targetRoleTitle": {
+            "type": "string"
+          },
+          "resumeUrl": {
+            "type": "string"
+          },
+          "certificatesJson": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "StudentSkill": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "skillId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "level": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "VERIFIED",
+              "PARTIAL",
+              "MISSING",
+              "CLAIMED"
+            ]
+          },
+          "score": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "evidenceCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "evidenceListJson": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseNotification": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Notification"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "Notification": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "readStatus": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ApiResponseString": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "NotificationPreference": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "emailNotifications": {
+            "type": "boolean"
+          },
+          "inAppNotifications": {
+            "type": "boolean"
+          },
+          "jobAlerts": {
+            "type": "boolean"
+          },
+          "assessmentReminders": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ApiResponseNotificationPreference": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/NotificationPreference"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "VerifySkillRequest": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "score": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseStudentSkill": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/StudentSkill"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ProjectSubmissionRequest": {
+        "required": [
+          "githubRepoUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "githubRepoUrl": {
+            "type": "string"
+          },
+          "submissionNotes": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseEvidence": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Evidence"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseMapStringString": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ProgressUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "NOT_STARTED",
+              "IN_PROGRESS",
+              "COMPLETED"
+            ]
+          },
+          "progressPercent": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "ApiResponseLearningProgress": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/LearningProgress"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "LearningProgress": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "courseId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "NOT_STARTED",
+              "IN_PROGRESS",
+              "COMPLETED"
+            ]
+          },
+          "progressPercent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastAccessedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CreateEvidenceRequest": {
+        "required": [
+          "name",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "skillId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "RESUME",
+              "CERTIFICATE",
+              "PROJECT",
+              "ASSESSMENT",
+              "INTERNSHIP",
+              "PRACTICAL_TASK"
+            ]
+          },
+          "fileUrl": {
+            "type": "string"
+          },
+          "score": {
+            "type": "string"
+          }
+        }
+      },
+      "TargetRoleRequest": {
+        "required": [
+          "roleId"
+        ],
+        "type": "object",
+        "properties": {
+          "roleId": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseStudentProfile": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/StudentProfile"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "RegisterRequest": {
+        "required": [
+          "email",
+          "fullName",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 2147483647,
+            "minLength": 6,
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseAuthResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/AuthResponse"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "AuthResponse": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/UserDto"
+          }
+        }
+      },
+      "UserDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "targetRole": {
+            "type": "string"
+          }
+        }
+      },
+      "LoginRequest": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "ForgotPasswordRequest": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "AssessmentSubmissionRequest": {
+        "type": "object",
+        "properties": {
+          "answers": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        }
+      },
+      "ApiResponseAssessmentResultDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/AssessmentResultDto"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "AssessmentResultDto": {
+        "type": "object",
+        "properties": {
+          "attempt": {
+            "$ref": "#/components/schemas/AssessmentAttempt"
+          },
+          "skillVerificationStatus": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseMapStringObject": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseListSkill": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Skill"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "Skill": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "skillId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseSkill": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Skill"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseListStudentSkill": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudentSkill"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseListString": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseCareerReadinessDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CareerReadinessDto"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "CareerReadinessDto": {
+        "type": "object",
+        "properties": {
+          "targetRoleId": {
+            "type": "string"
+          },
+          "targetRoleTitle": {
+            "type": "string"
+          },
+          "competencyCoveragePercentage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "calculationFormulaExplanation": {
+            "type": "string"
+          },
+          "verifiedSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudentSkill"
+            }
+          },
+          "partialSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudentSkill"
+            }
+          },
+          "missingSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudentSkill"
+            }
+          },
+          "skillGaps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SkillGapDto"
+            }
+          },
+          "nextBestAction": {
+            "$ref": "#/components/schemas/NextActionDto"
+          },
+          "learningRecommendations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Course"
+            }
+          },
+          "projectRecommendations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Project"
+            }
+          }
+        }
+      },
+      "Course": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "platform": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "duration": {
+            "type": "string"
+          },
+          "difficulty": {
+            "type": "string"
+          },
+          "skillsCovered": {
+            "type": "string"
+          },
+          "competenciesCovered": {
+            "type": "string"
+          },
+          "isFree": {
+            "type": "boolean"
+          },
+          "recommendationReason": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "skillId": {
+            "type": "string"
+          }
+        }
+      },
+      "NextActionDto": {
+        "type": "object",
+        "properties": {
+          "actionType": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "skillId": {
+            "type": "string"
+          },
+          "assessmentId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "courseId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "projectId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "priority": {
+            "type": "string"
+          }
+        }
+      },
+      "Project": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "objective": {
+            "type": "string"
+          },
+          "skillsCovered": {
+            "type": "string"
+          },
+          "requirements": {
+            "type": "string"
+          },
+          "architecture": {
+            "type": "string"
+          },
+          "estimatedTime": {
+            "type": "string"
+          },
+          "difficulty": {
+            "type": "string"
+          },
+          "evaluationCriteria": {
+            "type": "string"
+          },
+          "submissionRequirements": {
+            "type": "string"
+          }
+        }
+      },
+      "SkillGapDto": {
+        "type": "object",
+        "properties": {
+          "skillId": {
+            "type": "string"
+          },
+          "skillName": {
+            "type": "string"
+          },
+          "currentStatus": {
+            "type": "string",
+            "enum": [
+              "VERIFIED",
+              "PARTIAL",
+              "MISSING",
+              "CLAIMED"
+            ]
+          },
+          "requiredLevel": {
+            "type": "string"
+          },
+          "importanceWeight": {
+            "type": "number",
+            "format": "double"
+          },
+          "gapPriority": {
+            "type": "string",
+            "enum": [
+              "CRITICAL",
+              "HIGH",
+              "MEDIUM",
+              "LOW"
+            ]
+          },
+          "recommendationReason": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseNextActionDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/NextActionDto"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseListSkillGapDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SkillGapDto"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseListProject": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Project"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseProject": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Project"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseListEvidence": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Evidence"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseListNotification": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Notification"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseListCourse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Course"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseCourse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Course"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseListJob": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Job"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "Job": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "jobTitle": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "employmentType": {
+            "type": "string"
+          },
+          "salary": {
+            "type": "string"
+          },
+          "requiredSkills": {
+            "type": "string"
+          },
+          "applicationUrl": {
+            "type": "string"
+          },
+          "remote": {
+            "type": "boolean"
+          },
+          "experienceLevel": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseJob": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Job"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseJobMatchDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/JobMatchDto"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "JobMatchDto": {
+        "type": "object",
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/Job"
+          },
+          "competencyMatchPercentage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "matchingSkills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "missingSkills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "matchCategory": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseListJobMatchDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobMatchDto"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseListCareerRole": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CareerRole"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "CareerRole": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "roleId": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "importance": {
+            "type": "string"
+          },
+          "requiredSkillsCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "ApiResponseCareerRole": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CareerRole"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseCareerRoadmapDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CareerRoadmapDto"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "CareerCompetency": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "roleId": {
+            "type": "string"
+          },
+          "skillId": {
+            "type": "string"
+          },
+          "skillName": {
+            "type": "string"
+          },
+          "requiredLevel": {
+            "type": "string"
+          },
+          "importanceWeight": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "CareerRoadmapDto": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/CareerRole"
+          },
+          "competencies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CareerCompetency"
+            }
+          },
+          "stages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoadmapStage"
+            }
+          }
+        }
+      },
+      "RoadmapStage": {
+        "type": "object",
+        "properties": {
+          "stageName": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "estimatedDuration": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseListCareerCompetency": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CareerCompetency"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseUserDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/UserDto"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseListAssessment": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assessment"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "Assessment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "skillId": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "questionCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "durationMinutes": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "difficulty": {
+            "type": "string"
+          },
+          "passScore": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "ApiResponseAssessment": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Assessment"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseListAssessmentQuestion": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AssessmentQuestion"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "AssessmentQuestion": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "assessmentId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "questionText": {
+            "type": "string"
+          },
+          "optionsJson": {
+            "type": "string"
+          },
+          "correctOptionIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseAssessmentAttempt": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/AssessmentAttempt"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseListAssessmentAttempt": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AssessmentAttempt"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "ActivityLog": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "activityType": {
+            "type": "string",
+            "enum": [
+              "ASSESSMENT_COMPLETED",
+              "SKILL_VERIFIED",
+              "PROJECT_STARTED",
+              "PROJECT_SUBMITTED",
+              "COURSE_STARTED",
+              "COURSE_COMPLETED",
+              "JOB_VIEWED",
+              "CAREER_SELECTED",
+              "EVIDENCE_UPLOADED"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ApiResponseDashboardResponseDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/DashboardResponseDto"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "DashboardResponseDto": {
+        "type": "object",
+        "properties": {
+          "studentName": {
+            "type": "string"
+          },
+          "targetRole": {
+            "type": "string"
+          },
+          "competencyCoverage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "verifiedSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudentSkill"
+            }
+          },
+          "partialSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudentSkill"
+            }
+          },
+          "missingSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudentSkill"
+            }
+          },
+          "nextBestAction": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "recentActivity": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ActivityLog"
+            }
+          },
+          "jobMatchesCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "ApiResponseListActivityLog": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ActivityLog"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "name": "bearerAuth",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

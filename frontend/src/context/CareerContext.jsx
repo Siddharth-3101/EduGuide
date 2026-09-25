@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { careerApi } from '../services/api/careerApi';
 import { profileApi } from '../services/api/profileApi';
+import { readinessApi } from '../services/api/readinessApi';
 
 const CareerContext = createContext(null);
 
@@ -8,17 +9,20 @@ export const CareerProvider = ({ children }) => {
   const [targetRoleId, setTargetRoleId] = useState('backend-developer');
   const [roadmap, setRoadmap] = useState(null);
   const [profile, setProfile] = useState(null);
+  const [readiness, setReadiness] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const fetchCareerData = async (roleId = targetRoleId) => {
     try {
       setLoading(true);
-      const [roadmapData, profileData] = await Promise.all([
-        careerApi.getRoleRoadmap(roleId),
-        profileApi.getProfile()
+      const [roadmapData, profileData, readinessData] = await Promise.all([
+        careerApi.getRoleRoadmap(roleId).catch(() => null),
+        profileApi.getProfile().catch(() => null),
+        readinessApi.getReadiness().catch(() => null)
       ]);
       setRoadmap(roadmapData);
       setProfile(profileData);
+      setReadiness(readinessData);
     } catch (err) {
       console.error('Error fetching career data:', err);
     } finally {
@@ -30,28 +34,43 @@ export const CareerProvider = ({ children }) => {
     fetchCareerData(targetRoleId);
   }, [targetRoleId]);
 
-  const selectTargetRole = (roleId) => {
+  const selectTargetRole = async (roleId) => {
     setTargetRoleId(roleId);
+    try {
+      await careerApi.selectTargetRole(roleId);
+    } catch (ignored) {}
+    fetchCareerData(roleId);
   };
 
   const updateProfileData = async (updates) => {
     const updated = await profileApi.updateProfile(updates);
     setProfile(updated);
+    fetchCareerData(targetRoleId);
     return updated;
   };
+
+  const verifiedCount = readiness?.verifiedSkills?.length ?? 5;
+  const partialCount = readiness?.partialSkills?.length ?? 1;
+  const missingCount = readiness?.missingSkills?.length ?? 2;
+  const coverage = readiness?.competencyCoveragePercentage ?? 67;
 
   const value = {
     targetRoleId,
     roadmap,
     profile,
-    stats: profile?.stats || {
-      targetRoleTitle: 'Backend Developer',
-      competencyCoverage: 67,
-      verifiedCount: 8,
-      partialCount: 3,
-      missingCount: 4
+    readiness,
+    stats: {
+      targetRoleTitle: readiness?.targetRoleTitle || profile?.targetRoleTitle || 'Backend Developer',
+      competencyCoverage: coverage,
+      verifiedCount: verifiedCount,
+      partialCount: partialCount,
+      missingCount: missingCount
     },
-    nextBestAction: profile?.nextBestAction,
+    nextBestAction: readiness?.nextBestAction || {
+      title: 'Docker Fundamentals',
+      actionType: 'ASSESSMENT',
+      description: 'Verifying Docker competency will elevate your readiness.'
+    },
     loading,
     selectTargetRole,
     updateProfileData,

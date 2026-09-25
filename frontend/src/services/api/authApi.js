@@ -12,11 +12,22 @@ export const authApi = {
         token
       };
     }
-    const response = await apiClient.post('/auth/login', credentials);
-    if (response.data?.token) {
-      localStorage.setItem('skillbridge_auth_token', response.data.token);
+    const response = await apiClient.post('/api/auth/login', credentials);
+    const data = response.data?.data || response.data;
+    if (data?.token) {
+      localStorage.setItem('skillbridge_auth_token', data.token);
     }
-    return response.data;
+    const userObj = {
+      id: data.userId,
+      userId: data.userId,
+      fullName: data.fullName || data.name,
+      email: data.email,
+      role: data.role || 'ROLE_STUDENT'
+    };
+    return {
+      user: userObj,
+      token: data.token
+    };
   },
 
   async register(data) {
@@ -26,7 +37,7 @@ export const authApi = {
       localStorage.setItem('skillbridge_auth_token', token);
       const newUser = {
         ...MOCK_USER_PROFILE,
-        fullName: data.fullName || 'Student',
+        fullName: data.fullName || data.name || 'Student',
         email: data.email
       };
       return {
@@ -34,8 +45,28 @@ export const authApi = {
         token
       };
     }
-    const response = await apiClient.post('/auth/register', data);
-    return response.data;
+    const payload = {
+      fullName: data.fullName || data.name,
+      name: data.name || data.fullName,
+      email: data.email,
+      password: data.password
+    };
+    const response = await apiClient.post('/api/auth/register', payload);
+    const respData = response.data?.data || response.data;
+    if (respData?.token) {
+      localStorage.setItem('skillbridge_auth_token', respData.token);
+    }
+    const userObj = {
+      id: respData.userId,
+      userId: respData.userId,
+      fullName: respData.fullName || respData.name,
+      email: respData.email,
+      role: respData.role || 'ROLE_STUDENT'
+    };
+    return {
+      user: userObj,
+      token: respData.token
+    };
   },
 
   async logout() {
@@ -44,22 +75,35 @@ export const authApi = {
       localStorage.removeItem('skillbridge_auth_token');
       return { success: true };
     }
-    const response = await apiClient.post('/auth/logout');
+    try {
+      await apiClient.post('/api/auth/logout');
+    } catch (ignored) {}
     localStorage.removeItem('skillbridge_auth_token');
-    return response.data;
+    return { success: true };
   },
 
   async getCurrentUser() {
     const token = localStorage.getItem('skillbridge_auth_token');
-    if (!token && USE_MOCK) {
-      // Default initial mock logged-in state for instant preview
-      return MOCK_USER_PROFILE;
+    if (!token) {
+      return null;
     }
     if (USE_MOCK) {
       await delay(120);
       return MOCK_USER_PROFILE;
     }
-    const response = await apiClient.get('/auth/me');
-    return response.data;
+    try {
+      const response = await apiClient.get('/api/auth/me');
+      const data = response.data?.data || response.data;
+      return {
+        id: data.userId || data.id,
+        userId: data.userId || data.id,
+        fullName: data.fullName || data.name,
+        email: data.email,
+        role: data.role || 'ROLE_STUDENT'
+      };
+    } catch (err) {
+      localStorage.removeItem('skillbridge_auth_token');
+      return null;
+    }
   }
 };
