@@ -1,0 +1,61 @@
+[
+  {
+    "student_id": "STU-NOVICE-01",
+    "career_goal": "CAR-AI-ENG",
+    "target_pathway": "PATH-AI-APP",
+    "skills": [
+      {
+        "skill_id": "SKL-0012",
+        "skill_name": "Python",
+        "status": "ASSESSMENT_VERIFIED",
+        "assessment_score": 84.0,
+        "evidence_sources": ["assessment: python_core_v1"]
+      }
+    ],
+    "completed_projects": ["Basic Python Calculator"]
+  },
+  {
+    "student_id": "STU-INTERMEDIATE-02",
+    "career_goal": "CAR-AI-ENG",
+    "target_pathway": "PATH-AI-APP",
+    "skills": [
+      {
+        "skill_id": "SKL-0012",
+        "skill_name": "Python",
+        "status": "ASSESSMENT_VERIFIED",
+        "assessment_score": 92.0,
+        "evidence_sources": ["assessment: python_core_v1"]
+      },
+      {
+        "skill_id": "SKL-0060",
+        "skill_name": "Machine Learning",
+        "status": "EVIDENCE_BACKED",
+        "assessment_score": null,
+        "evidence_sources": ["certificate: Machine Learning with Python - Coursera"]
+      }
+    ],
+    "completed_projects": ["House Price Prediction Notebook"]
+  },
+  {
+    "student_id": "STU-CLAIMED-BACKEND",
+    "career_goal": "CAR-BACKEND",
+    "target_pathway": "PATH-BACKEND-JAVA",
+    "skills": [
+      {
+        "skill_id": "SKL-0011",
+        "skill_name": "Java",
+        "status": "CLAIMED",
+        "assessment_score": null,
+        "evidence_sources": []
+      },
+      {
+        "skill_id": "SKL-0047",
+        "skill_name": "SQL",
+        "status": "CLAIMED",
+        "assessment_score": null,
+        "evidence_sources": []
+      }
+    ],
+    "completed_projects": []
+  }
+]

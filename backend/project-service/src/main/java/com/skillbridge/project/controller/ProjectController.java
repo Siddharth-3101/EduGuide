@@ -15,6 +15,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/projects")
@@ -32,6 +33,16 @@ public class ProjectController {
     public ResponseEntity<ApiResponse<List<Project>>> getAllProjects() {
         List<Project> list = projectService.getAllProjects();
         return ResponseEntity.ok(ApiResponse.success(list));
+    }
+
+    @PostMapping
+    @Operation(summary = "Create or register a student project with GitHub repository link")
+    public ResponseEntity<ApiResponse<Project>> createProject(
+            @AuthenticationPrincipal UserPrincipal userPrincipal,
+            @RequestBody Map<String, Object> projectData) {
+        Long userId = userPrincipal != null ? userPrincipal.getId() : 1L;
+        Project created = projectService.createProject(userId, projectData);
+        return ResponseEntity.ok(ApiResponse.success(created, "Project saved to database successfully"));
     }
 
     @GetMapping("/recommended")

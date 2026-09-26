@@ -21,10 +21,16 @@ public class CareerRole {
     private String category;
     private String importance;
     private Integer requiredSkillsCount;
+    private String careerDomainId;
+    private String sourcePdf;
 
     public CareerRole() {}
 
     public CareerRole(Long id, String roleId, String title, String description, String category, String importance, Integer requiredSkillsCount) {
+        this(id, roleId, title, description, category, importance, requiredSkillsCount, null, null);
+    }
+
+    public CareerRole(Long id, String roleId, String title, String description, String category, String importance, Integer requiredSkillsCount, String careerDomainId, String sourcePdf) {
         this.id = id;
         this.roleId = roleId;
         this.title = title;
@@ -32,6 +38,8 @@ public class CareerRole {
         this.category = category;
         this.importance = importance;
         this.requiredSkillsCount = requiredSkillsCount;
+        this.careerDomainId = careerDomainId;
+        this.sourcePdf = sourcePdf;
     }
 
     public Long getId() { return id; }
@@ -55,6 +63,12 @@ public class CareerRole {
     public Integer getRequiredSkillsCount() { return requiredSkillsCount; }
     public void setRequiredSkillsCount(Integer requiredSkillsCount) { this.requiredSkillsCount = requiredSkillsCount; }
 
+    public String getCareerDomainId() { return careerDomainId; }
+    public void setCareerDomainId(String careerDomainId) { this.careerDomainId = careerDomainId; }
+
+    public String getSourcePdf() { return sourcePdf; }
+    public void setSourcePdf(String sourcePdf) { this.sourcePdf = sourcePdf; }
+
     public static CareerRoleBuilder builder() { return new CareerRoleBuilder(); }
 
     public static class CareerRoleBuilder {
@@ -65,6 +79,8 @@ public class CareerRole {
         private String category;
         private String importance;
         private Integer requiredSkillsCount;
+        private String careerDomainId;
+        private String sourcePdf;
 
         public CareerRoleBuilder id(Long id) { this.id = id; return this; }
         public CareerRoleBuilder roleId(String roleId) { this.roleId = roleId; return this; }
@@ -73,9 +89,11 @@ public class CareerRole {
         public CareerRoleBuilder category(String category) { this.category = category; return this; }
         public CareerRoleBuilder importance(String importance) { this.importance = importance; return this; }
         public CareerRoleBuilder requiredSkillsCount(Integer requiredSkillsCount) { this.requiredSkillsCount = requiredSkillsCount; return this; }
+        public CareerRoleBuilder careerDomainId(String careerDomainId) { this.careerDomainId = careerDomainId; return this; }
+        public CareerRoleBuilder sourcePdf(String sourcePdf) { this.sourcePdf = sourcePdf; return this; }
 
         public CareerRole build() {
-            return new CareerRole(id, roleId, title, description, category, importance, requiredSkillsCount);
+            return new CareerRole(id, roleId, title, description, category, importance, requiredSkillsCount, careerDomainId, sourcePdf);
         }
     }
 }

@@ -6,6 +6,7 @@ import com.skillbridge.career.service.CareerService;
 import com.skillbridge.common.dto.ApiResponse;
 import com.skillbridge.common.model.CareerCompetency;
 import com.skillbridge.common.model.CareerRole;
+import com.skillbridge.common.model.Pathway;
 import com.skillbridge.common.model.StudentProfile;
 import com.skillbridge.common.security.UserPrincipal;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,10 +17,11 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/careers")
-@Tag(name = "Career Intelligence Service", description = "Endpoints for discovering target roles, competencies, and career roadmaps")
+@Tag(name = "Career Intelligence Service", description = "Endpoints for discovering target roles, competencies, specialization pathways, and career roadmaps")
 public class CareerController {
 
     private final CareerService careerService;
@@ -49,11 +51,31 @@ public class CareerController {
         return ResponseEntity.ok(ApiResponse.success(competencies));
     }
 
+    @GetMapping("/{roleId}/pathways")
+    @Operation(summary = "Get specialization pathways for a target role")
+    public ResponseEntity<ApiResponse<List<Pathway>>> getPathways(@PathVariable("roleId") String roleId) {
+        List<Pathway> pathways = careerService.getPathways(roleId);
+        return ResponseEntity.ok(ApiResponse.success(pathways));
+    }
+
     @GetMapping("/{roleId}/roadmap")
     @Operation(summary = "Get structured career development roadmap")
-    public ResponseEntity<ApiResponse<CareerRoadmapDto>> getRoadmap(@PathVariable("roleId") String roleId) {
-        CareerRoadmapDto roadmap = careerService.getRoadmap(roleId);
+    public ResponseEntity<ApiResponse<CareerRoadmapDto>> getRoadmap(
+            @PathVariable("roleId") String roleId,
+            @RequestParam(value = "pathwayId", required = false) String pathwayId) {
+        CareerRoadmapDto roadmap = careerService.getRoadmap(roleId, pathwayId);
         return ResponseEntity.ok(ApiResponse.success(roadmap));
+    }
+
+    @GetMapping("/{roleId}/roadmap/graph")
+    @Operation(summary = "Get dynamic ReactFlow graph data for career roadmap")
+    public ResponseEntity<ApiResponse<Map<String, Object>>> getRoadmapGraph(
+            @PathVariable("roleId") String roleId,
+            @RequestParam(value = "pathwayId", required = false) String pathwayId,
+            @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        Long userId = userPrincipal != null ? userPrincipal.getId() : 1L;
+        Map<String, Object> graph = careerService.getRoadmapGraph(roleId, pathwayId, userId);
+        return ResponseEntity.ok(ApiResponse.success(graph));
     }
 
     @PostMapping("/target")

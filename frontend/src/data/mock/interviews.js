@@ -12,7 +12,7 @@ export const mockInterviewSets = [
     ownerId: 'u-alex-chen',
     isSharedWithMe: false,
     collaborators: [
-      { id: 'u-1', name: 'Alex Chen', email: 'alex.chen@university.edu', role: 'Owner', status: 'online', avatar: 'AC' },
+      { id: 'u-1', name: 'Siddharth G', email: 'siddharth.g@kce.ac.in', role: 'Owner', status: 'online', avatar: 'SG' },
       { id: 'u-2', name: 'Elena Rostova', email: 'elena.r@techlab.io', role: 'Editor', status: 'online', avatar: 'ER' },
       { id: 'u-3', name: 'Marcus Brody', email: 'marcus@clouddev.org', role: 'Viewer', status: 'away', avatar: 'MB' }
     ],
@@ -118,7 +118,7 @@ export const mockInterviewSets = [
     ownerId: 'u-alex-chen',
     isSharedWithMe: false,
     collaborators: [
-      { id: 'u-1', name: 'Alex Chen', email: 'alex.chen@university.edu', role: 'Owner', status: 'online', avatar: 'AC' }
+      { id: 'u-1', name: 'Siddharth G', email: 'siddharth.g@kce.ac.in', role: 'Owner', status: 'online', avatar: 'SG' }
     ],
     questions: [
       {
@@ -150,7 +150,7 @@ export const mockInterviewSets = [
     isSharedWithMe: true,
     collaborators: [
       { id: 'u-2', name: 'Elena Rostova', email: 'elena.r@techlab.io', role: 'Owner', status: 'online', avatar: 'ER' },
-      { id: 'u-1', name: 'Alex Chen', email: 'alex.chen@university.edu', role: 'Editor', status: 'online', avatar: 'AC' }
+      { id: 'u-1', name: 'Siddharth G', email: 'siddharth.g@kce.ac.in', role: 'Editor', status: 'online', avatar: 'SG' }
     ],
     questions: [
       {
@@ -202,3 +202,314 @@ export const mockRecommendedQuestions = [
     prompt: 'Compare stateless JWTs with short expiry + refresh tokens versus server-side session stores. How do you handle instantaneous token revocation?'
   }
 ];
+
+export const mockCompanyDrives = [
+  {
+    id: 'drive-amazon-sde-2026',
+    company: 'Amazon',
+    role: 'Software Development Engineer (SDE-1)',
+    driveDate: '2026 Batch Drive',
+    status: 'Active Collaborative Pool',
+    overallDifficulty: 'Hard',
+    studentContributorsCount: 8,
+    targetRole: 'Backend Developer',
+    summary: 'Single collaborative interview question bank for Amazon SDE-1 2026 drive. Students who attended contribute questions, coding challenges, and interviewer tips round-by-round.',
+    contributors: [
+      { name: 'Siddharth G', college: 'Karpagam College of Engineering', date: 'Yesterday' },
+      { name: 'Priya Sundaram', college: 'KCE', date: '3 days ago' },
+      { name: 'Karthik Raja', college: 'PSG Tech', date: '1 week ago' },
+      { name: 'Ananya Sharma', college: 'NIT', date: '2 weeks ago' }
+    ],
+    rounds: [
+      {
+        roundNumber: 1,
+        title: 'Round 1: Online Assessment (OA) on HackerRank',
+        duration: '90 mins',
+        difficulty: 'Medium',
+        focus: 'DSA + System Aptitude',
+        questions: [
+          {
+            id: 'q-amz-1',
+            contributorName: 'Siddharth G',
+            college: 'Karpagam College of Engineering',
+            title: 'Minimum Total Cost to Connect All Warehouse Nodes (MST)',
+            prompt: 'Given N warehouse nodes and bidirectional paths with weights, find the minimum cost to connect all nodes. Implemented using Kruskal’s with Disjoint Set Union (DSU) or Prim’s algorithm.',
+            difficulty: 'Medium',
+            tags: ['Graphs', 'MST', 'DSU', 'Greedy'],
+            tips: 'Make sure to compress paths in find() and rank union to pass strict 10^5 constraints.'
+          },
+          {
+            id: 'q-amz-2',
+            contributorName: 'Priya Sundaram',
+            college: 'KCE',
+            title: 'Optimizing Delivery Trucks (Two-Pointer / Knapsack Variant)',
+            prompt: 'Given an array of package weights and truck capacity limit, determine minimum trucks needed where each truck carries at most 2 packages.',
+            difficulty: 'Easy-Medium',
+            tags: ['Two Pointers', 'Greedy', 'Sorting'],
+            tips: 'Sort array first. Pair lightest with heaviest that fits within the capacity.'
+          }
+        ]
+      },
+      {
+        roundNumber: 2,
+        title: 'Round 2: Technical Interview 1 (DSA & Core CS)',
+        duration: '60 mins',
+        difficulty: 'Medium-Hard',
+        focus: 'Data Structures & Algorithms with Amazon Chime live code',
+        questions: [
+          {
+            id: 'q-amz-3',
+            contributorName: 'Karthik Raja',
+            college: 'PSG Tech',
+            title: 'Word Search II / Boggle Solver using Trie & Backtracking',
+            prompt: 'Find all words on an MxN grid of letters that exist in a dictionary list. Optimized with prefix Trie pruning.',
+            difficulty: 'Hard',
+            tags: ['Trie', 'Backtracking', 'DFS'],
+            tips: 'Interviewer will drill down on what happens to memory if the dictionary has 10 million words.'
+          },
+          {
+            id: 'q-amz-4',
+            contributorName: 'Siddharth G',
+            college: 'Karpagam College of Engineering',
+            title: 'Course Schedule II (Topological Sort / Cycle Detection)',
+            prompt: 'Given total courses and dependency pairs, return the exact ordering of courses to finish all courses using Kahn’s BFS algorithm with in-degree array.',
+            difficulty: 'Medium',
+            tags: ['Topological Sort', 'BFS', 'Cycle Detection'],
+            tips: 'Explicitly explain cycle detection when the visited count does not equal numCourses.'
+          }
+        ]
+      },
+      {
+        roundNumber: 3,
+        title: 'Round 3: Technical Interview 2 (Low-Level System Design & Concurrency)',
+        duration: '60 mins',
+        difficulty: 'Hard',
+        focus: 'Object Oriented Design, Concurrency & Database Consistency',
+        questions: [
+          {
+            id: 'q-amz-5',
+            contributorName: 'Ananya Sharma',
+            college: 'NIT',
+            title: 'Design an In-Memory Key-Value Store with TTL & Thread Safety',
+            prompt: 'Design Redis-like key-value cache supporting GET, SET, SET_WITH_EXPIRY, and active/passive TTL eviction with concurrent read/write locks.',
+            difficulty: 'Hard',
+            tags: ['System Design', 'Concurrency', 'Mutex Locks', 'Caching'],
+            tips: 'Talk about ReadWriteLock so multiple reads proceed without blocking each other.'
+          },
+          {
+            id: 'q-amz-6',
+            contributorName: 'Siddharth G',
+            college: 'Karpagam College of Engineering',
+            title: 'Design a High-Throughput Notification Throttle (Token Bucket)',
+            prompt: 'Prevent spamming SMS/Email notifications by throttling users to 5 notifications per minute using Redis Lua scripts.',
+            difficulty: 'Medium-Hard',
+            tags: ['Rate Limiting', 'Redis', 'Distributed Systems'],
+            tips: 'Highlight atomic execution in Redis via Lua scripts to avoid distributed race conditions.'
+          }
+        ]
+      },
+      {
+        roundNumber: 4,
+        title: 'Round 4: Bar Raiser & Amazon Leadership Principles (LP)',
+        duration: '60 mins',
+        difficulty: 'Hard',
+        focus: 'Customer Obsession, Ownership, Dive Deep (STAR Format)',
+        questions: [
+          {
+            id: 'q-amz-7',
+            contributorName: 'Priya Sundaram',
+            college: 'KCE',
+            title: 'Customer Obsession & Resolving Architectural Disagreements',
+            prompt: 'Tell me about a time when you had to push back on a feature requirement or technology choice because it sacrificed customer security or latency.',
+            difficulty: 'Medium',
+            tags: ['Leadership Principles', 'STAR', 'Customer Obsession'],
+            tips: 'Keep Situation & Task brief (20%). Spend 60% on your specific Action and measurable Result metrics.'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'drive-technova-backend-2026',
+    company: 'TechNova Systems',
+    role: 'Backend Systems Engineer',
+    driveDate: '2026 Campus Drive',
+    status: 'Active Collaborative Pool',
+    overallDifficulty: 'Medium',
+    studentContributorsCount: 6,
+    targetRole: 'Backend Developer',
+    summary: 'Single collaborative interview question bank for TechNova Systems backend drive. Heavy focus on Python asynchronous internals, PostgreSQL MVCC, and containerization.',
+    contributors: [
+      { name: 'Siddharth G', college: 'Karpagam College of Engineering', date: '2 days ago' },
+      { name: 'Priya Sundaram', college: 'KCE', date: '3 days ago' },
+      { name: 'Rahul Verma', college: 'NIT', date: '5 days ago' }
+    ],
+    rounds: [
+      {
+        roundNumber: 1,
+        title: 'Round 1: Online Coding & Algorithmic OA (HackerRank)',
+        duration: '90 mins',
+        difficulty: 'Medium',
+        focus: '2 Coding Problems + 10 CS MCQs',
+        questions: [
+          {
+            id: 'q-tn-1',
+            contributorName: 'Priya Sundaram',
+            college: 'KCE',
+            title: 'LRU Cache Implementation with O(1) Operations',
+            prompt: 'Design data structure with get(key) and put(key, value) in O(1) average time complexity using a doubly-linked list with hash map.',
+            difficulty: 'Medium',
+            tags: ['Doubly Linked List', 'Hash Map', 'LRU'],
+            tips: 'Include capacity boundary checks and dummy head/tail nodes to simplify pointer operations.'
+          },
+          {
+            id: 'q-tn-2',
+            contributorName: 'Siddharth G',
+            college: 'Karpagam College of Engineering',
+            title: 'Top N Highest Salaries per Department using SQL Window Functions',
+            prompt: 'Write an ANSI SQL query to rank and extract the top 3 earners within each engineering department using DENSE_RANK() OVER (PARTITION BY dept_id ORDER BY salary DESC).',
+            difficulty: 'Medium',
+            tags: ['SQL', 'Window Functions', 'DENSE_RANK'],
+            tips: 'Clarify whether ties should skip ranks (RANK vs DENSE_RANK).'
+          }
+        ]
+      },
+      {
+        roundNumber: 2,
+        title: 'Round 2: Technical Interview 1 (Python Internals & DSA)',
+        duration: '60 mins',
+        difficulty: 'Medium-Hard',
+        focus: 'CPython execution, GIL, Asyncio, and live coding',
+        questions: [
+          {
+            id: 'q-tn-3',
+            contributorName: 'Rahul Verma',
+            college: 'NIT',
+            title: 'Asyncio Event Loop vs Multi-threading under CPython GIL',
+            prompt: 'Explain why CPU-bound threads do not scale in Python due to the Global Interpreter Lock, and live code an asyncio producer-consumer queue.',
+            difficulty: 'Hard',
+            tags: ['Python', 'Asyncio', 'GIL', 'Concurrency'],
+            tips: 'Emphasize that asyncio is single-threaded cooperative multitasking while multiprocessing uses separate OS processes.'
+          }
+        ]
+      },
+      {
+        roundNumber: 3,
+        title: 'Round 3: Technical Interview 2 (System Design & Databases)',
+        duration: '60 mins',
+        difficulty: 'Hard',
+        focus: 'PostgreSQL MVCC, Idempotency, and Docker Deployment',
+        questions: [
+          {
+            id: 'q-tn-4',
+            contributorName: 'Siddharth G',
+            college: 'Karpagam College of Engineering',
+            title: 'Designing an Idempotent Webhook Notification Receiver',
+            prompt: 'Handle payment gateway webhooks where duplicate requests arrive simultaneously. Implement unique deduplication keys, database row-level locking (SELECT FOR UPDATE), and idempotency tokens.',
+            difficulty: 'Hard',
+            tags: ['Idempotency', 'PostgreSQL', 'Transactions', 'Webhooks'],
+            tips: 'Draw the transactional lifecycle and handle network timeout edge cases.'
+          }
+        ]
+      },
+      {
+        roundNumber: 4,
+        title: 'Round 4: Techno-Managerial & Fit',
+        duration: '30 mins',
+        difficulty: 'Easy',
+        focus: 'Culture, Architectural disputes, and Career Goals',
+        questions: [
+          {
+            id: 'q-tn-5',
+            contributorName: 'Priya Sundaram',
+            college: 'KCE',
+            title: 'Conflict Resolution on Technology Choices',
+            prompt: 'Tell me about a time you and a teammate disagreed on a software architecture decision (e.g. REST vs GraphQL, PostgreSQL vs MongoDB). How did you resolve it?',
+            difficulty: 'Medium',
+            tags: ['Behavioral', 'STAR', 'Teamwork'],
+            tips: 'Frame it around building a prototype benchmark rather than arguing opinions.'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'drive-google-swe-2026',
+    company: 'Google',
+    role: 'Software Engineer (L3 / New Grad)',
+    driveDate: '2026 Campus Drive',
+    status: 'Active Collaborative Pool',
+    overallDifficulty: 'Hard',
+    studentContributorsCount: 11,
+    targetRole: 'Backend Developer',
+    summary: 'Single collaborative interview question bank for Google SWE 2026 drive. Rigorous focus on clean algorithm derivation, graph traversal, and time/space invariant analysis.',
+    contributors: [
+      { name: 'Siddharth G', college: 'Karpagam College of Engineering', date: '4 days ago' },
+      { name: 'Ananya Sharma', college: 'NIT', date: '1 week ago' },
+      { name: 'Arun Kumar', college: 'IIT Madras', date: '2 weeks ago' }
+    ],
+    rounds: [
+      {
+        roundNumber: 1,
+        title: 'Round 1: Google Online Challenge (GOC)',
+        duration: '60 mins',
+        difficulty: 'Hard',
+        focus: '2 Advanced algorithmic problems',
+        questions: [
+          {
+            id: 'q-goog-1',
+            contributorName: 'Arun Kumar',
+            college: 'IIT Madras',
+            title: 'Shortest Path with K Obstacle Eliminators',
+            prompt: 'Given a grid where 0 is empty and 1 is an obstacle, find shortest steps from top-left to bottom-right using 3D BFS state (row, col, remaining_k).',
+            difficulty: 'Hard',
+            tags: ['BFS', '3D State', 'Shortest Path'],
+            tips: 'Track visited state as visited[row][col][remaining_k] to prevent redundant queue entries.'
+          }
+        ]
+      },
+      {
+        roundNumber: 2,
+        title: 'Round 2: Technical Interview 1 (Algorithms & Data Structures)',
+        duration: '45 mins',
+        difficulty: 'Hard',
+        focus: 'Live Google Docs coding with Staff Engineer',
+        questions: [
+          {
+            id: 'q-goog-2',
+            contributorName: 'Siddharth G',
+            college: 'Karpagam College of Engineering',
+            title: 'Serialize and Deserialize N-ary Tree',
+            prompt: 'Design an efficient algorithm to serialize an N-ary tree into a compact string representation and deserialize it back without losing child order.',
+            difficulty: 'Hard',
+            tags: ['Trees', 'Serialization', 'DFS', 'Recursion'],
+            tips: 'Use child count delimiters or parenthesis nesting like val[child1 child2].'
+          }
+        ]
+      },
+      {
+        roundNumber: 3,
+        title: 'Round 3: Technical Interview 2 (Distributed Concepts & Scalability)',
+        duration: '45 mins',
+        difficulty: 'Hard',
+        focus: 'Practical coding with corner cases and invariant proofs',
+        questions: [
+          {
+            id: 'q-goog-3',
+            contributorName: 'Ananya Sharma',
+            college: 'NIT',
+            title: 'Median from Data Stream using Min/Max Heaps',
+            prompt: 'Continuously insert numbers into a stream and return the median in O(1) time using balanced two-heap structure.',
+            difficulty: 'Medium-Hard',
+            tags: ['Heaps', 'Priority Queue', 'Streaming Data'],
+            tips: 'Keep max-heap size equal to or one greater than min-heap size.'
+          }
+        ]
+      }
+    ]
+  }
+];
+
+export const mockInterviewExperiences = mockCompanyDrives;
+
+

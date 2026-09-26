@@ -1,0 +1,1368 @@
+[
+  {
+    "candidate_id": "CAND-0001",
+    "raw_name": "Quantum-Hyper-Compiler-X9000",
+    "detected_contexts": [
+      "Test Context"
+    ],
+    "frequency": 27,
+    "first_seen": "2026-09-25T09:32:39.968305",
+    "last_seen": "2026-09-25T20:32:35.597500+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Unknown",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T09:32:39.968305",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0002",
+    "raw_name": "I am",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 4,
+    "first_seen": "2026-09-25T20:29:04.480491+00:00",
+    "last_seen": "2026-09-25T20:32:34.974689+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:29:04.480491+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0003",
+    "raw_name": "in the",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 4,
+    "first_seen": "2026-09-25T20:29:04.542289+00:00",
+    "last_seen": "2026-09-25T20:32:35.053757+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:29:04.542289+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0004",
+    "raw_name": "Built",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 4,
+    "first_seen": "2026-09-25T20:29:04.711023+00:00",
+    "last_seen": "2026-09-25T20:32:35.237547+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:29:04.711023+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0005",
+    "raw_name": "am",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.034528+00:00",
+    "last_seen": "2026-09-25T20:32:34.907032+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.034528+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0006",
+    "raw_name": "interested",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.055575+00:00",
+    "last_seen": "2026-09-25T20:32:34.920149+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.055575+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0007",
+    "raw_name": "in",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 4,
+    "first_seen": "2026-09-25T20:31:18.066586+00:00",
+    "last_seen": "2026-09-25T20:32:34.950249+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.066586+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0008",
+    "raw_name": "future",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.129181+00:00",
+    "last_seen": "2026-09-25T20:32:34.966509+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.129181+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0009",
+    "raw_name": "am interested",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.166487+00:00",
+    "last_seen": "2026-09-25T20:32:34.988683+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.166487+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0010",
+    "raw_name": "interested in",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.190388+00:00",
+    "last_seen": "2026-09-25T20:32:35.001585+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.190388+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0011",
+    "raw_name": "in learning",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.212408+00:00",
+    "last_seen": "2026-09-25T20:32:35.018659+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.212408+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0012",
+    "raw_name": "and Golang",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.236811+00:00",
+    "last_seen": "2026-09-25T20:32:35.033139+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.236811+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0013",
+    "raw_name": "Golang in",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.255265+00:00",
+    "last_seen": "2026-09-25T20:32:35.044750+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.255265+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0014",
+    "raw_name": "the future",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.293057+00:00",
+    "last_seen": "2026-09-25T20:32:35.064762+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.293057+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0015",
+    "raw_name": "I am interested",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.327905+00:00",
+    "last_seen": "2026-09-25T20:32:35.079773+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.327905+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0016",
+    "raw_name": "am interested in",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.353435+00:00",
+    "last_seen": "2026-09-25T20:32:35.094067+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.353435+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0017",
+    "raw_name": "interested in learning",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.382357+00:00",
+    "last_seen": "2026-09-25T20:32:35.110165+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.382357+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0018",
+    "raw_name": "and Golang in",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.413578+00:00",
+    "last_seen": "2026-09-25T20:32:35.126407+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.413578+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0019",
+    "raw_name": "Golang in the",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.435077+00:00",
+    "last_seen": "2026-09-25T20:32:35.141145+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.435077+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0020",
+    "raw_name": "in the future",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.456098+00:00",
+    "last_seen": "2026-09-25T20:32:35.155151+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.456098+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0021",
+    "raw_name": "I am interested in",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.482734+00:00",
+    "last_seen": "2026-09-25T20:32:35.173166+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.482734+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0022",
+    "raw_name": "am interested in learning",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.514417+00:00",
+    "last_seen": "2026-09-25T20:32:35.193089+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.514417+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0023",
+    "raw_name": "and Golang in the",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.547192+00:00",
+    "last_seen": "2026-09-25T20:32:35.211540+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.547192+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0024",
+    "raw_name": "Golang in the future",
+    "detected_contexts": [
+      "I am interested in learning Docker, Kubernetes, and Golang in the future"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.573159+00:00",
+    "last_seen": "2026-09-25T20:32:35.227850+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.573159+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0025",
+    "raw_name": "AgriSmart",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.610277+00:00",
+    "last_seen": "2026-09-25T20:32:35.249309+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.610277+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0026",
+    "raw_name": "smart",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.626902+00:00",
+    "last_seen": "2026-09-25T20:32:35.259214+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.626902+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0027",
+    "raw_name": "farming",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.645844+00:00",
+    "last_seen": "2026-09-25T20:32:35.270422+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.645844+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0028",
+    "raw_name": "Built AgriSmart",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.720452+00:00",
+    "last_seen": "2026-09-25T20:32:35.312848+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.720452+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0029",
+    "raw_name": "AgriSmart smart",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.744605+00:00",
+    "last_seen": "2026-09-25T20:32:35.325951+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.744605+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0030",
+    "raw_name": "smart farming",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.768234+00:00",
+    "last_seen": "2026-09-25T20:32:35.339214+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.768234+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0031",
+    "raw_name": "farming platform",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.794105+00:00",
+    "last_seen": "2026-09-25T20:32:35.355056+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.795103+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0032",
+    "raw_name": "platform using",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.820649+00:00",
+    "last_seen": "2026-09-25T20:32:35.371518+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.820649+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0033",
+    "raw_name": "Built AgriSmart smart",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.870385+00:00",
+    "last_seen": "2026-09-25T20:32:35.401134+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.870385+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0034",
+    "raw_name": "AgriSmart smart farming",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.901318+00:00",
+    "last_seen": "2026-09-25T20:32:35.418232+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.901318+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0035",
+    "raw_name": "smart farming platform",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.931427+00:00",
+    "last_seen": "2026-09-25T20:32:35.435628+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.931427+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0036",
+    "raw_name": "farming platform using",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:18.960303+00:00",
+    "last_seen": "2026-09-25T20:32:35.453898+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:18.960303+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0037",
+    "raw_name": "Built AgriSmart smart farming",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:19.025503+00:00",
+    "last_seen": "2026-09-25T20:32:35.490529+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:19.025503+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0038",
+    "raw_name": "AgriSmart smart farming platform",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:19.064571+00:00",
+    "last_seen": "2026-09-25T20:32:35.513259+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:19.064571+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0039",
+    "raw_name": "smart farming platform using",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-25T20:31:19.098942+00:00",
+    "last_seen": "2026-09-25T20:32:35.533072+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:31:19.098942+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0040",
+    "raw_name": "and REST",
+    "detected_contexts": [
+      "Built AgriSmart smart farming platform using Java, Spring Boot, MySQL, and REST APIs"
+    ],
+    "frequency": 1,
+    "first_seen": "2026-09-25T20:32:35.384184+00:00",
+    "last_seen": "2026-09-25T20:32:35.384184+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-25T20:32:35.384184+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0041",
+    "raw_name": "siddharth",
+    "detected_contexts": [
+      "siddharth G"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.141417+00:00",
+    "last_seen": "2026-09-26T01:15:40.975313+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.141417+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0042",
+    "raw_name": "siddharth G",
+    "detected_contexts": [
+      "siddharth G"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.152417+00:00",
+    "last_seen": "2026-09-26T01:15:40.985313+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.152417+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0043",
+    "raw_name": "Beginner",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.160426+00:00",
+    "last_seen": "2026-09-26T01:15:40.994343+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.161426+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0044",
+    "raw_name": "Guide",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.167426+00:00",
+    "last_seen": "2026-09-26T01:15:41.002344+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.167426+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0045",
+    "raw_name": "to",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.172937+00:00",
+    "last_seen": "2026-09-26T01:15:41.007886+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.173941+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0046",
+    "raw_name": "Open",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.179941+00:00",
+    "last_seen": "2026-09-26T01:15:41.014886+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.179941+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0047",
+    "raw_name": "Source",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.187448+00:00",
+    "last_seen": "2026-09-26T01:15:41.022393+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.187448+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0048",
+    "raw_name": "LFD102",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.207994+00:00",
+    "last_seen": "2026-09-26T01:15:41.044436+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.207994+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0049",
+    "raw_name": "A Beginner",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.217498+00:00",
+    "last_seen": "2026-09-26T01:15:41.053524+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.217498+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0050",
+    "raw_name": "Beginner s",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.226513+00:00",
+    "last_seen": "2026-09-26T01:15:41.063522+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.226513+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0051",
+    "raw_name": "s Guide",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.235520+00:00",
+    "last_seen": "2026-09-26T01:15:41.071590+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.235520+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0052",
+    "raw_name": "Guide to",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.243524+00:00",
+    "last_seen": "2026-09-26T01:15:41.080731+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.243524+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0053",
+    "raw_name": "to Open",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.251570+00:00",
+    "last_seen": "2026-09-26T01:15:41.089240+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.251570+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0054",
+    "raw_name": "Open Source",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.262081+00:00",
+    "last_seen": "2026-09-26T01:15:41.098238+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.262081+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0055",
+    "raw_name": "Source Software",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.273098+00:00",
+    "last_seen": "2026-09-26T01:15:41.111274+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.273098+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0056",
+    "raw_name": "Development LFD102",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.283918+00:00",
+    "last_seen": "2026-09-26T01:15:41.122539+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.283918+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0057",
+    "raw_name": "A Beginner s",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.295017+00:00",
+    "last_seen": "2026-09-26T01:15:41.133616+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.295585+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0058",
+    "raw_name": "Beginner s Guide",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.306683+00:00",
+    "last_seen": "2026-09-26T01:15:41.146134+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.306683+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0059",
+    "raw_name": "s Guide to",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.316703+00:00",
+    "last_seen": "2026-09-26T01:15:41.155230+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.316703+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0060",
+    "raw_name": "Guide to Open",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.327351+00:00",
+    "last_seen": "2026-09-26T01:15:41.169294+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.327351+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0061",
+    "raw_name": "to Open Source",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.339312+00:00",
+    "last_seen": "2026-09-26T01:15:41.181360+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.339312+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0062",
+    "raw_name": "Open Source Software",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.352170+00:00",
+    "last_seen": "2026-09-26T01:15:41.194123+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.352170+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0063",
+    "raw_name": "A Beginner s Guide",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.365751+00:00",
+    "last_seen": "2026-09-26T01:15:41.207391+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.365751+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0064",
+    "raw_name": "Beginner s Guide to",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.377873+00:00",
+    "last_seen": "2026-09-26T01:15:41.219634+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.377873+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0065",
+    "raw_name": "s Guide to Open",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.389006+00:00",
+    "last_seen": "2026-09-26T01:15:41.230595+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.389006+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0066",
+    "raw_name": "Guide to Open Source",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.402028+00:00",
+    "last_seen": "2026-09-26T01:15:41.244089+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.402028+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0067",
+    "raw_name": "to Open Source Software",
+    "detected_contexts": [
+      "A Beginner's Guide to Open Source Software Development (LFD102)"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.416094+00:00",
+    "last_seen": "2026-09-26T01:15:41.257656+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.416094+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0068",
+    "raw_name": "July",
+    "detected_contexts": [
+      "July 27, 2026 LF-3eztkcqmim"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.424048+00:00",
+    "last_seen": "2026-09-26T01:15:41.264993+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.424048+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0069",
+    "raw_name": "LF-3eztkcqmim",
+    "detected_contexts": [
+      "July 27, 2026 LF-3eztkcqmim"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.434181+00:00",
+    "last_seen": "2026-09-26T01:15:41.276486+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.434181+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0070",
+    "raw_name": "July 27",
+    "detected_contexts": [
+      "July 27, 2026 LF-3eztkcqmim"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.441178+00:00",
+    "last_seen": "2026-09-26T01:15:41.283236+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.441178+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0071",
+    "raw_name": "27 2026",
+    "detected_contexts": [
+      "July 27, 2026 LF-3eztkcqmim"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.445452+00:00",
+    "last_seen": "2026-09-26T01:15:41.288234+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.445452+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0072",
+    "raw_name": "2026 LF-3eztkcqmim",
+    "detected_contexts": [
+      "July 27, 2026 LF-3eztkcqmim"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.457350+00:00",
+    "last_seen": "2026-09-26T01:15:41.299378+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.457350+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0073",
+    "raw_name": "July 27 2026",
+    "detected_contexts": [
+      "July 27, 2026 LF-3eztkcqmim"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.469590+00:00",
+    "last_seen": "2026-09-26T01:15:41.306380+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.469590+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0074",
+    "raw_name": "27 2026 LF-3eztkcqmim",
+    "detected_contexts": [
+      "July 27, 2026 LF-3eztkcqmim"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.482614+00:00",
+    "last_seen": "2026-09-26T01:15:41.316913+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.482614+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0075",
+    "raw_name": "July 27 2026 LF-3eztkcqmim",
+    "detected_contexts": [
+      "July 27, 2026 LF-3eztkcqmim"
+    ],
+    "frequency": 2,
+    "first_seen": "2026-09-26T01:15:35.495627+00:00",
+    "last_seen": "2026-09-26T01:15:41.329056+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Document",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:15:35.495627+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  },
+  {
+    "candidate_id": "CAND-0076",
+    "raw_name": "cybersecurity",
+    "detected_contexts": [],
+    "frequency": 1,
+    "first_seen": "2026-09-26T01:27:16.260451+00:00",
+    "last_seen": "2026-09-26T01:27:16.260451+00:00",
+    "status": "CANDIDATE",
+    "provenance": {
+      "source": "Unknown",
+      "source_type": "STUDENT_INPUT",
+      "confidence": 0.5,
+      "extracted_at": "2026-09-26T01:27:16.260451+00:00",
+      "validation_status": "CANDIDATE"
+    }
+  }
+]

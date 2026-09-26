@@ -27,14 +27,16 @@ import {
   X
 } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
+import { careerApi } from '../../services/api/careerApi';
 
 export const DashboardPage = () => {
   const { user } = useAuth();
-  const { stats, targetRoleId } = useCareer();
+  const { stats, targetRoleId, selectTargetRole } = useCareer();
   const navigate = useNavigate();
 
   const [skills, setSkills] = useState([]);
   const [jobs, setJobs] = useState([]);
+  const [availableRoles, setAvailableRoles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -42,12 +44,14 @@ export const DashboardPage = () => {
     try {
       setLoading(true);
       setError(null);
-      const [skillsData, jobsData] = await Promise.all([
+      const [skillsData, jobsData, rolesList] = await Promise.all([
         skillsApi.getSkills(),
-        jobService.getJobs()
+        jobService.getJobs(),
+        careerApi.getRoles()
       ]);
       setSkills(skillsData);
       setJobs(jobsData);
+      setAvailableRoles(rolesList || []);
     } catch (err) {
       console.error('Failed to load dashboard:', err);
       setError('Could not load dashboard data. Please try again.');
@@ -60,35 +64,68 @@ export const DashboardPage = () => {
     loadDashboardData();
   }, []);
 
+  const handleTargetRoleChange = async (newRoleId) => {
+    await selectTargetRole(newRoleId);
+  };
+
   if (error) {
     return <ErrorState message={error} onRetry={loadDashboardData} />;
   }
 
-  const studentName = user?.fullName || 'Alex Chen';
+  const studentName = user?.fullName || 'Siddharth G';
   const targetRole = stats?.targetRoleTitle || 'Backend Developer';
 
   return (
     <div className="space-y-6 text-[var(--text-primary)]">
-      {/* Top Greeting */}
-      <div>
-        <div className="flex items-center gap-2 mb-1">
-          <span className="flex h-6 w-6 items-center justify-center rounded border border-current/20 bg-[var(--bg-page)] text-[var(--accent-terracotta)]">
-            <Target className="h-3.5 w-3.5" />
-          </span>
-          <span className="text-[10px] font-editorial-mono font-bold text-[var(--accent-terracotta)] uppercase tracking-[0.2em]">
-            Overview // Ecosystem Cockpit
-          </span>
+      {/* Top Greeting & Dynamic Target Career Selector */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-current/10">
+        <div>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="flex h-6 w-6 items-center justify-center rounded border border-current/20 bg-[var(--bg-page)] text-[var(--accent-terracotta)]">
+              <Target className="h-3.5 w-3.5" />
+            </span>
+            <span className="text-[10px] font-editorial-mono font-bold text-[var(--accent-terracotta)] uppercase tracking-[0.2em]">
+              Overview // Ecosystem Cockpit
+            </span>
+          </div>
+          <h1 className="font-editorial-title text-2xl sm:text-3xl font-bold tracking-tight uppercase">
+            Good day, {studentName}
+          </h1>
+          <p className="text-sm opacity-70 mt-1">
+            Your journey toward your target career as a{' '}
+            <span className="font-semibold underline decoration-[var(--accent-terracotta)] underline-offset-4">
+              {targetRole}
+            </span>
+            .
+          </p>
         </div>
-        <h1 className="font-editorial-title text-2xl sm:text-3xl font-bold tracking-tight uppercase">
-          Good day, {studentName}
-        </h1>
-        <p className="text-sm opacity-70 mt-1">
-          Your journey toward your target career as a{' '}
-          <span className="font-semibold underline decoration-[var(--accent-terracotta)] underline-offset-4">
-            {targetRole}
-          </span>
-          .
-        </p>
+
+        {/* Change Target Role Pill / Dropdown at Top of Dashboard */}
+        <div className="flex flex-wrap items-center gap-2.5 bg-current/[0.03] p-2.5 rounded-xl border border-current/15">
+          <div className="flex items-center gap-1.5 text-xs font-editorial-mono font-bold uppercase tracking-wider text-[var(--accent-terracotta)]">
+            <Target className="h-4 w-4" />
+            <span>Target Role:</span>
+          </div>
+          <select
+            value={targetRoleId || 'backend-developer'}
+            onChange={(e) => handleTargetRoleChange(e.target.value)}
+            className="text-xs font-editorial-mono bg-[var(--card-surface)] text-[var(--text-primary)] border border-current/20 rounded-lg px-3 py-1.5 font-semibold cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--accent-terracotta)]"
+          >
+            {availableRoles.map((r) => (
+              <option key={r.id} value={r.id}>
+                {r.title}
+              </option>
+            ))}
+          </select>
+          <Link
+            to={`/career/${targetRoleId || 'backend-developer'}`}
+            className="text-xs px-3 py-1.5 rounded-lg bg-[var(--accent-terracotta)] text-white font-editorial-mono font-semibold flex items-center gap-1 hover:opacity-90 transition-opacity"
+            title="Explore Interactive Roadmap"
+          >
+            <span>Roadmap</span>
+            <ArrowRight className="h-3 w-3" />
+          </Link>
+        </div>
       </div>
 
       {loading ? (

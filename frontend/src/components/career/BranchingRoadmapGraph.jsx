@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import {
   ReactFlow,
   ReactFlowProvider,
@@ -41,6 +41,22 @@ const RoadmapGraphContent = ({ initialData }) => {
 
   const [nodes, setNodes] = useState(initialData?.nodes || BACKEND_DEVELOPER_ROADMAP.nodes);
   const [edges, setEdges] = useState(initialData?.edges || BACKEND_DEVELOPER_ROADMAP.edges);
+
+  useEffect(() => {
+    if (initialData?.nodes && initialData.nodes.length > 0) {
+      setNodes(initialData.nodes);
+    }
+    if (initialData?.edges) {
+      setEdges(initialData.edges);
+    }
+    setSelectedNode(null);
+    setDrawerOpen(false);
+    setTimeout(() => {
+      try {
+        fitView({ padding: 0.2, duration: 400 });
+      } catch (e) {}
+    }, 150);
+  }, [initialData, fitView]);
 
   const [selectedNode, setSelectedNode] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -219,7 +235,7 @@ const RoadmapGraphContent = ({ initialData }) => {
             )}
           </div>
           <h2 className="font-editorial-title text-xl sm:text-2xl font-bold uppercase tracking-tight text-[var(--text-primary)]">
-            Backend Developer
+            {initialData?.roleTitle || 'Career Pathway'}
           </h2>
 
           {/* Counts: 🟢 5 Verified  🟡 3 Partial  🔴 4 Not Verified */}

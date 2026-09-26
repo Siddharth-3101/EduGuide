@@ -41,6 +41,14 @@ export const JobCard = ({ job }) => {
     }
   };
 
+  const naukriUrl = job.naukriSearchUrl || job.naukriUrl ||
+    `https://www.naukri.com/${encodeURIComponent(job.title.toLowerCase().replace(/[^a-z0-9]+/g, '-'))}-jobs-in-${encodeURIComponent((job.location || 'bengaluru').toLowerCase().replace(/[^a-z0-9]+/g, '-'))}`;
+
+  const matchTierText = match >= 80 ? 'STRONG MATCH' : (match >= 50 ? 'MODERATE MATCH' : 'DEVELOPING');
+  const matchTierClass = match >= 80
+    ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/30'
+    : (match >= 50 ? 'bg-amber-500/10 text-amber-500 border-amber-500/30' : 'bg-rose-500/10 text-rose-500 border-rose-500/30');
+
   return (
     <Card className="flex flex-col justify-between h-full bg-[var(--card-surface)] border border-[var(--border-line)] text-[var(--text-primary)] hover:border-[var(--accent-terracotta)]/50 transition-all shadow-2xs">
       <div>
@@ -63,10 +71,10 @@ export const JobCard = ({ job }) => {
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
-                  <Briefcase className="h-3 w-3" /> {job.workMode}
+                  <Briefcase className="h-3 w-3" /> {job.workMode || job.type}
                 </span>
                 <span>•</span>
-                <span>{job.experience}</span>
+                <span>{job.experience || job.experienceLevel}</span>
               </div>
             </div>
           </div>
@@ -74,10 +82,12 @@ export const JobCard = ({ job }) => {
           {/* Competency Match Indicator */}
           <div className="text-right shrink-0">
             <div className="inline-flex items-center px-2.5 py-1 rounded font-editorial-mono text-xs font-bold bg-[var(--accent-terracotta)]/10 text-[var(--accent-terracotta)] border border-[var(--accent-terracotta)]/30">
-              {match}% Competency Match
+              {match}% Match
             </div>
-            <div className="flex items-center justify-end gap-1 text-[9px] font-editorial-mono opacity-50 mt-1">
-              <span>Verified Alignment</span>
+            <div className="mt-1">
+              <span className={`inline-block px-1.5 py-0.5 rounded font-editorial-mono text-[9px] font-bold border ${matchTierClass}`}>
+                {matchTierText}
+              </span>
             </div>
           </div>
         </div>
@@ -108,7 +118,7 @@ export const JobCard = ({ job }) => {
           {job.missingSkills?.length > 0 && (
             <div>
               <span className="text-[10px] font-bold uppercase tracking-wider opacity-60 block mb-1.5">
-                Missing Skill Gaps
+                Missing Skill Gaps ({job.missingSkills.length})
               </span>
               <div className="flex flex-wrap gap-1.5">
                 {job.missingSkills?.map((skill) => (
@@ -126,7 +136,7 @@ export const JobCard = ({ job }) => {
         </div>
       </div>
 
-      <div className="mt-5 pt-3 border-t border-current/10 flex items-center justify-between text-xs font-editorial-mono">
+      <div className="mt-5 pt-3 border-t border-current/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-editorial-mono">
         <div className="flex items-center gap-2">
           <span className="font-bold opacity-80">{job.salary}</span>
           <span>•</span>
@@ -134,13 +144,22 @@ export const JobCard = ({ job }) => {
         </div>
 
         <div className="flex items-center gap-2">
+          <a
+            href={naukriUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 px-2.5 py-1 rounded font-editorial-mono text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30 hover:bg-amber-500/20 transition-all"
+            title="Search & Apply on Naukri"
+          >
+            Apply on Naukri <ExternalLink className="h-3 w-3" />
+          </a>
           <Button
             size="sm"
             variant="primary"
             onClick={() => navigate(`/jobs/${job.id}`)}
             iconRight={ArrowUpRight}
           >
-            View Job
+            Details
           </Button>
         </div>
       </div>

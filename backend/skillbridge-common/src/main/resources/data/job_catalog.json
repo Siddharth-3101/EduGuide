@@ -1,0 +1,255 @@
+[
+  {
+    "job_id": "JOB-BE-001",
+    "title": "Junior Backend Developer",
+    "company": "TechNova Systems",
+    "location": "Bengaluru, India",
+    "work_mode": "Hybrid",
+    "experience_level": "Entry Level (0-2 yrs)",
+    "employment_type": "Full-time",
+    "salary_range": "₹8,50,000 - ₹12,00,000",
+    "career_id": "CAR-BACKEND",
+    "required_skills": [
+      { "skill_id": "SKL-0012", "skill_name": "Python", "importance": "CRITICAL", "is_required": true },
+      { "skill_id": "SKL-0047", "skill_name": "SQL", "importance": "HIGH", "is_required": true },
+      { "skill_id": "SKL-0041", "skill_name": "REST API", "importance": "HIGH", "is_required": true },
+      { "skill_id": "SKL-0108", "skill_name": "Git", "importance": "MEDIUM", "is_required": true }
+    ],
+    "preferred_skills": [
+      { "skill_id": "SKL-0114", "skill_name": "Docker", "importance": "HIGH", "is_required": false },
+      { "skill_id": "SKL-0053", "skill_name": "Redis", "importance": "MEDIUM", "is_required": false },
+      { "skill_id": "SKL-0049", "skill_name": "PostgreSQL", "importance": "MEDIUM", "is_required": false }
+    ],
+    "description": "TechNova Systems is scaling its core distributed ledger services. We are looking for an ambitious Junior Backend Engineer who understands clean REST API contracts, relational modeling, and scalable service architectures.",
+    "responsibilities": [
+      "Write modular, well-tested Python endpoints for transactional processing.",
+      "Design database schema migrations and optimize SQL queries.",
+      "Integrate asynchronous caching with Redis and containerize services with Docker."
+    ],
+    "application_url": "https://careers.technova.example/jobs/101",
+    "naukri_search_url": "https://www.naukri.com/backend-developer-jobs-in-bengaluru",
+    "linkedin_search_url": "https://www.linkedin.com/jobs/search/?keywords=Junior%20Backend%20Developer%20Bengaluru",
+    "posted_date": "2026-09-22"
+  },
+  {
+    "job_id": "JOB-BE-002",
+    "title": "Java Spring Boot Microservices Engineer",
+    "company": "Fintech Labs India",
+    "location": "Hyderabad, India",
+    "work_mode": "On-site",
+    "experience_level": "Associate (1-3 yrs)",
+    "employment_type": "Full-time",
+    "salary_range": "₹11,00,000 - ₹16,00,000",
+    "career_id": "CAR-BACKEND",
+    "required_skills": [
+      { "skill_id": "SKL-0011", "skill_name": "Java", "importance": "CRITICAL", "is_required": true },
+      { "skill_id": "SKL-0037", "skill_name": "Spring Boot", "importance": "CRITICAL", "is_required": true },
+      { "skill_id": "SKL-0043", "skill_name": "Microservices", "importance": "HIGH", "is_required": true },
+      { "skill_id": "SKL-0047", "skill_name": "SQL", "importance": "HIGH", "is_required": true }
+    ],
+    "preferred_skills": [
+      { "skill_id": "SKL-0114", "skill_name": "Docker", "importance": "HIGH", "is_required": false },
+      { "skill_id": "SKL-0115", "skill_name": "Kubernetes", "importance": "MEDIUM", "is_required": false },
+      { "skill_id": "SKL-0108", "skill_name": "Git", "importance": "MEDIUM", "is_required": false }
+    ],
+    "description": "Fintech Labs builds high-concurrency payment gateways handling over 5,000 TPS. Looking for disciplined Java backend engineers with Spring Boot and microservice design expertise.",
+    "responsibilities": [
+      "Develop resilient microservices using Java 21 and Spring Boot 3.",
+      "Ensure transaction consistency across distributed data boundaries.",
+      "Implement observability telemetry with OpenTelemetry and Prometheus."
+    ],
+    "application_url": "https://careers.fintechlabs.example/jobs/204",
+    "naukri_search_url": "https://www.naukri.com/java-spring-boot-jobs-in-hyderabad",
+    "linkedin_search_url": "https://www.linkedin.com/jobs/search/?keywords=Spring%20Boot%20Developer%20Hyderabad",
+    "posted_date": "2026-09-24"
+  },
+  {
+    "job_id": "JOB-AI-001",
+    "title": "AI & Generative AI Application Developer",
+    "company": "NeuroPath AI",
+    "location": "Bengaluru, India",
+    "work_mode": "Remote",
+    "experience_level": "Entry Level (0-2 yrs)",
+    "employment_type": "Full-time",
+    "salary_range": "₹12,00,000 - ₹18,00,000",
+    "career_id": "CAR-AI-ENG",
+    "required_skills": [
+      { "skill_id": "SKL-0012", "skill_name": "Python", "importance": "CRITICAL", "is_required": true },
+      { "skill_id": "SKL-0060", "skill_name": "Machine Learning", "importance": "HIGH", "is_required": true },
+      { "skill_id": "SKL-0071", "skill_name": "Large Language Models", "importance": "HIGH", "is_required": true }
+    ],
+    "preferred_skills": [
+      { "skill_id": "SKL-0073", "skill_name": "Retrieval-Augmented Generation", "importance": "HIGH", "is_required": false },
+      { "skill_id": "SKL-0074", "skill_name": "Embeddings", "importance": "MEDIUM", "is_required": false },
+      { "skill_id": "SKL-0040", "skill_name": "FastAPI", "importance": "MEDIUM", "is_required": false }
+    ],
+    "description": "NeuroPath AI builds autonomous reasoning agents for enterprise document intelligence. Join our AI Applications team to design high-precision RAG pipelines and multimodal LLM workflows.",
+    "responsibilities": [
+      "Implement multi-stage retrieval pipelines combining dense embeddings and hybrid BM25.",
+      "Deploy inference endpoints using FastAPI, vLLM, and Ollama.",
+      "Evaluate LLM responses using RAGAS and automated guardrails."
+    ],
+    "application_url": "https://careers.neuropath.example/jobs/305",
+    "naukri_search_url": "https://www.naukri.com/generative-ai-engineer-jobs-in-bengaluru",
+    "linkedin_search_url": "https://www.linkedin.com/jobs/search/?keywords=Generative%20AI%20Developer%20Bengaluru",
+    "posted_date": "2026-09-21"
+  },
+  {
+    "job_id": "JOB-CLOUD-001",
+    "title": "Cloud & DevOps Infrastructure Associate",
+    "company": "CloudScale Dynamics",
+    "location": "Remote",
+    "work_mode": "Remote",
+    "experience_level": "Associate (1-3 yrs)",
+    "employment_type": "Full-time",
+    "salary_range": "₹10,00,000 - ₹15,00,000",
+    "career_id": "CAR-DEVOPS",
+    "required_skills": [
+      { "skill_id": "SKL-0114", "skill_name": "Docker", "importance": "CRITICAL", "is_required": true },
+      { "skill_id": "SKL-0118", "skill_name": "Linux", "importance": "HIGH", "is_required": true },
+      { "skill_id": "SKL-0108", "skill_name": "Git", "importance": "HIGH", "is_required": true },
+      { "skill_id": "SKL-0113", "skill_name": "CI/CD", "importance": "HIGH", "is_required": true }
+    ],
+    "preferred_skills": [
+      { "skill_id": "SKL-0115", "skill_name": "Kubernetes", "importance": "HIGH", "is_required": false },
+      { "skill_id": "SKL-0116", "skill_name": "Terraform", "importance": "MEDIUM", "is_required": false },
+      { "skill_id": "SKL-0100", "skill_name": "AWS", "importance": "HIGH", "is_required": false }
+    ],
+    "description": "CloudScale automates cloud operations for 150+ high-growth tech companies. We are hiring DevOps engineers passionate about containerization, GitOps, and infrastructure reliability.",
+    "responsibilities": [
+      "Standardize containerized builds with GitHub Actions and multi-stage Dockerfiles.",
+      "Manage Kubernetes clusters and automate deployment rollouts.",
+      "Monitor cluster telemetry using Prometheus, Grafana, and Loki."
+    ],
+    "application_url": "https://careers.cloudscale.example/jobs/410",
+    "naukri_search_url": "https://www.naukri.com/devops-engineer-jobs-in-remote",
+    "linkedin_search_url": "https://www.linkedin.com/jobs/search/?keywords=DevOps%20Engineer%20Remote",
+    "posted_date": "2026-09-23"
+  },
+  {
+    "job_id": "JOB-FE-001",
+    "title": "Frontend React Developer",
+    "company": "PixelCraft Studios",
+    "location": "Pune, India",
+    "work_mode": "Hybrid",
+    "experience_level": "Entry Level (0-2 yrs)",
+    "employment_type": "Full-time",
+    "salary_range": "₹7,50,000 - ₹11,00,000",
+    "career_id": "CAR-FRONTEND",
+    "required_skills": [
+      { "skill_id": "SKL-0027", "skill_name": "React", "importance": "CRITICAL", "is_required": true },
+      { "skill_id": "SKL-0013", "skill_name": "JavaScript", "importance": "CRITICAL", "is_required": true },
+      { "skill_id": "SKL-0025", "skill_name": "HTML", "importance": "HIGH", "is_required": true },
+      { "skill_id": "SKL-0026", "skill_name": "CSS", "importance": "HIGH", "is_required": true }
+    ],
+    "preferred_skills": [
+      { "skill_id": "SKL-0014", "skill_name": "TypeScript", "importance": "HIGH", "is_required": false },
+      { "skill_id": "SKL-0031", "skill_name": "Tailwind CSS", "importance": "MEDIUM", "is_required": false },
+      { "skill_id": "SKL-0108", "skill_name": "Git", "importance": "MEDIUM", "is_required": false }
+    ],
+    "description": "PixelCraft creates high-performance web applications and design systems for enterprise SaaS. Looking for frontend artisans who care about smooth animations, responsive UX, and accessible interfaces.",
+    "responsibilities": [
+      "Build reusable component libraries with React and TypeScript.",
+      "Ensure web accessibility (WCAG AA) and responsive mobile-first layouts.",
+      "Integrate RESTful backends and client-side caching strategies."
+    ],
+    "application_url": "https://careers.pixelcraft.example/jobs/502",
+    "naukri_search_url": "https://www.naukri.com/react-js-developer-jobs-in-pune",
+    "linkedin_search_url": "https://www.linkedin.com/jobs/search/?keywords=React%20Developer%20Pune",
+    "posted_date": "2026-09-22"
+  },
+  {
+    "job_id": "JOB-DATA-001",
+    "title": "Junior Data Engineer",
+    "company": "DataVerve Analytics",
+    "location": "Hyderabad, India",
+    "work_mode": "Hybrid",
+    "experience_level": "Entry Level (0-2 yrs)",
+    "employment_type": "Full-time",
+    "salary_range": "₹9,00,000 - ₹13,00,000",
+    "career_id": "CAR-DATA-ENG",
+    "required_skills": [
+      { "skill_id": "SKL-0012", "skill_name": "Python", "importance": "CRITICAL", "is_required": true },
+      { "skill_id": "SKL-0047", "skill_name": "SQL", "importance": "CRITICAL", "is_required": true },
+      { "skill_id": "SKL-0146", "skill_name": "ETL", "importance": "HIGH", "is_required": true }
+    ],
+    "preferred_skills": [
+      { "skill_id": "SKL-0148", "skill_name": "Data Warehousing", "importance": "HIGH", "is_required": false },
+      { "skill_id": "SKL-0114", "skill_name": "Docker", "importance": "MEDIUM", "is_required": false },
+      { "skill_id": "SKL-0108", "skill_name": "Git", "importance": "MEDIUM", "is_required": false }
+    ],
+    "description": "DataVerve powers data integration pipelines for e-commerce and retail leaders across APAC. Join our data platform engineering group to build scalable batch and streaming pipelines.",
+    "responsibilities": [
+      "Write data ingestion scripts in Python extracting from multi-cloud APIs.",
+      "Construct relational staging tables and dimensional models in PostgreSQL/Snowflake.",
+      "Implement data validation checks and automated alerting."
+    ],
+    "application_url": "https://careers.dataverve.example/jobs/618",
+    "naukri_search_url": "https://www.naukri.com/data-engineer-jobs-in-hyderabad",
+    "linkedin_search_url": "https://www.linkedin.com/jobs/search/?keywords=Junior%20Data%20Engineer%20Hyderabad",
+    "posted_date": "2026-09-25"
+  },
+  {
+    "job_id": "JOB-SEC-001",
+    "title": "Cybersecurity & AppSec Analyst",
+    "company": "Fortress Shield Security",
+    "location": "Bengaluru, India",
+    "work_mode": "On-site",
+    "experience_level": "Entry Level (0-2 yrs)",
+    "employment_type": "Full-time",
+    "salary_range": "₹8,00,000 - ₹12,50,000",
+    "career_id": "CAR-CYBER",
+    "required_skills": [
+      { "skill_id": "SKL-0134", "skill_name": "TCP/IP", "importance": "HIGH", "is_required": true },
+      { "skill_id": "SKL-0133", "skill_name": "OWASP", "importance": "CRITICAL", "is_required": true },
+      { "skill_id": "SKL-0124", "skill_name": "Application Security", "importance": "HIGH", "is_required": true }
+    ],
+    "preferred_skills": [
+      { "skill_id": "SKL-0118", "skill_name": "Linux", "importance": "HIGH", "is_required": false },
+      { "skill_id": "SKL-0127", "skill_name": "Penetration Testing", "importance": "MEDIUM", "is_required": false },
+      { "skill_id": "SKL-0012", "skill_name": "Python", "importance": "MEDIUM", "is_required": false }
+    ],
+    "description": "Fortress Shield provides continuous offensive and defensive cybersecurity auditing for banking platforms. We seek junior analysts eager to analyze vulnerability scan reports, secure code reviews, and threat vectors.",
+    "responsibilities": [
+      "Perform automated SAST/DAST scans and verify OWASP Top 10 vulnerabilities.",
+      "Review pull requests for authentication flaws, SQL injections, and XSS risks.",
+      "Collaborate with development teams to remediate security findings."
+    ],
+    "application_url": "https://careers.fortressshield.example/jobs/714",
+    "naukri_search_url": "https://www.naukri.com/cyber-security-analyst-jobs-in-bengaluru",
+    "linkedin_search_url": "https://www.linkedin.com/jobs/search/?keywords=Cybersecurity%20Analyst%20Bengaluru",
+    "posted_date": "2026-09-24"
+  },
+  {
+    "job_id": "JOB-FULL-001",
+    "title": "Full Stack Engineer (React + Node / Python)",
+    "company": "ScaleOps Technologies",
+    "location": "Bengaluru, India",
+    "work_mode": "Hybrid",
+    "experience_level": "Entry Level (0-2 yrs)",
+    "employment_type": "Full-time",
+    "salary_range": "₹9,50,000 - ₹14,00,000",
+    "career_id": "CAR-FULLSTACK",
+    "required_skills": [
+      { "skill_id": "SKL-0027", "skill_name": "React", "importance": "CRITICAL", "is_required": true },
+      { "skill_id": "SKL-0012", "skill_name": "Python", "importance": "HIGH", "is_required": true },
+      { "skill_id": "SKL-0041", "skill_name": "REST API", "importance": "HIGH", "is_required": true },
+      { "skill_id": "SKL-0047", "skill_name": "SQL", "importance": "HIGH", "is_required": true }
+    ],
+    "preferred_skills": [
+      { "skill_id": "SKL-0114", "skill_name": "Docker", "importance": "HIGH", "is_required": false },
+      { "skill_id": "SKL-0014", "skill_name": "TypeScript", "importance": "MEDIUM", "is_required": false },
+      { "skill_id": "SKL-0108", "skill_name": "Git", "importance": "MEDIUM", "is_required": false }
+    ],
+    "description": "ScaleOps builds real-time system monitoring dashboards and metrics pipelines. Looking for Full Stack Engineers comfortable crafting slick React interfaces while optimizing backend SQL and REST endpoints.",
+    "responsibilities": [
+      "Develop responsive user dashboards in React and TypeScript.",
+      "Design resilient backend services in Python (FastAPI/Django).",
+      "Package web applications into containerized staging environments."
+    ],
+    "application_url": "https://careers.scaleops.example/jobs/809",
+    "naukri_search_url": "https://www.naukri.com/full-stack-developer-jobs-in-bengaluru",
+    "linkedin_search_url": "https://www.linkedin.com/jobs/search/?keywords=Full%20Stack%20Developer%20Bengaluru",
+    "posted_date": "2026-09-23"
+  }
+]

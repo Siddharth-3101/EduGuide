@@ -1,0 +1,155 @@
+[
+  {
+    "project_id": "PRJ-PY-001",
+    "title": "Automated File Organizer & CLI Utility",
+    "difficulty": "BEGINNER",
+    "skills_required": ["SKL-0012"],
+    "skills_practiced": ["SKL-0012", "SKL-0108"],
+    "prerequisites": [],
+    "career_relevance": ["CAR-AI-ENG", "CAR-BACKEND", "CAR-DEVOPS", "CAR-DATA-ANALYST", "CAR-FULLSTACK"],
+    "pathway_relevance": ["PATH-AI-APP", "PATH-BACKEND-PYTHON"],
+    "description": "Build a command-line utility in Python that scans directories, classifies files by extension and metadata, and automates file organization with error logging and Git tracking.",
+    "expected_outcomes": [
+      "Modular Python script utilizing os, shutil, and argparse",
+      "Robust file parsing, exception handling, and automated unit tests",
+      "Git commit history with semantic commit messages"
+    ]
+  },
+  {
+    "project_id": "PRJ-PY-002",
+    "title": "REST API Web Scraper & Data Extractor",
+    "difficulty": "BEGINNER",
+    "skills_required": ["SKL-0012"],
+    "skills_practiced": ["SKL-0012", "SKL-0041"],
+    "prerequisites": ["SKL-0012"],
+    "career_relevance": ["CAR-AI-ENG", "CAR-BACKEND", "CAR-DATA-ANALYST"],
+    "pathway_relevance": ["PATH-AI-APP", "PATH-BACKEND-PYTHON"],
+    "description": "Construct a Python application that fetches public web data, handles pagination and rate-limits, and persists structured JSON records.",
+    "expected_outcomes": [
+      "Working Python scraper with requests / httpx and BeautifulSoup",
+      "Structured JSON export pipeline with data validation"
+    ]
+  },
+  {
+    "project_id": "PRJ-DATA-001",
+    "title": "Exploratory Data Analysis & Visual Dashboard",
+    "difficulty": "INTERMEDIATE",
+    "skills_required": ["SKL-0012", "SKL-0082"],
+    "skills_practiced": ["SKL-0083", "SKL-0080", "SKL-0081"],
+    "prerequisites": ["SKL-0012"],
+    "career_relevance": ["CAR-AI-ENG", "CAR-DATA-ANALYST"],
+    "pathway_relevance": ["PATH-AI-APP", "PATH-ML-ENG", "PATH-BI-ANALYST"],
+    "description": "Clean, manipulate, and explore real-world tabular data using Pandas and NumPy, producing visual correlation matrices, trend charts, and summary reports.",
+    "expected_outcomes": [
+      "Jupyter analysis notebook cleaning missing values and outliers",
+      "Data distribution plots and multi-variable hypothesis testing"
+    ]
+  },
+  {
+    "project_id": "PRJ-ML-001",
+    "title": "Customer Churn Prediction & Model Evaluation",
+    "difficulty": "INTERMEDIATE",
+    "skills_required": ["SKL-0012", "SKL-0082", "SKL-0083"],
+    "skills_practiced": ["SKL-0060", "SKL-0084", "SKL-0066"],
+    "prerequisites": ["SKL-0012", "SKL-0082"],
+    "career_relevance": ["CAR-AI-ENG", "CAR-DATA-ANALYST"],
+    "pathway_relevance": ["PATH-AI-APP", "PATH-ML-ENG"],
+    "description": "Train, tune, and evaluate classical machine learning models (Logistic Regression, Random Forest, XGBoost) to predict customer churn with precision-recall curve analysis.",
+    "expected_outcomes": [
+      "Scikit-learn pipeline featuring feature encoding and standard scaling",
+      "Comprehensive evaluation report with ROC-AUC, F1-score, and confusion matrix"
+    ]
+  },
+  {
+    "project_id": "PRJ-FASTAPI-001",
+    "title": "Production ML Inference REST API",
+    "difficulty": "INTERMEDIATE",
+    "skills_required": ["SKL-0012", "SKL-0060"],
+    "skills_practiced": ["SKL-0040", "SKL-0041", "SKL-0114"],
+    "prerequisites": ["SKL-0012", "SKL-0060"],
+    "career_relevance": ["CAR-AI-ENG", "CAR-BACKEND"],
+    "pathway_relevance": ["PATH-AI-APP", "PATH-MLOPS-ENG", "PATH-BACKEND-PYTHON"],
+    "description": "Package a trained ML model into an asynchronous FastAPI REST service with Pydantic request validation, batch scoring, health check endpoints, and a Docker container.",
+    "expected_outcomes": [
+      "FastAPI endpoint with OpenAPI documentation and input validation",
+      "Docker container image ready for cloud deployment"
+    ]
+  },
+  {
+    "project_id": "PRJ-DL-001",
+    "title": "Deep Neural Network Image & Sentiment Classifier",
+    "difficulty": "INTERMEDIATE",
+    "skills_required": ["SKL-0012", "SKL-0060"],
+    "skills_practiced": ["SKL-0061", "SKL-0067"],
+    "prerequisites": ["SKL-0012", "SKL-0060"],
+    "career_relevance": ["CAR-AI-ENG"],
+    "pathway_relevance": ["PATH-AI-APP", "PATH-ML-ENG", "PATH-AI-GENAI"],
+    "description": "Design and train deep multi-layer neural networks for image or text classification with PyTorch, monitoring training loss, validation accuracy, and early stopping.",
+    "expected_outcomes": [
+      "PyTorch training script with DataLoader and custom neural architecture",
+      "TensorBoard / Matplotlib training curve visualizations"
+    ]
+  },
+  {
+    "project_id": "PRJ-TRANS-001",
+    "title": "Fine-Tuned Transformer Document Classifier",
+    "difficulty": "ADVANCED",
+    "skills_required": ["SKL-0012", "SKL-0061"],
+    "skills_practiced": ["SKL-0077", "SKL-0071", "SKL-0076"],
+    "prerequisites": ["SKL-0012", "SKL-0061"],
+    "career_relevance": ["CAR-AI-ENG"],
+    "pathway_relevance": ["PATH-AI-GENAI", "PATH-AI-APP"],
+    "description": "Fine-tune a pretrained BERT/RoBERTa transformer model using Hugging Face Transformers for domain-specific text classification with LoRA/PEFT adaptation.",
+    "expected_outcomes": [
+      "Fine-tuned transformer checkpoint with evaluated macro F1 score",
+      "Hugging Face pipeline deployment for batch inference"
+    ]
+  },
+  {
+    "project_id": "PRJ-RAG-001",
+    "title": "Retrieval-Augmented Generation (RAG) Document Knowledge Assistant",
+    "difficulty": "ADVANCED",
+    "skills_required": ["SKL-0012", "SKL-0071"],
+    "skills_practiced": ["SKL-0073", "SKL-0075", "SKL-0074"],
+    "prerequisites": ["SKL-0012", "SKL-0071"],
+    "career_relevance": ["CAR-AI-ENG"],
+    "pathway_relevance": ["PATH-AI-GENAI", "PATH-AI-APP"],
+    "description": "Build an enterprise document question-answering assistant that embeds PDF manuals into a Vector Database (Chroma/Pinecone), performs hybrid search, and synthesizes answers using an LLM.",
+    "expected_outcomes": [
+      "Chunking, embedding, and vector storage pipeline",
+      "Hallucination mitigation with source citation retrieval",
+      "Interactive Streamlit / FastAPI UI"
+    ]
+  },
+  {
+    "project_id": "PRJ-AGENT-001",
+    "title": "Autonomous Multi-Tool AI Research Agent",
+    "difficulty": "CAPSTONE",
+    "skills_required": ["SKL-0012", "SKL-0071", "SKL-0073"],
+    "skills_practiced": ["SKL-0211", "SKL-0040", "SKL-0114"],
+    "prerequisites": ["SKL-0071", "SKL-0073"],
+    "career_relevance": ["CAR-AI-ENG"],
+    "pathway_relevance": ["PATH-AI-GENAI", "PATH-AI-APP"],
+    "description": "Construct an autonomous AI Agent utilizing ReAct reasoning loops, dynamic tool calling (web search, calculator, SQL query engine), and session memory to solve multi-step research queries.",
+    "expected_outcomes": [
+      "ReAct agent architecture with function calling and error recovery",
+      "Integrated SQLite database and search API tools",
+      "Dockerized production deployment"
+    ]
+  },
+  {
+    "project_id": "PRJ-SPRING-001",
+    "title": "Secure E-Commerce REST API with Spring Boot",
+    "difficulty": "INTERMEDIATE",
+    "skills_required": ["SKL-0011", "SKL-0047"],
+    "skills_practiced": ["SKL-0037", "SKL-0041", "SKL-0044"],
+    "prerequisites": ["SKL-0011"],
+    "career_relevance": ["CAR-BACKEND"],
+    "pathway_relevance": ["PATH-BACKEND-JAVA"],
+    "description": "Develop a multi-tier Spring Boot backend with Hibernate/JPA, PostgreSQL relational persistence, JWT authentication, and comprehensive unit/integration test suites.",
+    "expected_outcomes": [
+      "Spring Boot REST controller suite with Spring Security & JWT",
+      "PostgreSQL database migration scripts and transactional integrity"
+    ]
+  }
+]

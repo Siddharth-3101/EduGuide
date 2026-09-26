@@ -164,7 +164,7 @@ export const Navbar = ({ onToggleSidebar }) => {
             </div>
             <div className="hidden text-left md:block">
               <p className="text-xs font-editorial-title font-semibold uppercase leading-tight">
-                {user?.fullName || 'Alex Chen'}
+                {user?.fullName || 'Siddharth G'}
               </p>
               <p className="text-[10px] font-editorial-mono opacity-50">Student</p>
             </div>
@@ -174,7 +174,7 @@ export const Navbar = ({ onToggleSidebar }) => {
           {profileDropdownOpen && (
             <div className="absolute right-0 mt-2 w-56 rounded-md border border-[var(--border-line)] bg-[var(--card-surface)] py-1.5 shadow-lg z-50 animate-in fade-in duration-100 text-[var(--text-primary)]">
               <div className="px-3.5 py-2 border-b border-current/10">
-                <p className="text-xs font-editorial-title font-bold uppercase">{user?.fullName || 'Alex Chen'}</p>
+                <p className="text-xs font-editorial-title font-bold uppercase">{user?.fullName || 'Siddharth G'}</p>
                 <p className="text-[11px] font-editorial-mono opacity-60 truncate">{user?.email || 'alex.chen@university.edu'}</p>
               </div>
 

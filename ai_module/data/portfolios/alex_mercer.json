@@ -1,0 +1,114 @@
+{
+  "user_id": "alex_mercer",
+  "personal_info": {
+    "full_name": "Alex Mercer",
+    "location": "",
+    "phone": "",
+    "email": "alex.mercer@techcorp.io",
+    "linkedin": "",
+    "github": "",
+    "leetcode": "",
+    "summary": "Engineering candidate with demonstrated competencies in Distributed Systems, PostgreSQL, Kubernetes, Python, Docker, Apache Kafka."
+  },
+  "education": [
+    {
+      "institution": "Stanford University",
+      "degree": "Stanford University (2024)",
+      "year": "Completed",
+      "score": "Verified"
+    },
+    {
+      "institution": "B.S.",
+      "degree": "B.S. in Computer Science, Stanford University (2024)",
+      "year": "Completed",
+      "score": "Verified"
+    },
+    {
+      "institution": "be",
+      "degree": "bernetes, Kafka, PostgreSQL, Distributed Systems",
+      "year": "Completed",
+      "score": "Verified"
+    }
+  ],
+  "verified_skills": {
+    "SKL-0163": {
+      "skill_id": "SKL-0163",
+      "skill_name": "Distributed Systems",
+      "category": "System Design",
+      "source_document": "Resume: Alex_Mercer_Resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0049": {
+      "skill_id": "SKL-0049",
+      "skill_name": "PostgreSQL",
+      "category": "Databases",
+      "source_document": "Resume: Alex_Mercer_Resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0115": {
+      "skill_id": "SKL-0115",
+      "skill_name": "Kubernetes",
+      "category": "DevOps",
+      "source_document": "Resume: Alex_Mercer_Resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0012": {
+      "skill_id": "SKL-0012",
+      "skill_name": "Python",
+      "category": "Programming Languages",
+      "source_document": "Resume: Alex_Mercer_Resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0114": {
+      "skill_id": "SKL-0114",
+      "skill_name": "Docker",
+      "category": "DevOps",
+      "source_document": "Resume: Alex_Mercer_Resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0151": {
+      "skill_id": "SKL-0151",
+      "skill_name": "Apache Kafka",
+      "category": "Data Engineering",
+      "source_document": "Resume: Alex_Mercer_Resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0016": {
+      "skill_id": "SKL-0016",
+      "skill_name": "Go",
+      "category": "Programming Languages",
+      "source_document": "Resume: Alex_Mercer_Resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    }
+  },
+  "certificates": [],
+  "last_updated": "2026-09-26T01:10:00.484016",
+  "projects": [
+    {
+      "title": "Projects",
+      "tech_stack": "Extracted Software Stack",
+      "description": "Distributed KV Store: Built a distributed high-throughput Raft KV storage in Go and Docker.",
+      "bullets": [
+        "Distributed KV Store: Built a distributed high-throughput Raft KV storage in Go and Docker."
+      ],
+      "github_url": "https://github.com"
+    },
+    {
+      "title": "Real-Time Stream Engine",
+      "tech_stack": "Extracted Software Stack",
+      "description": "Created Kafka + Python event streaming pipeline with PostgreSQL.",
+      "bullets": [
+        "Created Kafka + Python event streaming pipeline with PostgreSQL."
+      ],
+      "github_url": "https://github.com"
+    }
+  ],
+  "certifications": []
+}

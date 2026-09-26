@@ -1,244 +1,674 @@
 import { MOCK_ROLES } from '../../data/mock/roles';
 import { MOCK_SKILLS } from '../../data/mock/skills';
 import { BACKEND_DEVELOPER_ROADMAP } from '../../data/mock/horizontalRoadmapData';
+import { ROLE_ROADMAPS } from '../../data/mock/roleRoadmaps';
+import { PATHWAY_ROADMAPS } from '../../data/mock/pathwayRoadmaps';
+import { careerApi } from './careerApi';
+import { apiClient } from './apiClient';
 
-// Mock graph nodes & edges data for interactive competency tree
-const roleGraphs = {
-  'backend-developer': {
-    roleTitle: 'Backend Developer',
-    coverageStats: {
-      coverage: 67,
-      verified: 8,
-      partial: 3,
-      missing: 4
-    },
-    nodes: [
-      // Root Node
+const ROLE_SPECIFIC_GAPS = {
+  'data-analyst': {
+    targetRole: 'Data Analyst',
+    competencyCoverage: 68,
+    verifiedCount: 5,
+    partialCount: 2,
+    missingCount: 2,
+    gapCards: [
       {
-        id: 'node-root',
-        type: 'roadmapNode',
-        position: { x: 380, y: 20 },
-        data: {
-          label: 'Backend Developer',
-          skillId: 'root',
-          status: 'target',
-          currentLevel: 'Goal',
-          requiredLevel: 'L3 / Mid-Senior',
-          category: 'Target Role',
-          isRoot: true
-        }
-      },
-
-      // Tier 1: Core Fundamentals
-      {
-        id: 'node-python',
-        type: 'roadmapNode',
-        position: { x: 80, y: 150 },
-        data: {
-          label: 'Python',
-          skillId: 'python',
-          status: 'verified',
-          currentLevel: 'Advanced',
-          requiredLevel: 'Advanced',
-          score: 89,
-          category: 'Core Language'
-        }
+        id: 'gap-bi-tools',
+        skillId: 'tableau-powerbi',
+        skillName: 'Tableau & Power BI Dashboards',
+        status: 'partial',
+        priority: 'High Priority',
+        requiredLevel: 'Intermediate',
+        currentLevel: 'Beginner',
+        importance: 'Critical',
+        why: 'Required by 82% of active Data Analyst job listings for executive reporting and KPI tracking.',
+        actions: [
+          { label: 'Learn Power BI & DAX', route: '/learning?skillId=powerbi', type: 'learn' },
+          { label: 'Take Assessment', route: '/assessments', type: 'assess' },
+          { label: 'Build Dashboard Project', route: '/projects', type: 'project' }
+        ]
       },
       {
-        id: 'node-sql',
-        type: 'roadmapNode',
-        position: { x: 380, y: 150 },
-        data: {
-          label: 'SQL & Relational DBs',
-          skillId: 'sql',
-          status: 'verified',
-          currentLevel: 'Advanced',
-          requiredLevel: 'Advanced',
-          score: 92,
-          category: 'Database'
-        }
+        id: 'gap-bigquery',
+        skillId: 'bigquery-snowflake',
+        skillName: 'BigQuery & Snowflake Warehousing',
+        status: 'missing',
+        priority: 'High Priority',
+        requiredLevel: 'Intermediate',
+        currentLevel: 'None',
+        importance: 'High',
+        why: 'Crucial for querying terabyte-scale analytical databases and cloud lakehouses.',
+        actions: [
+          { label: 'Learn Cloud SQL & Warehouses', route: '/learning?skillId=sql', type: 'learn' },
+          { label: 'Take Assessment', route: '/assessments', type: 'assess' }
+        ]
       },
       {
-        id: 'node-rest-api',
-        type: 'roadmapNode',
-        position: { x: 680, y: 150 },
-        data: {
-          label: 'REST API & HTTP',
-          skillId: 'rest-api',
-          status: 'verified',
-          currentLevel: 'Intermediate',
-          requiredLevel: 'Advanced',
-          score: 94,
-          category: 'Architecture'
-        }
-      },
-
-      // Tier 2: Frameworks & Deep Competencies
-      {
-        id: 'node-fastapi',
-        type: 'roadmapNode',
-        position: { x: 20, y: 300 },
-        data: {
-          label: 'FastAPI / Async',
-          skillId: 'fastapi',
-          status: 'verified',
-          currentLevel: 'Intermediate',
-          requiredLevel: 'Intermediate',
-          score: 85,
-          category: 'Framework'
-        }
+        id: 'gap-ab-testing',
+        skillId: 'ab-testing',
+        skillName: 'A/B Testing & Experimentation',
+        status: 'missing',
+        priority: 'Medium Priority',
+        requiredLevel: 'Intermediate',
+        currentLevel: 'None',
+        importance: 'Medium',
+        why: 'Essential for evaluating product features and statistical hypothesis testing in enterprise tech.',
+        actions: [
+          { label: 'Learn Experimentation Design', route: '/learning?skillId=statistics', type: 'learn' }
+        ]
       },
       {
-        id: 'node-testing',
-        type: 'roadmapNode',
-        position: { x: 190, y: 300 },
-        data: {
-          label: 'Automated Testing',
-          skillId: 'testing',
-          status: 'verified',
-          currentLevel: 'Intermediate',
-          requiredLevel: 'Intermediate',
-          score: 82,
-          category: 'Reliability'
-        }
-      },
-      {
-        id: 'node-postgresql',
-        type: 'roadmapNode',
-        position: { x: 380, y: 300 },
-        data: {
-          label: 'PostgreSQL Internals',
-          skillId: 'postgresql',
-          status: 'partial',
-          currentLevel: 'Beginner',
-          requiredLevel: 'Intermediate',
-          category: 'Database'
-        }
-      },
-      {
-        id: 'node-auth',
-        type: 'roadmapNode',
-        position: { x: 570, y: 300 },
-        data: {
-          label: 'Auth & OAuth2',
-          skillId: 'auth',
-          status: 'partial',
-          currentLevel: 'Beginner',
-          requiredLevel: 'Intermediate',
-          category: 'Security'
-        }
-      },
-      {
-        id: 'node-microservices',
-        type: 'roadmapNode',
-        position: { x: 760, y: 300 },
-        data: {
-          label: 'Microservices & Queues',
-          skillId: 'microservices',
-          status: 'partial',
-          currentLevel: 'Beginner',
-          requiredLevel: 'Intermediate',
-          category: 'Architecture'
-        }
-      },
-
-      // Tier 3: Critical Gaps (Recommended Next)
-      {
-        id: 'node-docker',
-        type: 'roadmapNode',
-        position: { x: 280, y: 450 },
-        data: {
-          label: 'Docker & Containers',
-          skillId: 'docker',
-          status: 'recommended-next', // 🔵 Recommended Next
-          currentLevel: 'None',
-          requiredLevel: 'Intermediate',
-          category: 'Containers & DevOps',
-          isRecommendedNext: true
-        }
-      },
-      {
-        id: 'node-spring-boot',
-        type: 'roadmapNode',
-        position: { x: 490, y: 450 },
-        data: {
-          label: 'Spring Boot',
-          skillId: 'spring-boot',
-          status: 'missing', // 🔴 Not Verified
-          currentLevel: 'None',
-          requiredLevel: 'Intermediate',
-          category: 'Framework'
-        }
-      },
-
-      // Tier 4: Cloud & Deployment
-      {
-        id: 'node-aws',
-        type: 'roadmapNode',
-        position: { x: 280, y: 600 },
-        data: {
-          label: 'AWS Cloud Architecture',
-          skillId: 'aws',
-          status: 'missing', // 🔴 Not Verified
-          currentLevel: 'None',
-          requiredLevel: 'Intermediate',
-          category: 'Cloud'
-        }
-      },
-      {
-        id: 'node-cicd',
-        type: 'roadmapNode',
-        position: { x: 490, y: 600 },
-        data: {
-          label: 'CI/CD Pipelines',
-          skillId: 'cicd',
-          status: 'partial',
-          currentLevel: 'Beginner',
-          requiredLevel: 'Intermediate',
-          category: 'DevOps'
-        }
+        id: 'gap-sql-verified',
+        skillId: 'sql',
+        skillName: 'Advanced SQL & Data Extraction',
+        status: 'verified',
+        priority: 'Verified Competency',
+        requiredLevel: 'Advanced',
+        currentLevel: 'Advanced',
+        importance: 'Critical',
+        why: 'Verified via 92% assessment benchmark and complex relational schema analysis.',
+        actions: [
+          { label: 'View Verified Evidence', route: '/portfolio', type: 'project' }
+        ]
       }
-    ],
-    edges: [
-      { id: 'e-root-py', source: 'node-root', target: 'node-python', animated: false },
-      { id: 'e-root-sql', source: 'node-root', target: 'node-sql', animated: false },
-      { id: 'e-root-api', source: 'node-root', target: 'node-rest-api', animated: false },
+    ]
+  },
+  'ai-engineer': {
+    targetRole: 'AI & Machine Learning Engineer',
+    competencyCoverage: 58,
+    verifiedCount: 4,
+    partialCount: 2,
+    missingCount: 3,
+    gapCards: [
+      {
+        id: 'gap-pytorch',
+        skillId: 'pytorch',
+        skillName: 'PyTorch & Deep Neural Networks',
+        status: 'partial',
+        priority: 'High Priority',
+        requiredLevel: 'Advanced',
+        currentLevel: 'Intermediate',
+        importance: 'Critical',
+        why: 'Standard framework for training neural networks, backpropagation, and GPU tensor acceleration.',
+        actions: [
+          { label: 'Deep Learning with PyTorch', route: '/learning?skillId=pytorch', type: 'learn' },
+          { label: 'Take Assessment', route: '/assessments', type: 'assess' }
+        ]
+      },
+      {
+        id: 'gap-rag-llm',
+        skillId: 'rag-llm',
+        skillName: 'RAG, LangChain & Vector Databases',
+        status: 'missing',
+        priority: 'High Priority',
+        requiredLevel: 'Intermediate',
+        currentLevel: 'None',
+        importance: 'Critical',
+        why: 'Highest demand competency in Generative AI engineering for building enterprise document assistants.',
+        actions: [
+          { label: 'Learn RAG & Vector DBs', route: '/learning?skillId=rag', type: 'learn' },
+          { label: 'Build Agent Project', route: '/projects', type: 'project' }
+        ]
+      },
+      {
+        id: 'gap-mlops',
+        skillId: 'mlops',
+        skillName: 'MLOps & Model Serving (FastAPI/Docker)',
+        status: 'missing',
+        priority: 'High Priority',
+        requiredLevel: 'Intermediate',
+        currentLevel: 'None',
+        importance: 'High',
+        why: 'Production deployment and latency optimization for AI endpoints.',
+        actions: [
+          { label: 'Explore MLOps Pipelines', route: '/learning?skillId=mlops', type: 'learn' }
+        ]
+      }
+    ]
+  },
+  'frontend-developer': {
+    targetRole: 'Frontend Developer',
+    competencyCoverage: 72,
+    verifiedCount: 6,
+    partialCount: 2,
+    missingCount: 2,
+    gapCards: [
+      {
+        id: 'gap-nextjs',
+        skillId: 'nextjs',
+        skillName: 'Next.js App Router & Server Components',
+        status: 'partial',
+        priority: 'High Priority',
+        requiredLevel: 'Advanced',
+        currentLevel: 'Intermediate',
+        importance: 'Critical',
+        why: 'Required by 80% of modern frontend listings for fast SSR, SEO, and streaming architecture.',
+        actions: [
+          { label: 'Learn Next.js 15', route: '/learning?skillId=nextjs', type: 'learn' },
+          { label: 'Take Assessment', route: '/assessments', type: 'assess' }
+        ]
+      },
+      {
+        id: 'gap-web-perf',
+        skillId: 'web-perf',
+        skillName: 'Web Performance & Core Vitals',
+        status: 'partial',
+        priority: 'Medium Priority',
+        requiredLevel: 'Intermediate',
+        currentLevel: 'Beginner',
+        importance: 'High',
+        why: 'Optimizing LCP, INP, and bundle size for enterprise scale web applications.',
+        actions: [
+          { label: 'Study Core Web Vitals', route: '/learning?skillId=perf', type: 'learn' }
+        ]
+      }
+    ]
+  },
+  'devops-engineer': {
+    targetRole: 'DevOps & Cloud Engineer',
+    competencyCoverage: 52,
+    verifiedCount: 4,
+    partialCount: 2,
+    missingCount: 3,
+    gapCards: [
+      {
+        id: 'gap-docker-devops',
+        skillId: 'docker',
+        skillName: 'Docker & Containerization',
+        status: 'partial',
+        priority: 'High Priority',
+        requiredLevel: 'Advanced',
+        currentLevel: 'Intermediate',
+        importance: 'Critical',
+        why: 'Essential container packaging and multi-stage build optimization.',
+        actions: [
+          { label: 'Learn Docker Mastery', route: '/learning?skillId=docker', type: 'learn' },
+          { label: 'Take Assessment', route: '/assessments/asmt-docker', type: 'assess' }
+        ]
+      },
+      {
+        id: 'gap-k8s',
+        skillId: 'kubernetes',
+        skillName: 'Kubernetes & Helm Orchestration',
+        status: 'missing',
+        priority: 'High Priority',
+        requiredLevel: 'Intermediate',
+        currentLevel: 'None',
+        importance: 'Critical',
+        why: 'Managing microservice clusters, auto-scaling, and rolling updates.',
+        actions: [
+          { label: 'Explore Kubernetes Architecture', route: '/learning?skillId=k8s', type: 'learn' }
+        ]
+      }
+    ]
+  },
+  'cloud-engineer': {
+    targetRole: 'AWS Cloud Engineer',
+    competencyCoverage: 48,
+    verifiedCount: 4,
+    partialCount: 2,
+    missingCount: 3,
+    gapCards: [
+      {
+        id: 'gap-aws-iam',
+        skillId: 'aws-iam',
+        skillName: 'AWS IAM & Core Compute (EC2)',
+        status: 'partial',
+        priority: 'High Priority',
+        requiredLevel: 'Advanced',
+        currentLevel: 'Intermediate',
+        importance: 'Critical',
+        why: 'Cloud security boundaries, role assumption, and auto-scaling architecture.',
+        actions: [
+          { label: 'Learn AWS Architecture', route: '/learning?skillId=aws', type: 'learn' }
+        ]
+      },
+      {
+        id: 'gap-aws-vpc',
+        skillId: 'aws-vpc',
+        skillName: 'AWS VPC & Cloud Networking',
+        status: 'missing',
+        priority: 'High Priority',
+        requiredLevel: 'Intermediate',
+        currentLevel: 'None',
+        importance: 'Critical',
+        why: 'Isolated subnets, NAT gateways, and secure VPC peering.',
+        actions: [
+          { label: 'Study AWS Networking', route: '/learning?skillId=aws', type: 'learn' }
+        ]
+      }
+    ]
+  },
+  'cybersecurity-analyst': {
+    targetRole: 'Cyber Security Analyst',
+    competencyCoverage: 50,
+    verifiedCount: 4,
+    partialCount: 2,
+    missingCount: 3,
+    gapCards: [
+      {
+        id: 'gap-siem',
+        skillId: 'siem',
+        skillName: 'SIEM & SOC Log Analysis (Splunk)',
+        status: 'partial',
+        priority: 'High Priority',
+        requiredLevel: 'Advanced',
+        currentLevel: 'Intermediate',
+        importance: 'Critical',
+        why: 'Real-time security log correlation and threat detection.',
+        actions: [
+          { label: 'Study SIEM Tools', route: '/learning?skillId=security', type: 'learn' }
+        ]
+      },
+      {
+        id: 'gap-vuln-scan',
+        skillId: 'vuln-scan',
+        skillName: 'Vulnerability Assessment (Nmap/Nessus)',
+        status: 'missing',
+        priority: 'High Priority',
+        requiredLevel: 'Intermediate',
+        currentLevel: 'None',
+        importance: 'High',
+        why: 'System vulnerability scanning and remediation roadmap planning.',
+        actions: [
+          { label: 'Learn Vulnerability Scanning', route: '/learning?skillId=security', type: 'learn' }
+        ]
+      }
+    ]
+  },
+  'ios-developer': {
+    targetRole: 'iOS Developer',
+    competencyCoverage: 52,
+    verifiedCount: 4,
+    partialCount: 2,
+    missingCount: 3,
+    gapCards: [
+      {
+        id: 'gap-swiftui',
+        skillId: 'swiftui',
+        skillName: 'SwiftUI & Declarative Architecture',
+        status: 'partial',
+        priority: 'High Priority',
+        requiredLevel: 'Advanced',
+        currentLevel: 'Intermediate',
+        importance: 'Critical',
+        why: 'Native Apple UI construction using modern reactive state patterns.',
+        actions: [
+          { label: 'Learn SwiftUI & State', route: '/learning?skillId=swift', type: 'learn' }
+        ]
+      },
+      {
+        id: 'gap-swift-async',
+        skillId: 'swift-async',
+        skillName: 'Swift Concurrency (async/await)',
+        status: 'missing',
+        priority: 'High Priority',
+        requiredLevel: 'Intermediate',
+        currentLevel: 'None',
+        importance: 'High',
+        why: 'Structured concurrency, Actors, and background thread execution.',
+        actions: [
+          { label: 'Study Swift Concurrency', route: '/learning?skillId=swift', type: 'learn' }
+        ]
+      }
+    ]
+  },
+  'blockchain-developer': {
+    targetRole: 'Blockchain Developer',
+    competencyCoverage: 46,
+    verifiedCount: 3,
+    partialCount: 2,
+    missingCount: 4,
+    gapCards: [
+      {
+        id: 'gap-solidity',
+        skillId: 'solidity',
+        skillName: 'Solidity & EVM Smart Contracts',
+        status: 'partial',
+        priority: 'High Priority',
+        requiredLevel: 'Advanced',
+        currentLevel: 'Intermediate',
+        importance: 'Critical',
+        why: 'Smart contract development, reentrancy guards, and gas optimization.',
+        actions: [
+          { label: 'Learn Solidity & Foundry', route: '/learning?skillId=blockchain', type: 'learn' }
+        ]
+      },
+      {
+        id: 'gap-foundry',
+        skillId: 'foundry',
+        skillName: 'Foundry & Smart Contract Testing',
+        status: 'missing',
+        priority: 'High Priority',
+        requiredLevel: 'Intermediate',
+        currentLevel: 'None',
+        importance: 'High',
+        why: 'Fuzz testing and automated security verification for deployed contracts.',
+        actions: [
+          { label: 'Study Contract Testing', route: '/learning?skillId=blockchain', type: 'learn' }
+        ]
+      }
+    ]
+  }
+};
 
-      { id: 'e-py-fastapi', source: 'node-python', target: 'node-fastapi' },
-      { id: 'e-py-test', source: 'node-python', target: 'node-testing' },
-      { id: 'e-sql-pg', source: 'node-sql', target: 'node-postgresql' },
-      { id: 'e-api-auth', source: 'node-rest-api', target: 'node-auth' },
-      { id: 'e-api-ms', source: 'node-rest-api', target: 'node-microservices' },
+const ROLE_ALIASES = {
+  '1': 'ai-engineer',
+  '2': 'backend-developer',
+  '3': 'frontend-developer',
+  '4': 'fullstack-developer',
+  '5': 'devops-engineer',
+  '6': 'cloud-engineer',
+  '7': 'data-analyst',
+  '8': 'cybersecurity-analyst',
+  '9': 'ios-developer',
+  '10': 'blockchain-developer',
+  'CAR-AI-ENG': 'ai-engineer',
+  'CAR-BACKEND': 'backend-developer',
+  'CAR-FRONTEND': 'frontend-developer',
+  'CAR-FULLSTACK': 'fullstack-developer',
+  'CAR-DEVOPS': 'devops-engineer',
+  'CAR-AWS-CLD': 'cloud-engineer',
+  'CAR-DATA-ANALYST': 'data-analyst',
+  'CAR-CYBERSEC': 'cybersecurity-analyst',
+  'CAR-IOS': 'ios-developer',
+  'CAR-BLOCKCHAIN': 'blockchain-developer'
+};
 
-      { id: 'e-fastapi-docker', source: 'node-fastapi', target: 'node-docker', animated: true },
-      { id: 'e-pg-docker', source: 'node-postgresql', target: 'node-docker', animated: true },
-      { id: 'e-ms-spring', source: 'node-microservices', target: 'node-spring-boot' },
+const resolveRoleId = (roleId) => {
+  if (!roleId) return 'backend-developer';
+  const str = String(roleId).toLowerCase().trim();
+  if (ROLE_ROADMAPS[str]) return str;
+  if (ROLE_ALIASES[str]) return ROLE_ALIASES[str];
+  if (ROLE_ALIASES[roleId]) return ROLE_ALIASES[roleId];
+  const found = MOCK_ROLES.find(r => r.id === str || r.roleId === str || String(r.id) === str || r.careerDomainId === roleId);
+  return found?.id || 'backend-developer';
+};
 
-      { id: 'e-docker-aws', source: 'node-docker', target: 'node-aws', animated: true },
-      { id: 'e-docker-cicd', source: 'node-docker', target: 'node-cicd' }
+const PATHWAY_GAPS = {
+  'PATH-BACKEND-PYTHON': {
+    targetRole: 'Python / FastAPI Microservices Developer',
+    competencyCoverage: 80,
+    verifiedCount: 6,
+    partialCount: 2,
+    missingCount: 1,
+    gapCards: [
+      {
+        id: 'gap-celery',
+        skillId: 'celery',
+        skillName: 'Celery & Asynchronous Task Queues',
+        status: 'partial',
+        priority: 'High Priority',
+        requiredLevel: 'Advanced',
+        currentLevel: 'Intermediate',
+        importance: 'Critical',
+        why: 'Required for background batch processing, email triggers, and scheduled jobs in FastAPI backends.',
+        actions: [
+          { label: 'Learn Celery & Redis Workers', route: '/learning?skillId=celery', type: 'learn' },
+          { label: 'Take Assessment', route: '/assessments', type: 'assess' }
+        ]
+      },
+      {
+        id: 'gap-alembic',
+        skillId: 'alembic',
+        skillName: 'Alembic Database Migrations',
+        status: 'missing',
+        priority: 'Medium Priority',
+        requiredLevel: 'Intermediate',
+        currentLevel: 'None',
+        importance: 'High',
+        why: 'Deterministic version-controlled schema migrations for SQLAlchemy models in production.',
+        actions: [
+          { label: 'Explore Alembic Migrations', route: '/learning?skillId=sql', type: 'learn' }
+        ]
+      },
+      {
+        id: 'gap-fastapi-verified',
+        skillId: 'fastapi',
+        skillName: 'FastAPI & Pydantic Validation',
+        status: 'verified',
+        priority: 'Verified Competency',
+        requiredLevel: 'Advanced',
+        currentLevel: 'Advanced',
+        importance: 'Critical',
+        why: 'Verified via 92% benchmark assessment and repository code evidence.',
+        actions: [
+          { label: 'View Verified Credentials', route: '/portfolio', type: 'project' }
+        ]
+      }
+    ]
+  },
+  'PATH-BACKEND-NODE': {
+    targetRole: 'Node.js / TypeScript Systems Developer',
+    competencyCoverage: 78,
+    verifiedCount: 6,
+    partialCount: 2,
+    missingCount: 1,
+    gapCards: [
+      {
+        id: 'gap-graphql',
+        skillId: 'graphql',
+        skillName: 'GraphQL & Apollo Federation',
+        status: 'partial',
+        priority: 'High Priority',
+        requiredLevel: 'Advanced',
+        currentLevel: 'Intermediate',
+        importance: 'Critical',
+        why: 'Declarative data fetching and microservice graph federation across Node services.',
+        actions: [
+          { label: 'Learn GraphQL Schema Design', route: '/learning?skillId=graphql', type: 'learn' },
+          { label: 'Take Assessment', route: '/assessments', type: 'assess' }
+        ]
+      },
+      {
+        id: 'gap-bullmq',
+        skillId: 'bullmq',
+        skillName: 'BullMQ & Redis Job Processing',
+        status: 'partial',
+        priority: 'Medium Priority',
+        requiredLevel: 'Intermediate',
+        currentLevel: 'Beginner',
+        importance: 'High',
+        why: 'Enterprise background job scheduling and rate-limited queue processing.',
+        actions: [
+          { label: 'Explore BullMQ Queues', route: '/learning?skillId=redis', type: 'learn' }
+        ]
+      },
+      {
+        id: 'gap-ts-verified',
+        skillId: 'typescript',
+        skillName: 'TypeScript & Express.js Core',
+        status: 'verified',
+        priority: 'Verified Competency',
+        requiredLevel: 'Advanced',
+        currentLevel: 'Advanced',
+        importance: 'Critical',
+        why: 'Verified via full-stack e-commerce project and 93% benchmark score.',
+        actions: [
+          { label: 'View Verified Project', route: '/portfolio', type: 'project' }
+        ]
+      }
+    ]
+  },
+  'PATH-AI-APP': {
+    targetRole: 'AI Application Engineer (LLMs & RAG)',
+    competencyCoverage: 75,
+    verifiedCount: 5,
+    partialCount: 2,
+    missingCount: 1,
+    gapCards: [
+      {
+        id: 'gap-rag',
+        skillId: 'rag',
+        skillName: 'Hybrid Retrieval & Context RAG',
+        status: 'partial',
+        priority: 'High Priority',
+        requiredLevel: 'Advanced',
+        currentLevel: 'Intermediate',
+        importance: 'Critical',
+        why: 'Required by 88% of LLM engineer listings for grounding models on private enterprise data.',
+        actions: [
+          { label: 'Study RAG Architecture', route: '/learning?skillId=rag', type: 'learn' },
+          { label: 'Take Assessment', route: '/assessments', type: 'assess' }
+        ]
+      },
+      {
+        id: 'gap-ai-agents',
+        skillId: 'ai-agents',
+        skillName: 'Autonomous Agent Tool Execution',
+        status: 'missing',
+        priority: 'High Priority',
+        requiredLevel: 'Intermediate',
+        currentLevel: 'None',
+        importance: 'High',
+        why: 'Enabling LLMs to execute external APIs, SQL queries, and multi-step tool loops.',
+        actions: [
+          { label: 'Explore Agentic Workflows', route: '/learning?skillId=llm', type: 'learn' }
+        ]
+      },
+      {
+        id: 'gap-prompt-verified',
+        skillId: 'prompt-engineering',
+        skillName: 'Prompt Engineering & JSON Schemas',
+        status: 'verified',
+        priority: 'Verified Competency',
+        requiredLevel: 'Advanced',
+        currentLevel: 'Advanced',
+        importance: 'Critical',
+        why: 'Verified via Ollama and structured JSON extraction pipeline implementations.',
+        actions: [
+          { label: 'View Evidence', route: '/portfolio', type: 'project' }
+        ]
+      }
+    ]
+  },
+  'PATH-AI-GENAI': {
+    targetRole: 'Generative AI & Agent Architect',
+    competencyCoverage: 76,
+    verifiedCount: 5,
+    partialCount: 2,
+    missingCount: 1,
+    gapCards: [
+      {
+        id: 'gap-lora',
+        skillId: 'peft-lora',
+        skillName: 'Fine-Tuning (PEFT, LoRA & QLoRA)',
+        status: 'partial',
+        priority: 'High Priority',
+        requiredLevel: 'Advanced',
+        currentLevel: 'Intermediate',
+        importance: 'Critical',
+        why: 'Adapting open-source foundational models to specialized domain tasks efficiently.',
+        actions: [
+          { label: 'Learn LoRA Fine-Tuning', route: '/learning?skillId=llm', type: 'learn' },
+          { label: 'Take Assessment', route: '/assessments', type: 'assess' }
+        ]
+      },
+      {
+        id: 'gap-guardrails',
+        skillId: 'ai-guardrails',
+        skillName: 'Safety, Guardrails & Hallucination Checks',
+        status: 'missing',
+        priority: 'High Priority',
+        requiredLevel: 'Intermediate',
+        currentLevel: 'None',
+        importance: 'High',
+        why: 'Critical for enterprise compliance, preventing prompt injections, and verifying factuality.',
+        actions: [
+          { label: 'Learn LLM Guardrails', route: '/learning?skillId=security', type: 'learn' }
+        ]
+      }
     ]
   }
 };
 
 export const roadmapService = {
   // Fetch interactive horizontal career skill graph
-  getRoleGraph: async (roleId = 'backend-developer') => {
-    await new Promise((r) => setTimeout(r, 120));
-    if (roleId === 'backend-developer') {
-      return BACKEND_DEVELOPER_ROADMAP;
+  getRoleGraph: async (rawRoleId = 'backend-developer', pathwayId = null) => {
+    // 1. If explicit pathwayId is provided and exists in PATHWAY_ROADMAPS, use it
+    if (pathwayId && PATHWAY_ROADMAPS[pathwayId]) {
+      return JSON.parse(JSON.stringify(PATHWAY_ROADMAPS[pathwayId]));
     }
-    return roleGraphs[roleId] || BACKEND_DEVELOPER_ROADMAP;
+
+    const roleId = resolveRoleId(rawRoleId);
+    const roleObj = MOCK_ROLES.find(r => r.id === roleId || r.roleId === roleId || r.careerDomainId === roleId) || MOCK_ROLES[0];
+    const roleTitle = roleObj.title;
+
+    // 2. Check if role has default pathway in PATHWAY_ROADMAPS
+    if (roleId === 'backend-developer' && PATHWAY_ROADMAPS['PATH-BACKEND-JAVA']) {
+      return JSON.parse(JSON.stringify(PATHWAY_ROADMAPS['PATH-BACKEND-JAVA']));
+    }
+    if (roleId === 'ai-engineer' && PATHWAY_ROADMAPS['PATH-AI-APP']) {
+      return JSON.parse(JSON.stringify(PATHWAY_ROADMAPS['PATH-AI-APP']));
+    }
+
+    // 3. If pre-configured roadmap exists in ROLE_ROADMAPS, use it
+    if (ROLE_ROADMAPS[roleId]) {
+      const graph = JSON.parse(JSON.stringify(ROLE_ROADMAPS[roleId]));
+      graph.roleTitle = roleTitle;
+      return graph;
+    }
+
+    // 4. Otherwise clone backend roadmap with customized title
+    const defaultGraph = JSON.parse(JSON.stringify(BACKEND_DEVELOPER_ROADMAP));
+    defaultGraph.roleId = roleId;
+    defaultGraph.roleTitle = roleTitle;
+    return defaultGraph;
   },
 
   // Skill Gap Analysis summary and cards with Priority logic
-  getSkillGapAnalysis: async (roleId = 'backend-developer') => {
-    await new Promise((r) => setTimeout(r, 150));
+  getSkillGapAnalysis: async (rawRoleId = 'backend-developer', pathwayId = null) => {
+    if (pathwayId && PATHWAY_GAPS[pathwayId]) {
+      return PATHWAY_GAPS[pathwayId];
+    }
+
+    const roleId = resolveRoleId(rawRoleId);
+    // Check if we have role-specific gap definitions
+    if (ROLE_SPECIFIC_GAPS[roleId]) {
+      return ROLE_SPECIFIC_GAPS[roleId];
+    }
+
+    try {
+      const response = await apiClient.get('/api/readiness', { timeout: 1500 });
+      const data = response.data?.data || response.data;
+      if (data && data.skillGaps && data.skillGaps.length > 0) {
+        return {
+          targetRole: data.targetRoleTitle || 'Backend Developer',
+          competencyCoverage: data.competencyCoveragePercentage || 84,
+          verifiedCount: data.verifiedSkills ? data.verifiedSkills.length : 8,
+          partialCount: data.partialSkills ? data.partialSkills.length : 3,
+          missingCount: data.missingSkills ? data.missingSkills.length : 4,
+          gapCards: data.skillGaps.map(g => ({
+            id: 'gap-' + g.skillId,
+            skillId: g.skillId,
+            skillName: g.skillName,
+            status: g.currentStatus ? g.currentStatus.toLowerCase() : 'missing',
+            priority: (g.gapPriority || 'HIGH') + ' Priority',
+            requiredLevel: g.requiredLevel || 'Intermediate',
+            currentLevel: g.currentStatus === 'EVIDENCE_BACKED' || g.currentStatus === 'PARTIAL' ? 'Intermediate' : 'None',
+            importance: g.importanceWeight >= 1.0 ? 'Critical' : 'High',
+            why: g.recommendationReason || `Identified competency gap for ${data.targetRoleTitle}.`,
+            actions: [
+              { label: 'Learn Fundamentals', route: `/learning?skillId=${g.skillId}`, type: 'learn' },
+              { label: 'Take Assessment', route: `/assessments`, type: 'assess' }
+            ]
+          }))
+        };
+      }
+    } catch (e) {}
+
+    const roleObj = MOCK_ROLES.find(r => r.id === roleId || r.careerDomainId === roleId) || MOCK_ROLES[0];
+    const roleTitle = roleObj.title;
+
+    await new Promise((r) => setTimeout(r, 100));
     return {
-      targetRole: 'Backend Developer',
-      competencyCoverage: 67,
+      targetRole: roleTitle,
+      competencyCoverage: roleId === 'backend-developer' ? 84 : 70,
       verifiedCount: 8,
       partialCount: 3,
-      missingCount: 4,
+      missingCount: 3,
       gapCards: [
         {
           id: 'gap-docker',
@@ -249,11 +679,11 @@ export const roadmapService = {
           requiredLevel: 'Intermediate',
           currentLevel: 'None',
           importance: 'Critical',
-          why: 'Required by 78% of your matched Backend Developer job roles. Resolving this advances overall competency coverage by +9%.',
+          why: `Required by 78% of active ${roleTitle} job opportunities. Resolving this advances overall competency coverage by +9%.`,
           actions: [
             { label: 'Learn Fundamentals', route: '/learning?skillId=docker', type: 'learn' },
-            { label: 'Take Assessment', route: '/assessments/asm-docker', type: 'assess' },
-            { label: 'Build Project', route: '/projects/proj-docker-api', type: 'project' }
+            { label: 'Take Assessment', route: '/assessments/asmt-docker', type: 'assess' },
+            { label: 'Build Project', route: '/projects/proj-1', type: 'project' }
           ]
         },
         {
@@ -265,39 +695,24 @@ export const roadmapService = {
           requiredLevel: 'Intermediate',
           currentLevel: 'None',
           importance: 'High',
-          why: 'Appears in 65% of job postings at TechNova, FinEdge, and CloudScale. Required for container deployment.',
+          why: `Essential for cloud deployment in ${roleTitle} roles at TechNova, Amazon, and CloudScale.`,
           actions: [
             { label: 'Learn AWS Architecture', route: '/learning?skillId=aws', type: 'learn' },
-            { label: 'Take Assessment', route: '/assessments/asm-docker', type: 'assess' }
+            { label: 'Take Assessment', route: '/assessments/asmt-docker', type: 'assess' }
           ]
         },
         {
           id: 'gap-spring-boot',
           skillId: 'spring-boot',
-          skillName: 'Spring Boot & Java Enterprise',
-          status: 'missing',
-          priority: 'Medium Priority',
-          requiredLevel: 'Intermediate',
-          currentLevel: 'None',
-          importance: 'Medium',
-          why: 'Valuable secondary enterprise stack for fintech and banking backend opportunities.',
+          skillName: 'Spring Boot & Microservices',
+          status: 'verified',
+          priority: 'Verified Competency',
+          requiredLevel: 'Advanced',
+          currentLevel: 'Advanced',
+          importance: 'High',
+          why: 'Verified from AgriSmart project repository code evidence and Spring Boot assessment pass.',
           actions: [
-            { label: 'View Resources', route: '/learning?skillId=spring-boot', type: 'learn' },
-            { label: 'Take Assessment', route: '/assessments', type: 'assess' }
-          ]
-        },
-        {
-          id: 'gap-redis',
-          skillId: 'redis',
-          skillName: 'Redis Caching & Concurrency',
-          status: 'partial',
-          priority: 'Low Priority',
-          requiredLevel: 'Intermediate',
-          currentLevel: 'Beginner',
-          importance: 'Low',
-          why: 'Partial evidence exists from your caching project. Verify to turn into full verified badge.',
-          actions: [
-            { label: 'Complete Verification', route: '/assessments/asm-docker', type: 'assess' }
+            { label: 'View Verified Evidence', route: '/portfolio', type: 'project' }
           ]
         }
       ]

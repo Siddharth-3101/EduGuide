@@ -21,7 +21,9 @@ if os.path.exists(venv_scripts):
 
 class SkillExtractor:
     def __init__(self, dataset_path="skillsync_skill_dataset (1).json"):
-        # Load dataset
+        if not os.path.isabs(dataset_path):
+            dataset_path = os.path.join(script_dir, dataset_path)
+            
         with open(dataset_path, 'r', encoding='utf-8') as f:
             self.skills_data = json.load(f)
         
@@ -52,54 +54,97 @@ class SkillExtractor:
             self.rec_predictor = RecognitionPredictor(manager)
 
     def extract_text_from_pdf_fast(self, pdf_path):
-        """Extract digital text from PDF in milliseconds using pypdfium2."""
+        """Extract digital text from PDF in milliseconds using pypdfium2 or pypdf."""
         try:
             import pypdfium2 as pdfium
             pdf = pdfium.PdfDocument(pdf_path)
             extracted_pages = []
-            for page in pdf:
-                text_page = page.get_textpage()
-                page_text = text_page.get_text_range()
-                if page_text:
-                    extracted_pages.append(page_text)
+            try:
+                for page in pdf:
+                    text_page = page.get_textpage()
+                    page_text = text_page.get_text_range()
+                    if page_text:
+                        clean_page = page_text.replace('\ufffe', ' ').replace('\ufeff', '')
+                        extracted_pages.append(clean_page)
+            finally:
+                pdf.close()
+            res = " ".join(extracted_pages).strip()
+            if res:
+                return res
+        except Exception:
+            pass
+
+        try:
+            import pypdf
+            reader = pypdf.PdfReader(pdf_path)
+            extracted_pages = []
+            try:
+                for page in reader.pages:
+                    t = page.extract_text()
+                    if t:
+                        clean_t = t.replace('\ufffe', ' ').replace('\ufeff', '')
+                        extracted_pages.append(clean_t)
+            finally:
+                if hasattr(reader, 'stream') and hasattr(reader.stream, 'close'):
+                    reader.stream.close()
             return " ".join(extracted_pages).strip()
-        except Exception as e:
+        except Exception:
             return ""
 
     def extract_text_with_surya(self, document_path):
         """High-accuracy fallback OCR using Surya-OCR for images and scanned PDFs."""
-        self._init_surya_ocr()
-        from surya.input.load import load_from_file
         try:
+            self._init_surya_ocr()
+            from surya.input.load import load_from_file
             images, _ = load_from_file(document_path)
+            page_results = self.rec_predictor(images, full_page=True)
+            extracted_text = []
+            for page in page_results:
+                for block in page.blocks:
+                    raw_text = re.sub(r'<[^>]+>', ' ', block.html)
+                    extracted_text.append(raw_text)
+            return " ".join(extracted_text)
         except Exception as e:
-            print(f"Error opening document {document_path}: {e}")
+            print(f"OCR processing unavailable for {document_path}: {e}")
             return ""
 
-        page_results = self.rec_predictor(images, full_page=True)
-        extracted_text = []
-        for page in page_results:
-            for block in page.blocks:
-                raw_text = re.sub(r'<[^>]+>', ' ', block.html)
-                extracted_text.append(raw_text)
-        return " ".join(extracted_text)
-
     def extract_text(self, document_path):
-        """Hybrid extractor: checks for instant digital text first, falls back to Surya-OCR."""
+        """Hybrid extractor: supports direct text files, instant digital PDF text, and fallback OCR."""
         ext = os.path.splitext(document_path)[1].lower()
-        
-        # 1. If it's a PDF, try ultra-fast digital text extraction first (<0.05s)
+
+        # 1. Plain text and markdown files
+        if ext in ['.txt', '.text', '.md', '.markdown', '.csv', '.json']:
+            try:
+                with open(document_path, 'r', encoding='utf-8', errors='ignore') as f:
+                    return f.read()
+            except Exception as e:
+                print(f"Error reading text document: {e}")
+                return ""
+
+        # 2. DOCX documents
+        if ext == '.docx':
+            try:
+                import zipfile
+                import xml.etree.ElementTree as ET
+                with zipfile.ZipFile(document_path) as z:
+                    xml_content = z.read('word/document.xml')
+                    tree = ET.fromstring(xml_content)
+                    texts = [node.text for node in tree.iter() if node.text]
+                    return " ".join(texts)
+            except Exception:
+                pass
+
+        # 3. If it's a PDF, try ultra-fast digital text extraction first (<0.05s)
         if ext == '.pdf':
             fast_text = self.extract_text_from_pdf_fast(document_path)
-            # If we found sufficient text, return immediately
             if len(fast_text.strip()) > 30:
                 print("⚡ Extracted text using Fast Digital Stream (< 0.05s)")
                 return fast_text
             else:
-                print("ℹ️ PDF appears to be a scanned image. Using Surya-OCR...")
+                print("ℹ️ PDF appears to be a scanned image. Using OCR fallback...")
 
-        # 2. Fall back to Surya-OCR for image files or scanned PDFs
-        print("🔍 Running Surya-OCR deep recognition model...")
+        # 4. Fall back to OCR for image files or scanned PDFs
+        print("🔍 Running OCR recognition model...")
         return self.extract_text_with_surya(document_path)
 
     def find_skills_in_text(self, text):

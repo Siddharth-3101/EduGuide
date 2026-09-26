@@ -242,7 +242,7 @@ export const SettingsPage = () => {
                       <GithubIcon className="h-6 w-6 text-slate-900" />
                       <div>
                         <h4 className="text-xs font-bold text-slate-900">GitHub</h4>
-                        <p className="text-[11px] text-slate-500">Connected as @alexchen (3 repositories verified)</p>
+                        <p className="text-[11px] text-slate-500">Connected as @siddharth-g (3 repositories verified)</p>
                       </div>
                     </div>
                     <Button variant="secondary" size="sm">

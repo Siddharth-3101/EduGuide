@@ -1,5 +1,127 @@
 export const MOCK_PROJECTS = [
   {
+    id: 'proj-agrismart',
+    title: 'AgriSmart — AI & IoT Precision Agriculture Platform',
+    shortDescription: 'End-to-end intelligent agricultural advisory system integrating IoT sensor telemetry, disease detection neural networks, and automated irrigation triggers.',
+    skills: ['Python', 'FastAPI', 'IoT', 'Machine Learning', 'React'],
+    difficulty: 'Advanced',
+    projectType: 'Full-Stack IoT & AI',
+    estimatedTime: '20+ hours',
+    progress: 100,
+    evidenceStatus: 'Verified',
+    skillGapBridged: 'Machine Learning & Full-Stack Systems',
+    githubRepoUrl: 'https://github.com/siddharth-g/AgriSmart',
+    liveDemoUrl: 'https://agrismart-iot.live',
+    detectedTechnologies: ['Python 3.11', 'FastAPI', 'TensorFlow/Keras', 'React 18', 'MQTT', 'SQLite/PostgreSQL'],
+    detectedSkills: ['Python', 'Machine Learning', 'REST API', 'React', 'Full Stack Development'],
+    skillEvidence: [
+      {
+        skill: 'Python & AI',
+        evidence: 'CNN Crop Disease Classifier & FastAPI Inference Pipeline',
+        source: 'GitHub README & models/inference.py',
+        status: 'Verified',
+        action: 'View Verified Credential',
+        assessmentRoute: null
+      },
+      {
+        skill: 'Full Stack Integration',
+        evidence: 'Real-time telemetry WebSocket dashboard with React',
+        source: 'Frontend Client / WebSocket Handler',
+        status: 'Verified',
+        action: 'View Credential',
+        assessmentRoute: null
+      }
+    ],
+    objective: 'Empower farmers with real-time soil moisture and weather telemetry paired with on-device/cloud CNN leaf pathology diagnosis to optimize water and pesticide dispatch.',
+    requirements: [
+      'Ingest live sensor packets via MQTT/HTTP endpoints with rate-limiting and input validation.',
+      'Deploy a quantized MobileNetV2 vision model classifying 14 crop diseases with >92% accuracy.',
+      'Construct a responsive React dashboard with chart visualizations and telemetry alert thresholds.',
+      'Implement asynchronous advisory notification alerts via SMS/WhatsApp webhooks.'
+    ],
+    architecture: `IoT Sensors (ESP32/DHT22) ──(MQTT/HTTP)──> [FastAPI Telemetry Gateway]
+                                                      │
+                       ┌──────────────────────────────┴──────────────────────────────┐
+                       ▼                                                             ▼
+         [PostgreSQL Historical DB]                                      [CNN Disease Inference Engine]
+                       │                                                             │
+                       └──────────────────────────────┬──────────────────────────────┘
+                                                      ▼
+                                       [React Monitoring Dashboard]`,
+    evaluationCriteria: [
+      { criterion: 'Telemetry Reliability', weight: '30%', detail: 'Zero packet loss during burst sensor transmissions.' },
+      { criterion: 'Model Inference Speed', weight: '35%', detail: 'Sub-200ms latency on leaf disease image analysis.' },
+      { criterion: 'Interface Polish', weight: '35%', detail: 'Clean telemetry visualization and responsive mobile view.' }
+    ],
+    submission: {
+      githubRepoUrl: 'https://github.com/siddharth-g/AgriSmart',
+      branch: 'main',
+      commitHash: '8f4e21a',
+      submittedAt: '2026-03-12T10:00:00Z',
+      status: 'Verified',
+      feedback: 'Production-ready architecture. Real-time telemetry pipeline and model inference benchmarks verified.'
+    }
+  },
+  {
+    id: 'proj-tivaa',
+    title: 'E-Commerce Platform (tivaa.in)',
+    shortDescription: 'Scalable multi-vendor e-commerce web platform featuring real-time catalog search, order checkout lifecycle, secure payment gateway integration, and relational inventory tracking.',
+    skills: ['React', 'Spring Boot', 'MySQL', 'REST API', 'Docker'],
+    difficulty: 'Advanced',
+    projectType: 'Production Web Application',
+    estimatedTime: '25+ hours',
+    progress: 100,
+    evidenceStatus: 'Verified',
+    skillGapBridged: 'Enterprise Web & Payment Systems',
+    githubRepoUrl: 'https://github.com/siddharth-g/tivaa-ecommerce',
+    liveDemoUrl: 'https://tivaa.in',
+    detectedTechnologies: ['React', 'TailwindCSS', 'Spring Boot', 'MySQL', 'Stripe/Razorpay API', 'Docker'],
+    detectedSkills: ['React', 'Spring Boot', 'MySQL', 'REST API', 'Database'],
+    skillEvidence: [
+      {
+        skill: 'Spring Boot & MySQL',
+        evidence: 'ACID transaction management and inventory reservation locking',
+        source: 'Order Processing Service & Repository Tests',
+        status: 'Verified',
+        action: 'View Credential',
+        assessmentRoute: null
+      },
+      {
+        skill: 'Payment Gateway',
+        evidence: 'Webhook signature verification and idempotent checkout flow',
+        source: 'PaymentController & Gateway Client',
+        status: 'Verified',
+        action: 'View Credential',
+        assessmentRoute: null
+      }
+    ],
+    objective: 'Build a production-grade e-commerce application handling concurrent product reservations, secure payment sessions, and real-time inventory reconciliation.',
+    requirements: [
+      'Design normalized relational schema with indexing on SKU, category, and seller foreign keys.',
+      'Implement atomic checkout transactions with pessimistic locking to prevent overselling.',
+      'Integrate payment webhooks with cryptographic signature verification and idempotent ledger logs.',
+      'Deliver a high-conversion, responsive React storefront with category filtering and cart persistence.'
+    ],
+    architecture: `Client (React / Vite) ──(HTTPS)──> [Spring Boot API Gateway / Microservice]
+                                                    │
+                             ┌──────────────────────┴──────────────────────┐
+                             ▼                                             ▼
+                 [MySQL 8 Relational DB]                       [Payment Webhook Service]`,
+    evaluationCriteria: [
+      { criterion: 'Transaction Safety', weight: '40%', detail: 'Strict ACID enforcement under high concurrent checkout pressure.' },
+      { criterion: 'Payment Integrity', weight: '30%', detail: 'Idempotent webhook listeners preventing double billing.' },
+      { criterion: 'UX Responsiveness', weight: '30%', detail: 'Optimistic UI updates and cart recovery.' }
+    ],
+    submission: {
+      githubRepoUrl: 'https://github.com/siddharth-g/tivaa-ecommerce',
+      branch: 'main',
+      commitHash: '4b7c19e',
+      submittedAt: '2026-02-28T18:40:00Z',
+      status: 'Verified',
+      feedback: 'Deployed to production at tivaa.in. Verified payment lifecycle and database transaction models.'
+    }
+  },
+  {
     id: 'proj-1',
     title: 'Containerized REST API with Docker & PostgreSQL',
     shortDescription: 'Build, dockerize, and orchestrate a multi-service REST backend with database migrations and container healthchecks.',
@@ -8,9 +130,9 @@ export const MOCK_PROJECTS = [
     projectType: 'Backend API & Infrastructure',
     estimatedTime: '6–8 hours',
     progress: 100,
-    evidenceStatus: 'Evidence Identified', // 'Submitted' | 'Analyzing' | 'Analyzed' | 'Evidence Identified' | 'Under Review' | 'Verified'
+    evidenceStatus: 'Evidence Identified',
     skillGapBridged: 'Docker & DevOps Infrastructure',
-    githubRepoUrl: 'https://github.com/alexchen/docker-fastapi-service',
+    githubRepoUrl: 'https://github.com/siddharth-g/docker-fastapi-service',
     liveDemoUrl: 'https://docker-fastapi.demo.dev',
     detectedTechnologies: ['Python', 'FastAPI', 'PostgreSQL', 'Docker', 'Alembic'],
     detectedSkills: ['REST API', 'Database', 'Backend Development', 'Docker'],
@@ -21,7 +143,7 @@ export const MOCK_PROJECTS = [
         source: 'GitHub README & multi-stage Dockerfile',
         status: 'Evidence Found',
         action: 'Take Docker Assessment',
-        assessmentRoute: '/assessments/docker'
+        assessmentRoute: '/assessments/asmt-docker'
       },
       {
         skill: 'REST API',
@@ -57,68 +179,12 @@ export const MOCK_PROJECTS = [
       { criterion: 'Security Hygiene', weight: '25%', detail: 'Non-root execution and zero hardcoded credentials.' }
     ],
     submission: {
-      githubRepoUrl: 'https://github.com/alexchen/docker-fastapi-service',
+      githubRepoUrl: 'https://github.com/siddharth-g/docker-fastapi-service',
       branch: 'main',
       commitHash: '7b2f90a',
       submittedAt: '2026-03-02T14:30:00Z',
       status: 'Evidence Identified',
       feedback: 'README and Dockerfile analyzed. 4 technologies identified. Ready for assessment verification.'
-    }
-  },
-  {
-    id: 'proj-2',
-    title: 'Student Management API',
-    shortDescription: 'Production RESTful service with FastAPI, PostgreSQL relational modeling, Dockerized container deployment, and JWT authentication.',
-    skills: ['Python', 'FastAPI', 'PostgreSQL', 'Docker'],
-    difficulty: 'Intermediate',
-    projectType: 'Backend API',
-    estimatedTime: '8–10 hours',
-    progress: 90,
-    evidenceStatus: 'Evidence Identified',
-    skillGapBridged: 'Docker & Backend Integration',
-    githubRepoUrl: 'https://github.com/alexchen/student-management-api',
-    liveDemoUrl: 'https://api.students-portal.example',
-    detectedTechnologies: ['Python', 'FastAPI', 'PostgreSQL', 'Docker'],
-    detectedSkills: ['REST API', 'Database', 'Backend Development', 'Docker'],
-    skillEvidence: [
-      {
-        skill: 'Docker',
-        evidence: 'Student Management API',
-        source: 'GitHub README',
-        status: 'Evidence Found',
-        action: 'Take Docker Assessment',
-        assessmentRoute: '/assessments/docker'
-      },
-      {
-        skill: 'Python',
-        evidence: 'Student Management API',
-        source: 'Codebase Analysis (98% Python)',
-        status: 'Verified',
-        action: 'View Skill',
-        assessmentRoute: null
-      }
-    ],
-    objective: 'Build a production-grade student records API handling secure enrollment, course prerequisites, and grade audit logs with automated schema migrations.',
-    requirements: [
-      'Define SQLAlchemy / SQLModel models with relational foreign key integrity.',
-      'Implement OAuth2 Bearer token authentication and role-based permissions.',
-      'Package in a multi-stage Docker container with healthcheck endpoints.'
-    ],
-    architecture: `Client ──(JWT)──> [FastAPI App] ──> [PostgreSQL DB]
-                            │
-                      [Docker Container]`,
-    evaluationCriteria: [
-      { criterion: 'Relational Integrity', weight: '35%', detail: 'Foreign key cascades and indexes on search queries.' },
-      { criterion: 'Containerization', weight: '35%', detail: 'Functional Docker build with slim alpine base.' },
-      { criterion: 'API Documentation', weight: '30%', detail: 'Clean OpenAPI / Swagger docs.' }
-    ],
-    submission: {
-      githubRepoUrl: 'https://github.com/alexchen/student-management-api',
-      branch: 'main',
-      commitHash: '9a3b11c',
-      submittedAt: '2026-03-10T11:15:00Z',
-      status: 'Evidence Identified',
-      feedback: 'GitHub repository analyzed successfully. High confidence technical evidence discovered for Docker.'
     }
   },
   {
@@ -132,7 +198,7 @@ export const MOCK_PROJECTS = [
     progress: 75,
     evidenceStatus: 'Under Review',
     skillGapBridged: 'Redis & Asynchronous Background Jobs',
-    githubRepoUrl: 'https://github.com/alexchen/async-celery-worker',
+    githubRepoUrl: 'https://github.com/siddharth-g/async-celery-worker',
     liveDemoUrl: '',
     detectedTechnologies: ['Python', 'Redis', 'Celery', 'FastAPI'],
     detectedSkills: ['Distributed Queues', 'Caching', 'REST API', 'Redis'],
@@ -165,7 +231,7 @@ export const MOCK_PROJECTS = [
       { criterion: 'Code Structure', weight: '40%', detail: 'Separation of API triggers and worker logic.' }
     ],
     submission: {
-      githubRepoUrl: 'https://github.com/alexchen/async-celery-worker',
+      githubRepoUrl: 'https://github.com/siddharth-g/async-celery-worker',
       branch: 'main',
       commitHash: '3f78a01',
       submittedAt: '2026-03-14T09:20:00Z',
@@ -184,7 +250,7 @@ export const MOCK_PROJECTS = [
     progress: 100,
     evidenceStatus: 'Verified',
     skillGapBridged: 'Spring Boot Enterprise Architecture',
-    githubRepoUrl: 'https://github.com/alexchen/spring-kafka-microservices',
+    githubRepoUrl: 'https://github.com/siddharth-g/spring-kafka-microservices',
     liveDemoUrl: 'https://kafka-orders.demo.dev',
     detectedTechnologies: ['Java 21', 'Spring Boot 3', 'Apache Kafka', 'PostgreSQL'],
     detectedSkills: ['Microservices', 'Event Streaming', 'Spring Boot', 'SQL'],
@@ -212,7 +278,7 @@ export const MOCK_PROJECTS = [
       { criterion: 'Testcontainers Suite', weight: '30%', detail: 'Automated integration tests running against containerized Kafka.' }
     ],
     submission: {
-      githubRepoUrl: 'https://github.com/alexchen/spring-kafka-microservices',
+      githubRepoUrl: 'https://github.com/siddharth-g/spring-kafka-microservices',
       branch: 'main',
       commitHash: '1a2b3c4',
       submittedAt: '2026-02-18T16:00:00Z',

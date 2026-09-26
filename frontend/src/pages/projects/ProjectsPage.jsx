@@ -49,6 +49,16 @@ export const ProjectsPage = () => {
 
   const filteredProjects = projects.filter((p) => {
     if (filterStatus === 'All') return true;
+    const status = (p.evidenceStatus || p.status || '').toLowerCase();
+    if (filterStatus === 'Verified') {
+      return status.includes('verified');
+    }
+    if (filterStatus === 'Evidence Identified') {
+      return status.includes('evidence') || status.includes('identified');
+    }
+    if (filterStatus === 'Under Review') {
+      return status.includes('review') || status.includes('submitted');
+    }
     return (p.evidenceStatus || p.status) === filterStatus;
   });
 

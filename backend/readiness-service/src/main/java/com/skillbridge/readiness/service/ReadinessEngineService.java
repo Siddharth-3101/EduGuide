@@ -78,16 +78,30 @@ public class ReadinessEngineService {
             totalRequiredWeight += weight;
 
             Optional<StudentSkill> match = studentSkills.stream()
-                    .filter(s -> s.getSkillId().equalsIgnoreCase(cc.getSkillId()))
+                    .filter(s -> s.getSkillId().equalsIgnoreCase(cc.getSkillId()) ||
+                            (s.getName() != null && s.getName().equalsIgnoreCase(cc.getSkillName())))
                     .findFirst();
 
             SkillStatus status = match.map(StudentSkill::getStatus).orElse(SkillStatus.MISSING);
 
-            if (status == SkillStatus.VERIFIED) {
+            if (status == SkillStatus.ASSESSMENT_VERIFIED || status == SkillStatus.VERIFIED) {
                 satisfiedWeight += weight * 1.0;
                 match.ifPresent(verifiedList::add);
-            } else if (status == SkillStatus.PARTIAL || status == SkillStatus.CLAIMED) {
-                satisfiedWeight += weight * 0.5;
+            } else if (status == SkillStatus.EVIDENCE_BACKED) {
+                satisfiedWeight += weight * 0.8;
+                match.ifPresent(partialList::add);
+
+                skillGaps.add(SkillGapDto.builder()
+                        .skillId(cc.getSkillId())
+                        .skillName(cc.getSkillName())
+                        .currentStatus(status)
+                        .requiredLevel(cc.getRequiredLevel())
+                        .importanceWeight(weight)
+                        .gapPriority(GapPriority.MEDIUM)
+                        .recommendationReason("Evidence-backed competency demonstrated. Complete SkillSync assessment to upgrade to ASSESSMENT_VERIFIED.")
+                        .build());
+            } else if (status == SkillStatus.CLAIMED || status == SkillStatus.PARTIAL) {
+                satisfiedWeight += weight * 0.4;
                 match.ifPresent(partialList::add);
 
                 skillGaps.add(SkillGapDto.builder()
@@ -97,7 +111,7 @@ public class ReadinessEngineService {
                         .requiredLevel(cc.getRequiredLevel())
                         .importanceWeight(weight)
                         .gapPriority(weight >= 1.0 ? GapPriority.HIGH : GapPriority.MEDIUM)
-                        .recommendationReason("Partial competency verified. Complete assessment or project to upgrade to VERIFIED.")
+                        .recommendationReason("Claimed skill. Complete recommended projects to provide evidence or take assessment.")
                         .build());
             } else {
                 // MISSING

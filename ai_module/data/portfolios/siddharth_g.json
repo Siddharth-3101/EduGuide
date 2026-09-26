@@ -1,0 +1,524 @@
+{
+  "user_id": "siddharth_g",
+  "personal_info": {
+    "full_name": "Siddharth G",
+    "location": "",
+    "phone": "8667366331",
+    "email": "siddharth310107@gmail.com",
+    "linkedin": "https://linkedin.com/in/siddharth-g-b1a2b9327",
+    "github": "https://github.com/Siddharth-3101",
+    "leetcode": "",
+    "summary": "Engineering candidate with demonstrated competencies in Object-Oriented Programming, Java, Machine Learning, Oracle Database, Cloud Computing, Authentication."
+  },
+  "education": [
+    {
+      "institution": "Karpagam College of Engineering",
+      "degree": "B.E. Computer Science and Engineering",
+      "year": "2024 - Present",
+      "score": "CGPA: 8.19"
+    }
+  ],
+  "verified_skills": {
+    "SKL-0003": {
+      "skill_id": "SKL-0003",
+      "skill_name": "Object-Oriented Programming",
+      "category": "Software Development",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0011": {
+      "skill_id": "SKL-0011",
+      "skill_name": "Java",
+      "category": "Programming Languages",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0060": {
+      "skill_id": "SKL-0060",
+      "skill_name": "Machine Learning",
+      "category": "AI & Machine Learning",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0050": {
+      "skill_id": "SKL-0050",
+      "skill_name": "Oracle Database",
+      "category": "Databases",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0096": {
+      "skill_id": "SKL-0096",
+      "skill_name": "Cloud Computing",
+      "category": "Cloud Computing",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0044": {
+      "skill_id": "SKL-0044",
+      "skill_name": "Authentication",
+      "category": "Backend Development",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0045": {
+      "skill_id": "SKL-0045",
+      "skill_name": "Authorization",
+      "category": "Backend Development",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0009": {
+      "skill_id": "SKL-0009",
+      "skill_name": "C",
+      "category": "Programming Languages",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0043": {
+      "skill_id": "SKL-0043",
+      "skill_name": "Microservices",
+      "category": "Backend Development",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0061": {
+      "skill_id": "SKL-0061",
+      "skill_name": "Deep Learning",
+      "category": "AI & Machine Learning",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0037": {
+      "skill_id": "SKL-0037",
+      "skill_name": "Spring Boot",
+      "category": "Backend Development",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0013": {
+      "skill_id": "SKL-0013",
+      "skill_name": "JavaScript",
+      "category": "Programming Languages",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0036": {
+      "skill_id": "SKL-0036",
+      "skill_name": "Express.js",
+      "category": "Backend Development",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0201": {
+      "skill_id": "SKL-0201",
+      "skill_name": "Leadership",
+      "category": "Communication & Soft Skills",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0005": {
+      "skill_id": "SKL-0005",
+      "skill_name": "Software Testing",
+      "category": "Software Development",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0030": {
+      "skill_id": "SKL-0030",
+      "skill_name": "Next.js",
+      "category": "Frontend Development",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0035": {
+      "skill_id": "SKL-0035",
+      "skill_name": "Node.js",
+      "category": "Backend Development",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0052": {
+      "skill_id": "SKL-0052",
+      "skill_name": "MongoDB",
+      "category": "Databases",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0012": {
+      "skill_id": "SKL-0012",
+      "skill_name": "Python",
+      "category": "Programming Languages",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0109": {
+      "skill_id": "SKL-0109",
+      "skill_name": "GitHub",
+      "category": "DevOps",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0027": {
+      "skill_id": "SKL-0027",
+      "skill_name": "React",
+      "category": "Frontend Development",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0048": {
+      "skill_id": "SKL-0048",
+      "skill_name": "MySQL",
+      "category": "Databases",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0118": {
+      "skill_id": "SKL-0118",
+      "skill_name": "Linux",
+      "category": "DevOps",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0025": {
+      "skill_id": "SKL-0025",
+      "skill_name": "HTML",
+      "category": "Frontend Development",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0041": {
+      "skill_id": "SKL-0041",
+      "skill_name": "REST API",
+      "category": "Backend Development",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0026": {
+      "skill_id": "SKL-0026",
+      "skill_name": "CSS",
+      "category": "Frontend Development",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0047": {
+      "skill_id": "SKL-0047",
+      "skill_name": "SQL",
+      "category": "Databases",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0097": {
+      "skill_id": "SKL-0097",
+      "skill_name": "Amazon Web Services",
+      "category": "Cloud Computing",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0108": {
+      "skill_id": "SKL-0108",
+      "skill_name": "Git",
+      "category": "DevOps",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0001": {
+      "skill_id": "SKL-0001",
+      "skill_name": "Software Development",
+      "category": "Software Development",
+      "source_document": "Certificate: A Beginner's Guide to Open Source Software Development (The Linux Foundation)",
+      "verified_at": "Just now",
+      "certificate_id": "LF 3eztkcqmim"
+    },
+    "SKL-0015": {
+      "skill_id": "SKL-0015",
+      "skill_name": "C++",
+      "category": "Programming",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0002": {
+      "skill_id": "SKL-0002",
+      "skill_name": "JavaScript",
+      "category": "Programming",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0049": {
+      "skill_id": "SKL-0049",
+      "skill_name": "PostgreSQL",
+      "category": "Databases",
+      "source_document": "Resume: ananya_sharma_resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0033": {
+      "skill_id": "SKL-0033",
+      "skill_name": "Spring Boot",
+      "category": "Backend Frameworks",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0034": {
+      "skill_id": "SKL-0034",
+      "skill_name": "Node.js",
+      "category": "Backend Frameworks",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0021": {
+      "skill_id": "SKL-0021",
+      "skill_name": "React",
+      "category": "Frontend Development",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0022": {
+      "skill_id": "SKL-0022",
+      "skill_name": "Next.js",
+      "category": "Frontend Development",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0130": {
+      "skill_id": "SKL-0130",
+      "skill_name": "AWS",
+      "category": "Cloud Platforms",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0112": {
+      "skill_id": "SKL-0112",
+      "skill_name": "Linux",
+      "category": "Operating Systems",
+      "source_document": "Resume: Elegant_resume_template.pdf",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0161": {
+      "skill_id": "SKL-0161",
+      "skill_name": "Replication",
+      "category": "System Design",
+      "source_document": "Resume: ananya_sharma_resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0014": {
+      "skill_id": "SKL-0014",
+      "skill_name": "TypeScript",
+      "category": "Programming Languages",
+      "source_document": "Resume: ananya_sharma_resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0115": {
+      "skill_id": "SKL-0115",
+      "skill_name": "Kubernetes",
+      "category": "DevOps",
+      "source_document": "Resume: ananya_sharma_resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0040": {
+      "skill_id": "SKL-0040",
+      "skill_name": "FastAPI",
+      "category": "Backend Development",
+      "source_document": "Resume: ananya_sharma_resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0114": {
+      "skill_id": "SKL-0114",
+      "skill_name": "Docker",
+      "category": "DevOps",
+      "source_document": "Resume: ananya_sharma_resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0053": {
+      "skill_id": "SKL-0053",
+      "skill_name": "Redis",
+      "category": "Databases",
+      "source_document": "Resume: ananya_sharma_resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0159": {
+      "skill_id": "SKL-0159",
+      "skill_name": "Caching",
+      "category": "System Design",
+      "source_document": "Resume: ananya_sharma_resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-0016": {
+      "skill_id": "SKL-0016",
+      "skill_name": "Go",
+      "category": "Programming Languages",
+      "source_document": "Resume: ananya_sharma_resume.txt",
+      "verified_at": "Extracted",
+      "certificate_id": "RESUME-VERIFIED"
+    },
+    "SKL-384": {
+      "skill_id": "SKL-384",
+      "skill_name": "Migration",
+      "category": "Technical Competency",
+      "source_document": "Certificate: AWS Certified Solutions Architect (AWS)",
+      "verified_at": "Just now",
+      "certificate_id": "AWS_Certified_Solutions_Architect.pdf"
+    },
+    "SKL-263": {
+      "skill_id": "SKL-263",
+      "skill_name": "Security",
+      "category": "Technical Competency",
+      "source_document": "Certificate: AWS Certified Solutions Architect (AWS)",
+      "verified_at": "Just now",
+      "certificate_id": "AWS_Certified_Solutions_Architect.pdf"
+    },
+    "SKL-214": {
+      "skill_id": "SKL-214",
+      "skill_name": "DevOps",
+      "category": "Technical Competency",
+      "source_document": "Certificate: AWS Certified Solutions Architect (AWS)",
+      "verified_at": "Just now",
+      "certificate_id": "AWS_Certified_Solutions_Architect.pdf"
+    },
+    "SKL-0135": {
+      "skill_id": "SKL-0135",
+      "skill_name": "HTTP/HTTPS",
+      "category": "Networking",
+      "source_document": "Certificate: Learnathon '25 : Describe the concepts of cybersecurity (Microsoft Learn)",
+      "verified_at": "Just now",
+      "certificate_id": "siddharth-5871"
+    },
+    "SKL-0059": {
+      "skill_id": "SKL-0059",
+      "skill_name": "Artificial Intelligence",
+      "category": "AI & Machine Learning",
+      "source_document": "Certificate: Learnathon'25 : Learn AI and Gen AI basics (Microsoft Learn)",
+      "verified_at": "Just now",
+      "certificate_id": "siddharth-5871"
+    },
+    "SKL-199": {
+      "skill_id": "SKL-199",
+      "skill_name": "cybersecurity",
+      "category": "Technical Competency",
+      "source_document": "Certificate: Learnathon '25 : Describe the concepts of cybersecurity (Microsoft Learn)",
+      "verified_at": "Just now",
+      "certificate_id": "siddharth-5871"
+    }
+  },
+  "certificates": [
+    {
+      "title": "Open Source Software Development, Linux and Git (LFD102)",
+      "issuer": "The Linux Foundation",
+      "issue_date": "2026",
+      "credential_id": "LF-LFD102-VERIFIED",
+      "skills": [
+        "Linux",
+        "Git",
+        "GitHub"
+      ]
+    }
+  ],
+  "last_updated": "2026-09-26T02:29:55.634188",
+  "projects": [
+    {
+      "title": "EduGuide",
+      "tech_stack": "Data Visualization, Authorization, Tailwind CSS, React, Routing, HTTP/HTTPS, Shell Scripting, JavaScript",
+      "bullets": [
+        "Project evidence analyzed via GitHub repository.",
+        "Repository: https://github.com/Siddharth-3101/EduGuide"
+      ]
+    },
+    {
+      "title": "AgriSmart — AI & IoT Precision Agriculture Platform",
+      "tech_stack": "Python, FastAPI, IoT, Machine Learning, React",
+      "bullets": [
+        "End-to-end intelligent agricultural advisory system integrating IoT sensor telemetry, disease detection neural networks, and automated irrigation triggers.",
+        "Repository: https://github.com/siddharth-g/AgriSmart"
+      ]
+    },
+    {
+      "title": "E-Commerce Platform (tivaa.in)",
+      "tech_stack": "React, Spring Boot, MySQL, REST API, Docker",
+      "bullets": [
+        "Scalable multi-vendor e-commerce web platform featuring real-time catalog search, order checkout lifecycle, secure payment gateway integration, and relational inventory tracking.",
+        "Repository: https://github.com/siddharth-g/tivaa-ecommerce"
+      ]
+    },
+    {
+      "title": "Containerized REST API with Docker & PostgreSQL",
+      "tech_stack": "Docker, REST API, PostgreSQL, Python",
+      "bullets": [
+        "Build, dockerize, and orchestrate a multi-service REST backend with database migrations and container healthchecks.",
+        "Repository: https://github.com/siddharth-g/docker-fastapi-service"
+      ]
+    },
+    {
+      "title": "Distributed Asynchronous Task Queue with Redis",
+      "tech_stack": "Python, Redis, REST API",
+      "bullets": [
+        "Implement worker queues, retries with exponential backoff, and dead-letter queues using Redis and Python Celery.",
+        "Repository: https://github.com/siddharth-g/async-celery-worker"
+      ]
+    },
+    {
+      "title": "Event-Driven Microservices with Kafka & Spring Boot",
+      "tech_stack": "Spring Boot, SQL, REST API",
+      "bullets": [
+        "Build an order processing pipeline with event streaming, transactional outbox pattern, and CQRS separation.",
+        "Repository: https://github.com/siddharth-g/spring-kafka-microservices"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Open Source Software Development, Linux and Git (LFD102)",
+      "issuer": "The Linux Foundation",
+      "issue_date": "2026",
+      "credential_id": "LF-LFD102-VERIFIED",
+      "skills": [
+        "Linux",
+        "Git",
+        "GitHub"
+      ]
+    }
+  ]
+}

@@ -6,13 +6,15 @@ export const Button = ({
   size = 'md', // 'sm' | 'md' | 'lg'
   disabled = false,
   loading = false,
-  icon: Icon,
+  icon,
+  iconLeft,
   iconRight: IconRight,
   className = '',
   onClick,
   type = 'button',
   ...props
 }) => {
+  const Icon = icon || iconLeft;
   const baseStyles = 'inline-flex items-center justify-center font-editorial-mono uppercase tracking-wider font-semibold transition-all duration-150 rounded-sm focus:outline-none disabled:opacity-40 disabled:pointer-events-none active:scale-[0.99] select-none';
 
   const sizes = {

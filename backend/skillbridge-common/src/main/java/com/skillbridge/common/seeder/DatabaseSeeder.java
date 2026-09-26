@@ -1,5 +1,6 @@
 package com.skillbridge.common.seeder;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillbridge.common.model.*;
 import com.skillbridge.common.model.enums.*;
@@ -7,11 +8,15 @@ import com.skillbridge.common.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
@@ -29,10 +34,26 @@ public class DatabaseSeeder implements CommandLineRunner {
     private final CourseRepository courseRepository;
     private final ProjectRepository projectRepository;
     private final JobRepository jobRepository;
+    private final PathwayRepository pathwayRepository;
+    private final RoadmapStageRepository roadmapStageRepository;
     private final PasswordEncoder passwordEncoder;
     private final ObjectMapper objectMapper;
 
-    public DatabaseSeeder(UserRepository userRepository, StudentProfileRepository studentProfileRepository, CareerRoleRepository careerRoleRepository, CareerCompetencyRepository careerCompetencyRepository, SkillRepository skillRepository, StudentSkillRepository studentSkillRepository, AssessmentRepository assessmentRepository, AssessmentQuestionRepository assessmentQuestionRepository, CourseRepository courseRepository, ProjectRepository projectRepository, JobRepository jobRepository, PasswordEncoder passwordEncoder, ObjectMapper objectMapper) {
+    public DatabaseSeeder(UserRepository userRepository,
+                          StudentProfileRepository studentProfileRepository,
+                          CareerRoleRepository careerRoleRepository,
+                          CareerCompetencyRepository careerCompetencyRepository,
+                          SkillRepository skillRepository,
+                          StudentSkillRepository studentSkillRepository,
+                          AssessmentRepository assessmentRepository,
+                          AssessmentQuestionRepository assessmentQuestionRepository,
+                          CourseRepository courseRepository,
+                          ProjectRepository projectRepository,
+                          JobRepository jobRepository,
+                          PathwayRepository pathwayRepository,
+                          RoadmapStageRepository roadmapStageRepository,
+                          PasswordEncoder passwordEncoder,
+                          ObjectMapper objectMapper) {
         this.userRepository = userRepository;
         this.studentProfileRepository = studentProfileRepository;
         this.careerRoleRepository = careerRoleRepository;
@@ -44,6 +65,8 @@ public class DatabaseSeeder implements CommandLineRunner {
         this.courseRepository = courseRepository;
         this.projectRepository = projectRepository;
         this.jobRepository = jobRepository;
+        this.pathwayRepository = pathwayRepository;
+        this.roadmapStageRepository = roadmapStageRepository;
         this.passwordEncoder = passwordEncoder;
         this.objectMapper = objectMapper;
     }
@@ -51,8 +74,8 @@ public class DatabaseSeeder implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         log.info("Checking SkillBridge Database Seed Status...");
-        seedSkills();
-        seedCareerRoles();
+        seedCanonicalSkills();
+        seedCareerRolesAndPathways();
         seedAssessments();
         seedProjects();
         seedCourses();
@@ -61,127 +84,261 @@ public class DatabaseSeeder implements CommandLineRunner {
         log.info("SkillBridge Database Initialization Complete!");
     }
 
-    private void seedSkills() {
-        if (skillRepository.count() >= 24) return;
+    private void seedCanonicalSkills() {
+        if (skillRepository.count() >= 222) {
+            log.info("Skills already seeded: {}", skillRepository.count());
+            return;
+        }
 
-        List<Skill> skills = Arrays.asList(
-                Skill.builder().skillId("java").name("Java").category("Programming").description("Object-oriented programming language").build(),
-                Skill.builder().skillId("python").name("Python").category("Programming").description("High-level interpreted language").build(),
-                Skill.builder().skillId("javascript").name("JavaScript").category("Frontend").description("Web scripting language").build(),
-                Skill.builder().skillId("typescript").name("TypeScript").category("Frontend").description("Typed JavaScript superset").build(),
-                Skill.builder().skillId("react").name("React").category("Frontend").description("Frontend UI library").build(),
-                Skill.builder().skillId("nextjs").name("Next.js").category("Frontend").description("React framework for SSR & full-stack apps").build(),
-                Skill.builder().skillId("spring-boot").name("Spring Boot").category("Backend").description("Java microservice framework").build(),
-                Skill.builder().skillId("rest-api").name("REST API").category("Backend").description("Web API architecture style").build(),
-                Skill.builder().skillId("graphql").name("GraphQL").category("Backend").description("Query language for APIs").build(),
-                Skill.builder().skillId("kafka").name("Apache Kafka").category("Backend").description("Distributed event streaming platform").build(),
-                Skill.builder().skillId("sql").name("SQL").category("Database").description("Relational database query language").build(),
-                Skill.builder().skillId("mysql").name("MySQL").category("Database").description("Relational database management system").build(),
-                Skill.builder().skillId("postgresql").name("PostgreSQL").category("Database").description("Advanced open-source relational database").build(),
-                Skill.builder().skillId("mongodb").name("MongoDB").category("Database").description("NoSQL document database").build(),
-                Skill.builder().skillId("docker").name("Docker").category("Cloud").description("Containerization platform").build(),
-                Skill.builder().skillId("kubernetes").name("Kubernetes").category("Cloud").description("Container orchestration platform").build(),
-                Skill.builder().skillId("aws").name("AWS").category("Cloud").description("Amazon Web Services cloud platform").build(),
-                Skill.builder().skillId("git").name("Git").category("DevOps").description("Distributed version control system").build(),
-                Skill.builder().skillId("github").name("GitHub").category("DevOps").description("Code hosting & collaboration platform").build(),
-                Skill.builder().skillId("machine-learning").name("Machine Learning").category("AI/ML").description("Predictive algorithms and models").build(),
-                Skill.builder().skillId("tensorflow").name("TensorFlow").category("AI/ML").description("Open source machine learning framework").build(),
-                Skill.builder().skillId("data-analysis").name("Data Analysis").category("Data").description("Data processing and visualization").build(),
-                Skill.builder().skillId("cybersecurity").name("Cybersecurity").category("Cybersecurity").description("Network & application security").build(),
-                Skill.builder().skillId("tailwind").name("Tailwind CSS").category("Frontend").description("Utility-first CSS framework").build()
+        try {
+            InputStream is = getClass().getClassLoader().getResourceAsStream("data/skillsync_skill_dataset_enriched.csv");
+            if (is == null) {
+                log.warn("Could not find data/skillsync_skill_dataset_enriched.csv on classpath. Seeding baseline skills.");
+                seedBaselineSkills();
+                return;
+            }
+
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+                String header = reader.readLine(); // skip header
+                String line;
+                int count = 0;
+                while ((line = reader.readLine()) != null) {
+                    if (line.trim().isEmpty()) continue;
+                    List<String> parts = parseCsvLine(line);
+                    if (parts.size() >= 7) {
+                        String skillId = parts.get(0).trim();
+                        String skillName = parts.get(1).trim();
+                        String category = parts.get(2).trim();
+                        String description = parts.get(5).trim();
+                        String aliases = parts.get(6).trim();
+
+                        if (skillRepository.findBySkillId(skillId).isEmpty()) {
+                            Skill skill = Skill.builder()
+                                    .skillId(skillId)
+                                    .name(skillName)
+                                    .category(category)
+                                    .description(description)
+                                    .tier(2)
+                                    .aliases(aliases)
+                                    .build();
+                            skillRepository.save(skill);
+                            count++;
+                        }
+                    }
+                }
+                log.info("Successfully seeded {} canonical skills from CSV. Total: {}", count, skillRepository.count());
+            }
+        } catch (Exception e) {
+            log.error("Failed to seed skills from CSV: {}", e.getMessage(), e);
+            seedBaselineSkills();
+        }
+    }
+
+    private void seedBaselineSkills() {
+        List<Skill> fallback = Arrays.asList(
+                Skill.builder().skillId("SKL-0011").name("Java").category("Programming").aliases("java;core java").build(),
+                Skill.builder().skillId("SKL-0012").name("Python").category("Programming").aliases("python;python3").build(),
+                Skill.builder().skillId("SKL-0013").name("JavaScript").category("Frontend").aliases("javascript;js").build(),
+                Skill.builder().skillId("SKL-0014").name("TypeScript").category("Frontend").aliases("typescript;ts").build(),
+                Skill.builder().skillId("SKL-0027").name("React").category("Frontend").aliases("react;reactjs").build(),
+                Skill.builder().skillId("SKL-0030").name("Next.js").category("Frontend").aliases("nextjs;next.js").build(),
+                Skill.builder().skillId("SKL-0039").name("Spring Boot").category("Backend").aliases("spring-boot;spring boot").build(),
+                Skill.builder().skillId("SKL-0041").name("REST API").category("Backend").aliases("rest-api;rest api").build(),
+                Skill.builder().skillId("SKL-0047").name("SQL").category("Database").aliases("sql").build(),
+                Skill.builder().skillId("SKL-0049").name("PostgreSQL").category("Database").aliases("postgresql;postgres").build(),
+                Skill.builder().skillId("SKL-0114").name("Docker").category("Cloud").aliases("docker;containers").build(),
+                Skill.builder().skillId("SKL-0097").name("Amazon Web Services").category("Cloud").aliases("aws;amazon web services").build()
         );
-
-        for (Skill s : skills) {
+        for (Skill s : fallback) {
             if (skillRepository.findBySkillId(s.getSkillId()).isEmpty()) {
                 skillRepository.save(s);
             }
         }
-        log.info("Seeded skills. Total in database: {}", skillRepository.count());
     }
 
-    private void seedCareerRoles() {
-        if (careerRoleRepository.count() >= 9) return;
-
-        List<CareerRole> roles = Arrays.asList(
-                CareerRole.builder().roleId("software-engineer").title("Software Engineer").category("Engineering").importance("High").requiredSkillsCount(8).description("Build scalable software systems").build(),
-                CareerRole.builder().roleId("backend-developer").title("Backend Developer").category("Engineering").importance("High").requiredSkillsCount(7).description("Develop server-side REST APIs and database architectures").build(),
-                CareerRole.builder().roleId("frontend-developer").title("Frontend Developer").category("Engineering").importance("High").requiredSkillsCount(6).description("Craft responsive user interfaces and modern web applications").build(),
-                CareerRole.builder().roleId("devops-engineer").title("DevOps Engineer").category("Infrastructure").importance("High").requiredSkillsCount(7).description("Automate CI/CD pipelines and manage cloud container clusters").build(),
-                CareerRole.builder().roleId("data-analyst").title("Data Analyst").category("Analytics").importance("Medium").requiredSkillsCount(5).description("Analyze business metrics and construct insight dashboards").build(),
-                CareerRole.builder().roleId("data-scientist").title("Data Scientist").category("AI/Data").importance("High").requiredSkillsCount(6).description("Train predictive ML models and process big data").build(),
-                CareerRole.builder().roleId("cloud-engineer").title("Cloud Engineer").category("Infrastructure").importance("High").requiredSkillsCount(6).description("Deploy and manage cloud infrastructure and microservices").build(),
-                CareerRole.builder().roleId("cybersecurity-analyst").title("Cybersecurity Analyst").category("Security").importance("High").requiredSkillsCount(5).description("Monitor vulnerabilities and secure enterprise infrastructure").build(),
-                CareerRole.builder().roleId("ai-engineer").title("AI / ML Engineer").category("AI/ML").importance("High").requiredSkillsCount(6).description("Design neural networks, LLM workflows, and intelligent automation systems").build()
-        );
-        
-        for (CareerRole r : roles) {
-            if (careerRoleRepository.findByRoleId(r.getRoleId()).isEmpty()) {
-                careerRoleRepository.save(r);
-            }
+    private void seedCareerRolesAndPathways() {
+        if (careerRoleRepository.count() >= 10 && pathwayRepository.count() >= 15) {
+            log.info("Career roles and pathways already seeded.");
+            return;
         }
 
-        List<CareerCompetency> backendCompetencies = Arrays.asList(
-                CareerCompetency.builder().roleId("backend-developer").skillId("java").skillName("Java").requiredLevel("Advanced").importanceWeight(1.0).build(),
-                CareerCompetency.builder().roleId("backend-developer").skillId("spring-boot").skillName("Spring Boot").requiredLevel("Intermediate").importanceWeight(1.0).build(),
-                CareerCompetency.builder().roleId("backend-developer").skillId("rest-api").skillName("REST API").requiredLevel("Advanced").importanceWeight(1.0).build(),
-                CareerCompetency.builder().roleId("backend-developer").skillId("sql").skillName("SQL").requiredLevel("Intermediate").importanceWeight(1.0).build(),
-                CareerCompetency.builder().roleId("backend-developer").skillId("mysql").skillName("MySQL").requiredLevel("Intermediate").importanceWeight(0.8).build(),
-                CareerCompetency.builder().roleId("backend-developer").skillId("docker").skillName("Docker").requiredLevel("Intermediate").importanceWeight(1.0).build(),
-                CareerCompetency.builder().roleId("backend-developer").skillId("git").skillName("Git").requiredLevel("Intermediate").importanceWeight(0.8).build()
+        Map<String, String> roleMapping = Map.of(
+                "CAR-AI-ENG", "ai-engineer",
+                "CAR-AWS-CLD", "cloud-engineer",
+                "CAR-BACKEND", "backend-developer",
+                "CAR-BLOCKCHAIN", "blockchain-developer",
+                "CAR-CYBERSEC", "cybersecurity-analyst",
+                "CAR-DATA-ANALYST", "data-analyst",
+                "CAR-DEVOPS", "devops-engineer",
+                "CAR-FRONTEND", "frontend-developer",
+                "CAR-FULLSTACK", "fullstack-developer",
+                "CAR-IOS", "ios-developer"
         );
-        careerCompetencyRepository.saveAll(backendCompetencies);
 
-        List<CareerCompetency> seCompetencies = Arrays.asList(
-                CareerCompetency.builder().roleId("software-engineer").skillId("java").skillName("Java").requiredLevel("Advanced").importanceWeight(1.0).build(),
-                CareerCompetency.builder().roleId("software-engineer").skillId("python").skillName("Python").requiredLevel("Intermediate").importanceWeight(0.8).build(),
-                CareerCompetency.builder().roleId("software-engineer").skillId("sql").skillName("SQL").requiredLevel("Intermediate").importanceWeight(1.0).build(),
-                CareerCompetency.builder().roleId("software-engineer").skillId("rest-api").skillName("REST API").requiredLevel("Intermediate").importanceWeight(1.0).build(),
-                CareerCompetency.builder().roleId("software-engineer").skillId("docker").skillName("Docker").requiredLevel("Intermediate").importanceWeight(0.8).build(),
-                CareerCompetency.builder().roleId("software-engineer").skillId("git").skillName("Git").requiredLevel("Intermediate").importanceWeight(0.8).build()
-        );
-        careerCompetencyRepository.saveAll(seCompetencies);
+        try {
+            InputStream is = getClass().getClassLoader().getResourceAsStream("data/structured_roadmaps.json");
+            if (is == null) {
+                log.warn("Could not find data/structured_roadmaps.json on classpath.");
+                return;
+            }
 
-        log.info("Seeded career roles and competencies. Total roles: {}", careerRoleRepository.count());
+            JsonNode root = objectMapper.readTree(is);
+            if (root.isArray()) {
+                for (JsonNode careerNode : root) {
+                    String careerId = careerNode.path("career_id").asText();
+                    String careerName = careerNode.path("career_name").asText();
+                    String category = careerNode.path("category").asText("Engineering");
+                    String description = careerNode.path("description").asText();
+                    String sourcePdf = careerNode.path("provenance").path("source").asText(careerId.toLowerCase() + ".pdf");
+                    String roleSlug = roleMapping.getOrDefault(careerId, careerId.toLowerCase());
+
+                    CareerRole role = careerRoleRepository.findByRoleId(roleSlug)
+                            .orElseGet(() -> CareerRole.builder()
+                                    .roleId(roleSlug)
+                                    .careerDomainId(careerId)
+                                    .sourcePdf(sourcePdf)
+                                    .title(careerName)
+                                    .category(category)
+                                    .description(description)
+                                    .importance("High")
+                                    .requiredSkillsCount(8)
+                                    .build());
+                    role.setCareerDomainId(careerId);
+                    role.setSourcePdf(sourcePdf);
+                    careerRoleRepository.save(role);
+
+                    // Seed pathways & stages for this career
+                    JsonNode pathways = careerNode.path("pathways");
+                    if (pathways.isArray()) {
+                        for (JsonNode pNode : pathways) {
+                            String pathwayId = pNode.path("pathway_id").asText();
+                            String pathwayTitle = pNode.path("pathway_name").asText();
+                            String pathwayDesc = pNode.path("description").asText();
+                            JsonNode stages = pNode.path("recommended_stages");
+
+                            Pathway pathway = Pathway.builder()
+                                    .id(pathwayId)
+                                    .careerRoleId(roleSlug)
+                                    .title(pathwayTitle)
+                                    .description(pathwayDesc)
+                                    .stageCount(stages.size())
+                                    .skillCount(stages.size() * 3)
+                                    .build();
+                            pathwayRepository.save(pathway);
+
+                            // Stages
+                            if (stages.isArray()) {
+                                for (JsonNode stageNode : stages) {
+                                    int stageOrder = stageNode.path("stage_order").asInt(1);
+                                    String stageTitle = stageNode.path("title").asText();
+                                    String stageDesc = stageNode.path("description").asText();
+                                    JsonNode skills = stageNode.path("skills");
+
+                                    List<String> skillNamesList = new ArrayList<>();
+                                    if (skills.isArray()) {
+                                        for (JsonNode sk : skills) {
+                                            String skId = sk.path("skill_id").asText();
+                                            String skName = sk.path("skill_name").asText();
+                                            skillNamesList.add(skName);
+
+                                            // Save career competency
+                                            if (careerCompetencyRepository.findByRoleId(roleSlug).stream().noneMatch(c -> c.getSkillId().equalsIgnoreCase(skId))) {
+                                                CareerCompetency cc = CareerCompetency.builder()
+                                                        .roleId(roleSlug)
+                                                        .skillId(skId)
+                                                        .skillName(skName)
+                                                        .requiredLevel("Intermediate")
+                                                        .importanceWeight(sk.path("importance").asText().equalsIgnoreCase("CRITICAL") ? 1.0 : 0.8)
+                                                        .build();
+                                                careerCompetencyRepository.save(cc);
+                                            }
+                                        }
+                                    }
+
+                                    RoadmapStage rs = RoadmapStage.builder()
+                                            .pathwayId(pathwayId)
+                                            .stageNumber(stageOrder)
+                                            .stageName(stageTitle)
+                                            .description(stageDesc)
+                                            .estimatedDuration("4–6 weeks")
+                                            .skillsJson(objectMapper.writeValueAsString(skillNamesList))
+                                            .build();
+                                    roadmapStageRepository.save(rs);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Seed aliases: software-engineer and data-scientist
+            if (careerRoleRepository.findByRoleId("software-engineer").isEmpty()) {
+                careerRoleRepository.save(CareerRole.builder()
+                        .roleId("software-engineer")
+                        .careerDomainId("CAR-BACKEND")
+                        .title("Software Engineer")
+                        .category("Engineering")
+                        .importance("High")
+                        .requiredSkillsCount(8)
+                        .description("Build scalable software systems")
+                        .build());
+            }
+            if (careerRoleRepository.findByRoleId("data-scientist").isEmpty()) {
+                careerRoleRepository.save(CareerRole.builder()
+                        .roleId("data-scientist")
+                        .careerDomainId("CAR-AI-ENG")
+                        .title("Data Scientist")
+                        .category("AI/Data")
+                        .importance("High")
+                        .requiredSkillsCount(6)
+                        .description("Train predictive ML models and process big data")
+                        .build());
+            }
+
+            log.info("Seeded Career Roles: {}, Pathways: {}, Roadmap Stages: {}",
+                    careerRoleRepository.count(), pathwayRepository.count(), roadmapStageRepository.count());
+
+        } catch (Exception e) {
+            log.error("Failed to seed career roles and pathways: {}", e.getMessage(), e);
+        }
     }
 
     private void seedAssessments() throws Exception {
         if (assessmentRepository.count() >= 5) return;
 
-        if (assessmentRepository.count() == 0) {
-            Assessment dockerAssessment = Assessment.builder()
-                    .skillId("docker")
-                    .title("Docker Fundamentals")
-                    .description("Test your containerization knowledge, Dockerfiles, compose, and container networking.")
-                    .questionCount(5)
-                    .durationMinutes(15)
-                    .difficulty("Intermediate")
-                    .passScore(70)
-                    .build();
-            dockerAssessment = assessmentRepository.save(dockerAssessment);
+        Assessment dockerAssessment = Assessment.builder()
+                .skillId("SKL-0114")
+                .title("Docker Fundamentals & Containers")
+                .description("Test your containerization knowledge, Dockerfiles, compose, and container networking.")
+                .questionCount(5)
+                .durationMinutes(15)
+                .difficulty("Intermediate")
+                .passScore(70)
+                .build();
+        dockerAssessment = assessmentRepository.save(dockerAssessment);
 
-            List<String> q1Opts = Arrays.asList("EXPOSE", "RUN", "COPY", "FROM");
-            AssessmentQuestion q1 = AssessmentQuestion.builder()
-                    .assessmentId(dockerAssessment.getId())
-                    .questionText("Which Dockerfile instruction sets the base image for subsequent instructions?")
-                    .optionsJson(objectMapper.writeValueAsString(q1Opts))
-                    .correctOptionIndex(3)
-                    .explanation("FROM specifies the base container image.")
-                    .build();
+        List<String> q1Opts = Arrays.asList("EXPOSE", "RUN", "COPY", "FROM");
+        AssessmentQuestion q1 = AssessmentQuestion.builder()
+                .assessmentId(dockerAssessment.getId())
+                .questionText("Which Dockerfile instruction sets the base image for subsequent instructions?")
+                .optionsJson(objectMapper.writeValueAsString(q1Opts))
+                .correctOptionIndex(3)
+                .explanation("FROM specifies the base container image.")
+                .build();
 
-            List<String> q2Opts = Arrays.asList("docker ps", "docker run", "docker images", "docker build");
-            AssessmentQuestion q2 = AssessmentQuestion.builder()
-                    .assessmentId(dockerAssessment.getId())
-                    .questionText("Which command lists all currently running Docker containers?")
-                    .optionsJson(objectMapper.writeValueAsString(q2Opts))
-                    .correctOptionIndex(0)
-                    .explanation("docker ps displays running containers.")
-                    .build();
+        List<String> q2Opts = Arrays.asList("docker ps", "docker run", "docker images", "docker build");
+        AssessmentQuestion q2 = AssessmentQuestion.builder()
+                .assessmentId(dockerAssessment.getId())
+                .questionText("Which command lists all currently running Docker containers?")
+                .optionsJson(objectMapper.writeValueAsString(q2Opts))
+                .correctOptionIndex(0)
+                .explanation("docker ps displays running containers.")
+                .build();
 
-            assessmentQuestionRepository.saveAll(Arrays.asList(q1, q2));
-        }
+        assessmentQuestionRepository.saveAll(Arrays.asList(q1, q2));
 
         Assessment sqlAssessment = Assessment.builder()
-                .skillId("sql")
+                .skillId("SKL-0047")
                 .title("SQL & Relational Databases")
                 .description("Test relational query knowledge, JOINs, indexing, and normalization.")
                 .questionCount(5)
@@ -202,7 +359,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         assessmentQuestionRepository.save(sq1);
 
         Assessment javaAssessment = Assessment.builder()
-                .skillId("java")
+                .skillId("SKL-0011")
                 .title("Java Fundamentals")
                 .description("Evaluate core Java principles, OOP, collections, and multi-threading.")
                 .questionCount(5)
@@ -213,7 +370,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         assessmentRepository.save(javaAssessment);
 
         Assessment springAssessment = Assessment.builder()
-                .skillId("spring-boot")
+                .skillId("SKL-0039")
                 .title("Spring Boot Microservices")
                 .description("Evaluate Spring IoC container, Dependency Injection, REST controllers, and JPA.")
                 .questionCount(5)
@@ -223,123 +380,102 @@ public class DatabaseSeeder implements CommandLineRunner {
                 .build();
         assessmentRepository.save(springAssessment);
 
-        log.info("Seeded assessments and questions. Total assessments: {}", assessmentRepository.count());
+        Assessment pythonAssessment = Assessment.builder()
+                .skillId("SKL-0012")
+                .title("Python Core & Concurrency")
+                .description("Evaluate Python memory management, GIL, async/await event loops, and typing.")
+                .questionCount(5)
+                .durationMinutes(15)
+                .difficulty("Intermediate")
+                .passScore(70)
+                .build();
+        assessmentRepository.save(pythonAssessment);
+
+        log.info("Seeded assessments. Total: {}", assessmentRepository.count());
     }
 
     private void seedProjects() {
-        if (projectRepository.count() >= 4) return;
+        if (projectRepository.count() >= 10) return;
 
-        List<Project> projects = Arrays.asList(
-                Project.builder()
-                        .title("Containerized REST API")
-                        .objective("Build and containerize a Spring Boot REST API backed by PostgreSQL.")
-                        .skillsCovered("Docker, REST API, PostgreSQL")
-                        .requirements("Implement CRUD endpoints, Dockerfile, and docker-compose.yml.")
-                        .architecture("Spring Boot microservice containerized with Docker.")
-                        .estimatedTime("6–8 hours")
-                        .difficulty("Intermediate")
-                        .evaluationCriteria("Clean API design, valid Dockerfile, healthy compose stack.")
-                        .submissionRequirements("Public GitHub repository link containing source code.")
-                        .build(),
-                Project.builder()
-                        .title("Student Career Management System")
-                        .objective("Construct a Spring Boot application with JPA and authentication.")
-                        .skillsCovered("Java, Spring Boot, MySQL, REST API")
-                        .requirements("Implement user authentication and profile management endpoints.")
-                        .architecture("Layered Spring Boot MVC/REST architecture.")
-                        .estimatedTime("4–6 hours")
-                        .difficulty("Beginner")
-                        .evaluationCriteria("Passing unit tests and functional endpoints.")
-                        .submissionRequirements("GitHub repository URL.")
-                        .build(),
-                Project.builder()
-                        .title("Event-Driven Streaming Pipeline")
-                        .objective("Build a real-time event processing pipeline using Spring Boot and Apache Kafka.")
-                        .skillsCovered("Kafka, Spring Boot, Java, Microservices")
-                        .requirements("Implement producers, consumers, and topic partitions.")
-                        .architecture("Distributed event-driven architecture.")
-                        .estimatedTime("8–10 hours")
-                        .difficulty("Advanced")
-                        .evaluationCriteria("High message throughput and robust error handling.")
-                        .submissionRequirements("GitHub repository URL.")
-                        .build(),
-                Project.builder()
-                        .title("Full-Stack Dashboard with React & Next.js")
-                        .objective("Design a responsive full-stack analytics portal with JWT Auth.")
-                        .skillsCovered("React, Next.js, TypeScript, REST API")
-                        .requirements("Implement server-side rendering, responsive Tailwind CSS grid, and state management.")
-                        .architecture("Next.js frontend connected to Spring Boot REST backend.")
-                        .estimatedTime("8–12 hours")
-                        .difficulty("Intermediate")
-                        .evaluationCriteria("Responsive UI design and smooth state management.")
-                        .submissionRequirements("GitHub repository URL & live Vercel demo link.")
-                        .build()
-        );
+        try {
+            InputStream is = getClass().getClassLoader().getResourceAsStream("data/project_catalog.json");
+            if (is != null) {
+                JsonNode root = objectMapper.readTree(is);
+                if (root.isArray()) {
+                    for (JsonNode pNode : root) {
+                        String title = pNode.path("title").asText();
+                        String desc = pNode.path("description").asText();
+                        String diff = pNode.path("difficulty").asText("Intermediate");
 
-        projectRepository.saveAll(projects);
-        log.info("Seeded projects. Total: {}", projectRepository.count());
+                        List<String> practiced = new ArrayList<>();
+                        for (JsonNode sk : pNode.path("skills_practiced")) {
+                            practiced.add(sk.asText());
+                        }
+
+                        List<String> outcomes = new ArrayList<>();
+                        for (JsonNode out : pNode.path("expected_outcomes")) {
+                            outcomes.add(out.asText());
+                        }
+
+                        Project project = Project.builder()
+                                .title(title)
+                                .objective(desc)
+                                .skillsCovered(String.join(", ", practiced))
+                                .requirements(String.join(". ", outcomes))
+                                .architecture("Modular, scalable architecture adhering to production standards.")
+                                .estimatedTime("8–12 hours")
+                                .difficulty(diff)
+                                .evaluationCriteria("Passing automated unit tests, clean git commit history, and deterministic execution.")
+                                .submissionRequirements("Public GitHub repository link.")
+                                .build();
+                        projectRepository.save(project);
+                    }
+                }
+            }
+            log.info("Seeded projects. Total: {}", projectRepository.count());
+        } catch (Exception e) {
+            log.error("Failed to seed projects from catalog: {}", e.getMessage());
+        }
     }
 
     private void seedCourses() {
-        if (courseRepository.count() >= 4) return;
+        if (courseRepository.count() >= 20) return;
 
-        List<Course> courses = Arrays.asList(
-                Course.builder()
-                        .title("Docker Mastery: Containerize Anything")
-                        .platform("SkillBridge Academy")
-                        .description("Comprehensive guide to containers, compose, and deployment.")
-                        .duration("6 hours")
-                        .difficulty("Intermediate")
-                        .skillsCovered("Docker, DevOps")
-                        .competenciesCovered("Containerization, Deployment")
-                        .isFree(true)
-                        .recommendationReason("Fills your critical Docker skill gap for Backend Developer role.")
-                        .url("https://learning.skillbridge.internal/courses/docker-mastery")
-                        .skillId("docker")
-                        .build(),
-                Course.builder()
-                        .title("Spring Boot 3 & Spring Security Guide")
-                        .platform("SkillBridge Academy")
-                        .description("Master Java REST APIs, Spring Data JPA, and JWT Authentication.")
-                        .duration("10 hours")
-                        .difficulty("Intermediate")
-                        .skillsCovered("Java, Spring Boot, REST API")
-                        .competenciesCovered("Backend Development, API Design")
-                        .isFree(true)
-                        .recommendationReason("Recommended for elevating Spring Boot competency to Advanced.")
-                        .url("https://learning.skillbridge.internal/courses/spring-boot-guide")
-                        .skillId("spring-boot")
-                        .build(),
-                Course.builder()
-                        .title("SQL & Database Architecture Masterclass")
-                        .platform("SkillBridge Academy")
-                        .description("Master relational queries, indexing strategies, transactions, and performance tuning.")
-                        .duration("8 hours")
-                        .difficulty("Intermediate")
-                        .skillsCovered("SQL, MySQL, PostgreSQL")
-                        .competenciesCovered("Database Design, Query Optimization")
-                        .isFree(true)
-                        .recommendationReason("Upgrades your PARTIAL SQL skill to VERIFIED status.")
-                        .url("https://learning.skillbridge.internal/courses/sql-masterclass")
-                        .skillId("sql")
-                        .build(),
-                Course.builder()
-                        .title("Kubernetes for Cloud Developers")
-                        .platform("SkillBridge Academy")
-                        .description("Learn cluster management, pod deployments, services, ingress controllers, and Helm charts.")
-                        .duration("12 hours")
-                        .difficulty("Advanced")
-                        .skillsCovered("Kubernetes, Docker, Cloud")
-                        .competenciesCovered("Cloud Infrastructure, Orchestration")
-                        .isFree(false)
-                        .recommendationReason("Essential for Cloud and DevOps career tracks.")
-                        .url("https://learning.skillbridge.internal/courses/k8s-cloud")
-                        .skillId("kubernetes")
-                        .build()
-        );
+        try {
+            InputStream is = getClass().getClassLoader().getResourceAsStream("data/learning_resources.json");
+            if (is != null) {
+                JsonNode root = objectMapper.readTree(is);
+                if (root.isArray()) {
+                    for (JsonNode rNode : root) {
+                        String title = rNode.path("title").asText();
+                        String provider = rNode.path("provider").asText("SkillSync Recommended");
+                        String desc = rNode.path("description").asText();
+                        String url = rNode.path("url").asText();
+                        String skillId = rNode.path("skill_id").asText();
+                        String diff = rNode.path("difficulty").asText("Intermediate");
+                        double hours = rNode.path("estimated_hours").asDouble(6.0);
 
-        courseRepository.saveAll(courses);
-        log.info("Seeded courses. Total: {}", courseRepository.count());
+                        Course course = Course.builder()
+                                .title(title)
+                                .platform(provider)
+                                .description(desc)
+                                .duration(String.format("%.0f hours", hours))
+                                .difficulty(diff)
+                                .skillsCovered(skillId)
+                                .competenciesCovered("Core Technical Proficiency")
+                                .isFree(true)
+                                .recommendationReason("Curated canonical resource directly addressing skill gap for " + skillId)
+                                .url(url)
+                                .skillId(skillId)
+                                .build();
+                        courseRepository.save(course);
+                    }
+                }
+            }
+            log.info("Seeded courses. Total: {}", courseRepository.count());
+        } catch (Exception e) {
+            log.error("Failed to seed courses: {}", e.getMessage());
+        }
     }
 
     private void seedJobs() {
@@ -348,58 +484,36 @@ public class DatabaseSeeder implements CommandLineRunner {
         List<Job> jobs = Arrays.asList(
                 Job.builder()
                         .jobTitle("Junior Backend Developer")
-                        .company("TechCorp Solutions")
+                        .company("TechNova Systems")
                         .location("Bengaluru, India")
                         .employmentType("Full-time")
                         .salary("₹8,00,000 - ₹12,00,000")
-                        .requiredSkills("Java, Spring Boot, REST API, SQL, Docker")
-                        .applicationUrl("https://careers.techcorp.example/jobs/101")
-                        .remote(true)
+                        .requiredSkills("Java, Spring Boot, SQL, REST API, Docker")
+                        .applicationUrl("https://careers.technova.example/jobs/101")
+                        .remote(false)
                         .experienceLevel("Entry Level (0-2 yrs)")
                         .build(),
                 Job.builder()
-                        .jobTitle("Cloud Engineer Associate")
-                        .company("CloudScale Systems")
-                        .location("Hyderabad, India")
+                        .jobTitle("Cloud & Platform Engineer")
+                        .company("CloudScale Dynamics")
+                        .location("Remote")
                         .employmentType("Full-time")
-                        .salary("₹10,00,000 - ₹14,00,000")
-                        .requiredSkills("Docker, AWS, Linux, Python")
+                        .salary("₹10,00,000 - ₹15,00,000")
+                        .requiredSkills("Docker, Kubernetes, AWS, Git, Linux")
                         .applicationUrl("https://careers.cloudscale.example/jobs/204")
-                        .remote(false)
+                        .remote(true)
                         .experienceLevel("Associate")
                         .build(),
                 Job.builder()
-                        .jobTitle("Full-Stack Software Engineer")
-                        .company("InnoTech Digital")
-                        .location("Pune, India")
+                        .jobTitle("AI Application Developer")
+                        .company("NeuroPath AI")
+                        .location("Bengaluru, India")
                         .employmentType("Full-time")
                         .salary("₹12,00,000 - ₹18,00,000")
-                        .requiredSkills("Java, React, Spring Boot, TypeScript, REST API")
-                        .applicationUrl("https://careers.innotech.example/jobs/305")
+                        .requiredSkills("Python, FastAPI, LangChain, PyTorch, SQL")
+                        .applicationUrl("https://careers.neuropath.example/jobs/305")
                         .remote(true)
-                        .experienceLevel("Mid-Level (2-4 yrs)")
-                        .build(),
-                Job.builder()
-                        .jobTitle("DevOps & Infrastructure Specialist")
-                        .company("Nexus Infrastructure")
-                        .location("Chennai, India")
-                        .employmentType("Full-time")
-                        .salary("₹14,00,000 - ₹20,00,000")
-                        .requiredSkills("Kubernetes, Docker, AWS, Git, Kafka")
-                        .applicationUrl("https://careers.nexus.example/jobs/409")
-                        .remote(true)
-                        .experienceLevel("Senior")
-                        .build(),
-                Job.builder()
-                        .jobTitle("Data & Analytics Engineer")
-                        .company("DataInsights Global")
-                        .location("Mumbai, India")
-                        .employmentType("Full-time")
-                        .salary("₹9,00,000 - ₹13,00,000")
-                        .requiredSkills("Python, SQL, Data Analysis, Machine Learning")
-                        .applicationUrl("https://careers.datainsights.example/jobs/512")
-                        .remote(false)
-                        .experienceLevel("Associate")
+                        .experienceLevel("Mid-Level (1-3 yrs)")
                         .build()
         );
 
@@ -408,39 +522,90 @@ public class DatabaseSeeder implements CommandLineRunner {
     }
 
     private void seedDemoUser() {
-        if (userRepository.existsByEmail("student@example.com")) return;
+        if (!userRepository.existsByEmail("student@example.com")) {
+            User student = User.builder()
+                    .fullName("Sankari Ganeshan")
+                    .email("student@example.com")
+                    .password(passwordEncoder.encode("password123"))
+                    .role("ROLE_STUDENT")
+                    .build();
+            student = userRepository.save(student);
 
-        User student = User.builder()
-                .fullName("Sankari Ganeshan")
-                .email("student@example.com")
-                .password(passwordEncoder.encode("password123"))
-                .role("ROLE_STUDENT")
-                .build();
-        student = userRepository.save(student);
+            StudentProfile profile = StudentProfile.builder()
+                    .userId(student.getId())
+                    .fullName("Sankari Ganeshan")
+                    .email("student@example.com")
+                    .phone("+91 9876543210")
+                    .education("B.Tech Computer Science")
+                    .experienceLevel("Intermediate (1-2 years)")
+                    .targetRoleId("backend-developer")
+                    .targetRoleTitle("Backend Developer")
+                    .resumeUrl("https://skillbridge.internal/resumes/sankari_resume.pdf")
+                    .build();
+            studentProfileRepository.save(profile);
 
-        StudentProfile profile = StudentProfile.builder()
-                .userId(student.getId())
-                .fullName("Sankari Ganeshan")
-                .email("student@example.com")
-                .phone("+91 9876543210")
-                .education("B.Tech Computer Science")
-                .experienceLevel("Intermediate (1-2 years)")
-                .targetRoleId("backend-developer")
-                .targetRoleTitle("Backend Developer")
-                .resumeUrl("https://skillbridge.internal/resumes/sankari_resume.pdf")
-                .build();
-        studentProfileRepository.save(profile);
+            List<StudentSkill> studentSkills = Arrays.asList(
+                    StudentSkill.builder().userId(student.getId()).skillId("SKL-0011").name("Java").category("Backend").level("Intermediate").status(SkillStatus.ASSESSMENT_VERIFIED).score(85).evidenceCount(2).build(),
+                    StudentSkill.builder().userId(student.getId()).skillId("SKL-0039").name("Spring Boot").category("Backend").level("Intermediate").status(SkillStatus.ASSESSMENT_VERIFIED).score(80).evidenceCount(1).build(),
+                    StudentSkill.builder().userId(student.getId()).skillId("SKL-0041").name("REST API").category("Backend").level("Advanced").status(SkillStatus.ASSESSMENT_VERIFIED).score(90).evidenceCount(3).build(),
+                    StudentSkill.builder().userId(student.getId()).skillId("SKL-0047").name("SQL").category("Database").level("Intermediate").status(SkillStatus.EVIDENCE_BACKED).score(65).evidenceCount(1).build(),
+                    StudentSkill.builder().userId(student.getId()).skillId("SKL-0114").name("Docker").category("DevOps").level("Beginner").status(SkillStatus.MISSING).score(0).evidenceCount(0).build(),
+                    StudentSkill.builder().userId(student.getId()).skillId("SKL-0012").name("Python").category("Backend").level("Beginner").status(SkillStatus.CLAIMED).score(50).evidenceCount(0).build()
+            );
+            studentSkillRepository.saveAll(studentSkills);
+            log.info("Seeded demo user student@example.com with canonical skill IDs and 3-tier verification statuses");
+        }
 
-        List<StudentSkill> studentSkills = Arrays.asList(
-                StudentSkill.builder().userId(student.getId()).skillId("java").name("Java").category("Programming").level("Intermediate").status(SkillStatus.VERIFIED).score(85).evidenceCount(2).build(),
-                StudentSkill.builder().userId(student.getId()).skillId("spring-boot").name("Spring Boot").category("Backend").level("Intermediate").status(SkillStatus.VERIFIED).score(80).evidenceCount(1).build(),
-                StudentSkill.builder().userId(student.getId()).skillId("rest-api").name("REST API").category("Backend").level("Advanced").status(SkillStatus.VERIFIED).score(90).evidenceCount(3).build(),
-                StudentSkill.builder().userId(student.getId()).skillId("sql").name("SQL").category("Database").level("Intermediate").status(SkillStatus.PARTIAL).score(65).evidenceCount(1).build(),
-                StudentSkill.builder().userId(student.getId()).skillId("docker").name("Docker").category("Cloud").level("Beginner").status(SkillStatus.MISSING).score(0).evidenceCount(0).build()
-        );
-        studentSkillRepository.saveAll(studentSkills);
+        if (!userRepository.existsByEmail("alex.chen@university.edu")) {
+            User alex = User.builder()
+                    .fullName("Alex Chen")
+                    .email("alex.chen@university.edu")
+                    .password(passwordEncoder.encode("password123"))
+                    .role("ROLE_STUDENT")
+                    .build();
+            alex = userRepository.save(alex);
 
-        log.info("Seeded demo user student@example.com with profile and student skills");
+            StudentProfile alexProfile = StudentProfile.builder()
+                    .userId(alex.getId())
+                    .fullName("Alex Chen")
+                    .email("alex.chen@university.edu")
+                    .phone("+91 9876543211")
+                    .education("B.Tech in Computer Science and Engineering")
+                    .experienceLevel("Student")
+                    .targetRoleId("backend-developer")
+                    .targetRoleTitle("Backend Developer")
+                    .resumeUrl("https://skillbridge.dev/resumes/alex_chen_resume.pdf")
+                    .build();
+            studentProfileRepository.save(alexProfile);
+
+            List<StudentSkill> alexSkills = Arrays.asList(
+                    StudentSkill.builder().userId(alex.getId()).skillId("SKL-0012").name("Python").category("Backend").level("Advanced").status(SkillStatus.ASSESSMENT_VERIFIED).score(89).evidenceCount(3).build(),
+                    StudentSkill.builder().userId(alex.getId()).skillId("SKL-0047").name("SQL").category("Database").level("Advanced").status(SkillStatus.ASSESSMENT_VERIFIED).score(92).evidenceCount(2).build(),
+                    StudentSkill.builder().userId(alex.getId()).skillId("SKL-0041").name("REST API").category("Backend").level("Advanced").status(SkillStatus.ASSESSMENT_VERIFIED).score(94).evidenceCount(4).build(),
+                    StudentSkill.builder().userId(alex.getId()).skillId("SKL-0038").name("FastAPI").category("Backend").level("Intermediate").status(SkillStatus.EVIDENCE_BACKED).score(85).evidenceCount(2).build(),
+                    StudentSkill.builder().userId(alex.getId()).skillId("SKL-0114").name("Docker").category("DevOps").level("Beginner").status(SkillStatus.MISSING).score(0).evidenceCount(0).build()
+            );
+            studentSkillRepository.saveAll(alexSkills);
+            log.info("Seeded demo user alex.chen@university.edu with canonical skill IDs");
+        }
     }
 
+    private List<String> parseCsvLine(String line) {
+        List<String> tokens = new ArrayList<>();
+        boolean inQuotes = false;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < line.length(); i++) {
+            char c = line.charAt(i);
+            if (c == '"') {
+                inQuotes = !inQuotes;
+            } else if (c == ',' && !inQuotes) {
+                tokens.add(sb.toString());
+                sb.setLength(0);
+            } else {
+                sb.append(c);
+            }
+        }
+        tokens.add(sb.toString());
+        return tokens;
+    }
 }

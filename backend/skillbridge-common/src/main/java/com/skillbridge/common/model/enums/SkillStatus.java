@@ -1,8 +1,11 @@
 package com.skillbridge.common.model.enums;
 
 public enum SkillStatus {
-    VERIFIED,
-    PARTIAL,
+    CLAIMED,
+    EVIDENCE_BACKED,
+    ASSESSMENT_VERIFIED,
     MISSING,
-    CLAIMED
+    // Backward-compatible aliases
+    VERIFIED,
+    PARTIAL
 }

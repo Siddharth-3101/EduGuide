@@ -70,6 +70,10 @@
 
   body {
     font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.65;
+    letter-spacing: 0.015em;
+    word-spacing: 0.04em;
     color: var(--text-primary);
     background-color: var(--bg-page);
     -webkit-font-smoothing: antialiased;
@@ -78,8 +82,14 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    letter-spacing: -0.035em;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
   }
+}
+
+/* Global minimum font size — catches Tailwind text-[10px], text-[11px] */
+p, span, label, a, li, td, th, input, textarea, select, button, div {
+  font-size: max(0.75rem, inherit);
 }
 
 /* Custom scrollbars */
@@ -120,7 +130,7 @@
 /* Editorial Typography Utility Classes */
 .font-editorial-title {
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.015em;
   font-weight: 800;
 }
 
@@ -131,7 +141,8 @@
 
 .font-editorial-mono {
   font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.06em;
+  font-size: max(0.8125rem, 1em);
 }
 
 /* Card Surface Tokens */

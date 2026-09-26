@@ -36,22 +36,35 @@ public class SkillService {
 
     public Skill getSkillBySkillId(String skillId) {
         if (skillId == null || skillId.trim().isEmpty()) {
-            skillId = "java";
+            skillId = "SKL-0011";
         }
         String searchId = skillId.trim();
         java.util.Optional<Skill> opt = skillRepository.findBySkillId(searchId);
         if (opt.isPresent()) {
             return opt.get();
         }
+        List<Skill> all = skillRepository.findAll();
+        for (Skill s : all) {
+            if (s.getSkillId().equalsIgnoreCase(searchId) || s.getName().equalsIgnoreCase(searchId)) {
+                return s;
+            }
+            if (s.getAliases() != null) {
+                String[] parts = s.getAliases().split(";");
+                for (String p : parts) {
+                    if (p.trim().equalsIgnoreCase(searchId)) {
+                        return s;
+                    }
+                }
+            }
+        }
         try {
             Long numericId = Long.parseLong(searchId);
-            List<Skill> all = skillRepository.findAll();
             if (numericId > 0 && numericId <= all.size()) {
                 return all.get((int) (numericId - 1));
             }
         } catch (NumberFormatException ignored) {}
 
-        return skillRepository.findAll().stream().findFirst()
+        return all.stream().findFirst()
                 .orElseThrow(() -> new ResourceNotFoundException("Skill not found with ID: " + searchId));
     }
 

@@ -6,23 +6,50 @@ let localProfileState = { ...MOCK_USER_PROFILE };
 
 export const profileApi = {
   async getProfile() {
+    const storedName = localStorage.getItem('skillsync_candidate_name');
+    const storedEmail = localStorage.getItem('skillsync_candidate_email');
+    const storedPhone = localStorage.getItem('skillsync_candidate_phone');
+    const storedEdu = localStorage.getItem('skillsync_candidate_education');
+    const storedBio = localStorage.getItem('skillsync_candidate_bio');
+
     if (USE_MOCK) {
       await delay(150);
-      return { ...localProfileState };
+      return {
+        ...localProfileState,
+        fullName: storedName || localProfileState.fullName,
+        email: storedEmail || localProfileState.email,
+        phone: storedPhone || localProfileState.phone,
+        education: storedEdu || localProfileState.education,
+        bio: storedBio || localProfileState.bio
+      };
     }
-    const response = await apiClient.get('/api/profile');
-    const p = response.data?.data || response.data;
+    try {
+      const response = await apiClient.get('/api/profile', { timeout: 1500 });
+      const p = response.data?.data || response.data;
+      if (p) {
+        return {
+          fullName: storedName || p.fullName || 'Candidate Profile',
+          email: storedEmail || p.email,
+          phone: storedPhone || p.phone,
+          headline: p.headline || 'Full Stack & Backend Systems Developer',
+          bio: storedBio || p.bio,
+          education: storedEdu || p.education || 'Higher Education / Engineering Degree',
+          experienceLevel: p.experienceLevel || 'Student',
+          targetRoleId: p.targetRoleId || 'backend-developer',
+          targetRoleTitle: p.targetRoleTitle || 'Backend Developer',
+          resumeUrl: p.resumeUrl
+        };
+      }
+    } catch (e) {
+      console.warn('Profile API unavailable, using fallback profile:', e.message);
+    }
     return {
-      fullName: p.fullName || 'Student',
-      email: p.email,
-      phone: p.phone,
-      headline: p.headline || 'Student Developer',
-      bio: p.bio,
-      education: p.education || 'B.Tech Computer Science',
-      experienceLevel: p.experienceLevel || 'Intermediate',
-      targetRoleId: p.targetRoleId || 'backend-developer',
-      targetRoleTitle: p.targetRoleTitle || 'Backend Developer',
-      resumeUrl: p.resumeUrl
+      ...localProfileState,
+      fullName: storedName || localProfileState.fullName,
+      email: storedEmail || localProfileState.email,
+      phone: storedPhone || localProfileState.phone,
+      education: storedEdu || localProfileState.education,
+      bio: storedBio || localProfileState.bio
     };
   },
 
@@ -42,7 +69,7 @@ export const profileApi = {
       return [...MOCK_ACTIVITIES];
     }
     try {
-      const response = await apiClient.get('/api/analytics/activity');
+      const response = await apiClient.get('/api/analytics/activity', { timeout: 1500 });
       const list = response.data?.data || response.data || [];
       return list.map(a => ({
         id: String(a.id),

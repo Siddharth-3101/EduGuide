@@ -4,7 +4,11 @@ const ThemeContext = createContext(null);
 
 export const ThemeProvider = ({ children }) => {
   const [themeMode, setThemeMode] = useState(() => {
-    return localStorage.getItem('skillbridge_theme_mode') || 'system';
+    const saved = localStorage.getItem('skillbridge_theme_mode');
+    if (!saved || saved === 'system') {
+      return 'dark';
+    }
+    return saved;
   });
 
   const [systemIsDark, setSystemIsDark] = useState(() => {

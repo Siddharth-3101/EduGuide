@@ -47,7 +47,7 @@ export const SkillIntelligenceSection = () => {
       name: 'GitHub Repository Analysis',
       icon: FolderGit2,
       badge: 'Automated AST & Dockerfile Inspection',
-      source: 'github.com/alexchen/student-management-api',
+      source: 'github.com/siddharth-g/student-management-api',
       extractedSkills: [
         { name: 'REST API & OpenAPI', level: 'Advanced', confidence: '96%', status: 'Verified' },
         { name: 'Multi-Stage Dockerfile', level: 'Intermediate', confidence: '91%', status: 'Evidence Found' },

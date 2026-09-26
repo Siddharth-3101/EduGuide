@@ -1,0 +1,597 @@
+[
+  {
+    "exam_id": "GOV-ISRO-001",
+    "exam_name": "ISRO ICRB – Scientist / Engineer 'SC' (Computer Science)",
+    "conducting_body": "Indian Space Research Organisation (ISRO)",
+    "department": "Department of Space, Government of India",
+    "role_title": "Scientist / Engineer 'SC'",
+    "pay_scale": "Level 10 (₹56,100 – ₹1,77,500 + DA + HRA)",
+    "category": "Scientific & Space Research",
+    "eligible_degrees": ["B.E.", "B.Tech", "B.Sc (Engg) in Computer Science & Engineering"],
+    "min_qualification_score": "First Class with minimum 65% aggregate or 6.84/10 CGPA",
+    "age_limit": "28 years (relaxable for OBC/SC/ST)",
+    "official_portal_url": "https://www.isro.gov.in/Careers.html",
+    "selection_process": "Stage 1: Written Examination (100% Core CS) • Stage 2: In-depth Technical Interview (1:5 ratio)",
+    "exam_frequency": "Annual / Bi-annual recruitment notification",
+    "description": "Prestigious research engineering appointment at ISRO centres (VSSC, URSC, SAC, ISTRAC, NRSC) developing mission-critical flight software, telemetry systems, satellite image processing, and distributed ground station controllers.",
+    "key_skills_tested": [
+      { "skill_id": "SKL-0015", "skill_name": "C++", "importance": "CRITICAL" },
+      { "skill_id": "SKL-0011", "skill_name": "Java", "importance": "HIGH" },
+      { "skill_id": "SKL-0012", "skill_name": "Python", "importance": "HIGH" },
+      { "skill_id": "SKL-0112", "skill_name": "Linux", "importance": "CRITICAL" },
+      { "skill_id": "SKL-0047", "skill_name": "SQL", "importance": "MEDIUM" },
+      { "skill_id": "SKL-0045", "skill_name": "Microservices", "importance": "MEDIUM" }
+    ],
+    "syllabus_sections": [
+      {
+        "module": "Algorithms & Data Structures",
+        "topics": "Asymptotic Analysis, Divide & Conquer, Dynamic Programming, Greedy, Graph Algorithms (BFS, DFS, Dijkstra, Bellman-Ford), Trees, Heaps, Hashing."
+      },
+      {
+        "module": "Operating Systems & Concurrency",
+        "topics": "Processes, Threads, CPU Scheduling, Deadlock prevention & avoidance, Memory Management, Virtual Memory, Paging, POSIX IPC, Real-Time Operating Systems (RTOS)."
+      },
+      {
+        "module": "Computer Networks & Satellite Comms",
+        "topics": "OSI 7-layer & TCP/IP stack, Flow and Error Control, Routing Protocols (OSPF, BGP), Network Security, Socket Programming."
+      },
+      {
+        "module": "Databases & Compiler Design",
+        "topics": "ER Model, Relational Algebra, Normalization (1NF through BCNF), Transaction Processing & ACID properties, Lexical analysis, Parsing, Code optimization."
+      }
+    ],
+    "study_materials": [
+      {
+        "title": "ISRO ICRB Computer Science Previous 10-Year Solved Question Papers",
+        "type": "Previous Year Papers",
+        "url": "https://www.isro.gov.in/QuestionPapers.html",
+        "free": true
+      },
+      {
+        "title": "NPTEL Advanced Algorithms & Real-Time Operating Systems Course",
+        "type": "Video Lecture Series",
+        "url": "https://nptel.ac.in/courses/106105164",
+        "free": true
+      },
+      {
+        "title": "Standard Reference: Operating System Concepts (Silberschatz & Galvin)",
+        "type": "Textbook Reference",
+        "url": "https://codex.cs.yale.edu/avi/os-book/",
+        "free": false
+      }
+    ],
+    "application_procedure": [
+      "1. Register on ISRO Centralised Recruitment Board portal (isro.gov.in/Careers.html) during active notification window.",
+      "2. Fill online application form, upload photograph, signature, and degree certificate.",
+      "3. Pay application fee (₹250, exempt for SC/ST/Women).",
+      "4. Download admit card ~15 days prior to written test.",
+      "5. Attend written test across designated national examination centres."
+    ]
+  },
+  {
+    "exam_id": "GOV-DRDO-002",
+    "exam_name": "DRDO RAC – Scientist 'B' (Computer Science & Cyber Systems)",
+    "conducting_body": "Defence Research and Development Organisation (DRDO)",
+    "department": "Ministry of Defence, Government of India",
+    "role_title": "Scientist 'B'",
+    "pay_scale": "Level 10 (₹56,100 – ₹1,77,500 + Defence Special Allowances)",
+    "category": "Defence & Security Engineering",
+    "eligible_degrees": ["B.E.", "B.Tech in Computer Science / IT / Cyber Security"],
+    "min_qualification_score": "First Class Bachelor's Degree + Valid GATE score",
+    "age_limit": "28 years (General/EWS)",
+    "official_portal_url": "https://rac.gov.in/",
+    "selection_process": "Shortlisting based on GATE Score (Computer Science) • Descriptive Written Exam / Technical Interview",
+    "exam_frequency": "Annual recruitment (advt released in April-May)",
+    "description": "R&D engineering positions at premier defense labs (CAIR, SAG, DEAL, LRDE) architecting autonomous avionics software, cryptographic ciphers, cyber defense frameworks, radar signal processing, and AI for military defense.",
+    "key_skills_tested": [
+      { "skill_id": "SKL-0012", "skill_name": "Python", "importance": "HIGH" },
+      { "skill_id": "SKL-0015", "skill_name": "C++", "importance": "CRITICAL" },
+      { "skill_id": "SKL-0112", "skill_name": "Linux", "importance": "CRITICAL" },
+      { "skill_id": "SKL-0114", "skill_name": "Docker", "importance": "HIGH" },
+      { "skill_id": "SKL-0041", "skill_name": "REST API", "importance": "MEDIUM" }
+    ],
+    "syllabus_sections": [
+      {
+        "module": "Cyber Systems & Cryptography",
+        "topics": "Symmetric & Asymmetric Encryption (AES, RSA, ECC), Hash Functions, Public Key Infrastructure, Digital Signatures, Vulnerability Analysis, Network Intrusion Detection."
+      },
+      {
+        "module": "Systems Programming & Kernel Architecture",
+        "topics": "Linux Kernel Internals, Memory paging, Device Drivers, Concurrency synchronization, Socket programming, Low-level binary exploitation & reverse engineering."
+      },
+      {
+        "module": "Data Structures, Algorithms & AI",
+        "topics": "Graph Theory, Dynamic Programming, Complexity Classes (P, NP, NP-Complete), Pattern Recognition, Deep Learning fundamentals."
+      }
+    ],
+    "study_materials": [
+      {
+        "title": "DRDO RAC Scientist 'B' Technical Examination Question Archives",
+        "type": "Official Question Bank",
+        "url": "https://rac.gov.in/index.php?lang=en&id=0",
+        "free": true
+      },
+      {
+        "title": "Cryptography and Network Security by William Stallings",
+        "type": "Standard Reference Book",
+        "url": "https://williamstallings.com/Crypto/",
+        "free": false
+      },
+      {
+        "title": "NPTEL Cryptography & Network Security Lectures (IIT Kharagpur)",
+        "type": "Video Lectures",
+        "url": "https://nptel.ac.in/courses/106105031",
+        "free": true
+      }
+    ],
+    "application_procedure": [
+      "1. Appear for GATE (CS/IT) and obtain valid scorecard.",
+      "2. Register online at DRDO RAC website (rac.gov.in).",
+      "3. Lock qualifications, GATE registration number, and preferred research laboratory preference.",
+      "4. Appear for personal interview or descriptive examination at RAC Delhi."
+    ]
+  },
+  {
+    "exam_id": "GOV-GATE-PSU-003",
+    "exam_name": "GATE (Computer Science) & Maharatna PSU Recruitment (IOCL, ONGC, NTPC, BHEL)",
+    "conducting_body": "Indian Institute of Science (IISc) / IITs",
+    "department": "Ministry of Petroleum & Natural Gas / Ministry of Power, Govt of India",
+    "role_title": "Executive Trainee / Assistant Executive Engineer (Information Technology)",
+    "pay_scale": "E-2 Grade (₹60,000 – ₹1,80,000 CTC: ₹16 - 22 LPA)",
+    "category": "Public Sector Undertakings (PSUs)",
+    "eligible_degrees": ["B.E.", "B.Tech in Computer Science / IT"],
+    "min_qualification_score": "Minimum 60% or 65% aggregate (varies by PSU)",
+    "age_limit": "26–30 years depending on specific PSU",
+    "official_portal_url": "https://gate2026.iisc.ac.in/",
+    "selection_process": "GATE 2026 CS Score (85% weightage) + Group Discussion & Personal Interview (15% weightage)",
+    "exam_frequency": "Annual national examination (conducted every February)",
+    "description": "Direct recruitment into India's premier Maharatna and Navratna public enterprises managing industrial SCADA networks, enterprise ERPs, cloud data centers, pipeline telemetry, and smart grid automation.",
+    "key_skills_tested": [
+      { "skill_id": "SKL-0047", "skill_name": "SQL", "importance": "HIGH" },
+      { "skill_id": "SKL-0012", "skill_name": "Python", "importance": "HIGH" },
+      { "skill_id": "SKL-0011", "skill_name": "Java", "importance": "HIGH" },
+      { "skill_id": "SKL-0112", "skill_name": "Linux", "importance": "MEDIUM" },
+      { "skill_id": "SKL-0048", "skill_name": "MySQL", "importance": "HIGH" }
+    ],
+    "syllabus_sections": [
+      {
+        "module": "Engineering Mathematics & Discrete Structures",
+        "topics": "Propositional & First Order Logic, Sets, Relations, Functions, Graph Theory, Linear Algebra (Matrices, Eigenvalues), Probability & Calculus."
+      },
+      {
+        "module": "Digital Logic & Computer Organization",
+        "topics": "Boolean algebra, Combinational and sequential circuits, Machine instructions, Addressing modes, ALU, Data-path, Pipelining, Cache memory mapping."
+      },
+      {
+        "module": "Data Structures & Programming",
+        "topics": "Recursion, Arrays, Stacks, Queues, Linked Lists, Trees, Binary Search Trees, Heaps, Graph traversals, Sorting and Searching."
+      },
+      {
+        "module": "Databases & Operating Systems",
+        "topics": "ER-model, Relational model, SQL, Normal forms, Transactions, Concurrency control, File structures (B/B+ trees), Virtual memory, Scheduling."
+      }
+    ],
+    "study_materials": [
+      {
+        "title": "GATE CSE Official 30-Year Question Bank & Master Solutions",
+        "type": "Official Papers",
+        "url": "https://gate.iitk.ac.in/",
+        "free": true
+      },
+      {
+        "title": "NPTEL Complete Computer Science Core Video Archive",
+        "type": "Video Lectures",
+        "url": "https://nptel.ac.in/",
+        "free": true
+      },
+      {
+        "title": "Introduction to Algorithms (CLRS 4th Edition)",
+        "type": "Core Textbook",
+        "url": "https://mitpress.mit.edu/9780262046305/",
+        "free": false
+      }
+    ],
+    "application_procedure": [
+      "1. Register on GATE GOAPS portal in August-September.",
+      "2. Appear for GATE examination in February.",
+      "3. When individual PSU recruitment advertisements open (IOCL, ONGC, NTPC, GAIL), apply using GATE Roll Number.",
+      "4. Attend GD/PI rounds based on GATE cutoff ranks."
+    ]
+  },
+  {
+    "exam_id": "GOV-NIC-004",
+    "exam_name": "National Informatics Centre (NIC) – Scientist 'B' & Scientific Officer",
+    "conducting_body": "National Institute of Electronics and Information Technology (NIELIT) / MeitY",
+    "department": "Ministry of Electronics & Information Technology, Government of India",
+    "role_title": "Scientist 'B' (Technical Group A)",
+    "pay_scale": "Level 10 (₹56,100 – ₹1,77,500)",
+    "category": "National e-Governance & IT Infrastructure",
+    "eligible_degrees": ["B.E.", "B.Tech in CSE / IT / ECE / Software Engineering", "MCA", "M.Sc CS/IT"],
+    "min_qualification_score": "Valid degree passing aggregate (60%)",
+    "age_limit": "30 years (General)",
+    "official_portal_url": "https://www.nic.in/recruitment/",
+    "selection_process": "OMR / Computer Based Examination (65% Technical, 35% Generic) • Personal Interview (85:15 weighting)",
+    "exam_frequency": "Annual / Periodic government notification",
+    "description": "NIC designs and operates the digital backbone of the Government of India, including Digital India portals, National Cloud (MeghRaj), Aadhaar integration APIs, GSTN, and central e-Office automation.",
+    "key_skills_tested": [
+      { "skill_id": "SKL-0033", "skill_name": "Spring Boot", "importance": "HIGH" },
+      { "skill_id": "SKL-0041", "skill_name": "REST API", "importance": "CRITICAL" },
+      { "skill_id": "SKL-0048", "skill_name": "MySQL", "importance": "HIGH" },
+      { "skill_id": "SKL-0021", "skill_name": "React", "importance": "MEDIUM" },
+      { "skill_id": "SKL-0130", "skill_name": "AWS", "importance": "MEDIUM" },
+      { "skill_id": "SKL-0114", "skill_name": "Docker", "importance": "HIGH" }
+    ],
+    "syllabus_sections": [
+      {
+        "module": "Web Technologies & Software Engineering",
+        "topics": "RESTful Microservices, MVC architecture, HTML5/CSS3, JavaScript frameworks, Spring Framework, SDLC models, Agile methodology, Automated Unit Testing."
+      },
+      {
+        "module": "Cloud Computing & Information Security",
+        "topics": "IaaS, PaaS, SaaS models, Containerization (Docker, Kubernetes), Microservices orchestration, OWASP Top 10 web vulnerabilities, TLS/SSL, Public Key Cryptography."
+      },
+      {
+        "module": "Database Management & Big Data",
+        "topics": "SQL query optimization, Indexing (B-trees, Hash), ACID transactions, NoSQL concepts (MongoDB, Redis), Data warehousing, Distributed query processing."
+      }
+    ],
+    "study_materials": [
+      {
+        "title": "NIELIT NIC Scientist 'B' Previous Question Papers & Answer Keys",
+        "type": "Official Exam Archive",
+        "url": "https://www.calicut.nielit.in/",
+        "free": true
+      },
+      {
+        "title": "Ministry of Electronics & IT Cyber Security & e-Governance Reference Guide",
+        "type": "Government Documentation",
+        "url": "https://www.meity.gov.in/",
+        "free": true
+      },
+      {
+        "title": "OWASP Secure Coding Practices Guide",
+        "type": "Technical Manual",
+        "url": "https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/",
+        "free": true
+      }
+    ],
+    "application_procedure": [
+      "1. Check notification on nielit.gov.in and nic.in.",
+      "2. Register profile, upload educational transcripts and category certificates.",
+      "3. Pay examination fee online (₹800, SC/ST/Women exempted).",
+      "4. Write 120-question objective examination (180 minutes duration).",
+      "5. Qualify for final interview selection."
+    ]
+  },
+  {
+    "exam_id": "GOV-BARC-005",
+    "exam_name": "Bhabha Atomic Research Centre (BARC) – OCES / DGFS Scientific Officer",
+    "conducting_body": "Bhabha Atomic Research Centre, Department of Atomic Energy",
+    "department": "Department of Atomic Energy (DAE), Government of India",
+    "role_title": "Scientific Officer 'C'",
+    "pay_scale": "Level 10 (₹56,100 + Nuclear Research Incentives + Free Healthcare)",
+    "category": "Nuclear & Computational Research",
+    "eligible_degrees": ["B.E.", "B.Tech in Computer Science / Computer Engineering"],
+    "min_qualification_score": "Minimum 60% aggregate marks in engineering degree",
+    "age_limit": "26 years (General)",
+    "official_portal_url": "https://barcocesexam.in/",
+    "selection_process": "Online Screening Test or GATE 2026 CS Score • Rigorous In-person Technical Interview (Mumbai)",
+    "exam_frequency": "Annual recruitment (Applications open in December-January)",
+    "description": "High-performance computational scientific positions at BARC Mumbai, RRCAT Indore, VECC Kolkata, and IGCAR Kalpakkam focusing on supercomputing, reactor simulation algorithms, cyber-physical safety, and quantum computing.",
+    "key_skills_tested": [
+      { "skill_id": "SKL-0015", "skill_name": "C++", "importance": "CRITICAL" },
+      { "skill_id": "SKL-0012", "skill_name": "Python", "importance": "HIGH" },
+      { "skill_id": "SKL-0112", "skill_name": "Linux", "importance": "CRITICAL" },
+      { "skill_id": "SKL-0047", "skill_name": "SQL", "importance": "MEDIUM" }
+    ],
+    "syllabus_sections": [
+      {
+        "module": "High Performance Computing & System Architecture",
+        "topics": "Parallel processing, MPI, OpenMP, CUDA GPU computing, Pipelining, Cache coherency, Memory hierarchy, Vector processors."
+      },
+      {
+        "module": "Core Computer Science & Mathematical Foundations",
+        "topics": "Algorithms, Graph Theory, Linear Algebra, Numerical Methods, Differential Equations, Probability & Statistics, Formal Languages."
+      },
+      {
+        "module": "System Software & Security",
+        "topics": "Operating Systems, Linux kernel, Memory protection, Real-time safety systems, Network protocols, Cryptographic primitives."
+      }
+    ],
+    "study_materials": [
+      {
+        "title": "BARC Computer Science Online Screening Sample Papers",
+        "type": "Sample Papers",
+        "url": "https://barcocesexam.in/",
+        "free": true
+      },
+      {
+        "title": "An Introduction to Parallel Programming (Peter Pacheco)",
+        "type": "Technical Textbook",
+        "url": "https://www.cs.usfca.edu/~peter/ipp/",
+        "free": false
+      },
+      {
+        "title": "NPTEL High Performance Computing Lectures",
+        "type": "Video Course",
+        "url": "https://nptel.ac.in/courses/106108055",
+        "free": true
+      }
+    ],
+    "application_procedure": [
+      "1. Register on barcocesexam.in during active window.",
+      "2. Choose screening route: Online Exam, GATE Score, or Both.",
+      "3. Shortlisted candidates undergo exhaustive 1-hour board technical interview.",
+      "4. Selected officers complete 1-year fully-stipended orientation course before gazetted absorption."
+    ]
+  },
+  {
+    "exam_id": "GOV-RRB-006",
+    "exam_name": "Railway Recruitment Board (RRB) – Junior Engineer (Information Technology)",
+    "conducting_body": "Railway Recruitment Control Board, Ministry of Railways",
+    "department": "Indian Railways, Government of India",
+    "role_title": "Junior Engineer (IT) / Section Engineer",
+    "pay_scale": "Level 6 (₹35,400 – ₹1,12,400 + Railway Passes + Allowances)",
+    "category": "Railways & Transport Infrastructure",
+    "eligible_degrees": ["B.E.", "B.Tech in CSE / IT", "BCA", "B.Sc CS", "DOEACC 'B' Level"],
+    "min_qualification_score": "Passing degree",
+    "age_limit": "18–33 years",
+    "official_portal_url": "https://www.rrbcdg.gov.in/",
+    "selection_process": "CBT-1 (General Screening) • CBT-2 (Technical Abilities) • Document Verification & Medical",
+    "exam_frequency": "Periodic national vacancies (thousands of engineering posts)",
+    "description": "Engineering roles in the world's 4th largest railway network, deploying real-time train tracking (RTIS), passenger reservation architectures (CRIS), freight management software, and optical fiber signaling.",
+    "key_skills_tested": [
+      { "skill_id": "SKL-0011", "skill_name": "Java", "importance": "HIGH" },
+      { "skill_id": "SKL-0048", "skill_name": "MySQL", "importance": "HIGH" },
+      { "skill_id": "SKL-0002", "skill_name": "JavaScript", "importance": "MEDIUM" },
+      { "skill_id": "SKL-0112", "skill_name": "Linux", "importance": "MEDIUM" },
+      { "skill_id": "SKL-0041", "skill_name": "REST API", "importance": "MEDIUM" }
+    ],
+    "syllabus_sections": [
+      {
+        "module": "CBT-1: General Abilities",
+        "topics": "Mathematics (Number systems, Algebra, Geometry, Trigonometry), General Intelligence & Reasoning, General Awareness, General Science (Physics, Chemistry)."
+      },
+      {
+        "module": "CBT-2: Technical Computer Engineering",
+        "topics": "OOP with Java & C++, Web technologies (HTML, CSS, JavaScript), DBMS & SQL, Computer Networks, Linux OS, Software Engineering, Cloud basics."
+      }
+    ],
+    "study_materials": [
+      {
+        "title": "RRB JE IT Technical Abilities Previous Exam Papers",
+        "type": "Question Papers",
+        "url": "https://www.rrbcdg.gov.in/",
+        "free": true
+      },
+      {
+        "title": "Centre for Railway Information Systems (CRIS) Technical Architecture Whitepapers",
+        "type": "Technical Report",
+        "url": "https://cris.org.in/",
+        "free": true
+      }
+    ],
+    "application_procedure": [
+      "1. Apply online on official RRB portal for your desired Railway Zone.",
+      "2. Select Junior Engineer (IT) discipline.",
+      "3. Clear CBT 1 screening stage.",
+      "4. Score high rank in CBT 2 technical paper."
+    ]
+  },
+  {
+    "exam_id": "GOV-BANK-007",
+    "exam_name": "IBPS Specialist Officer (SO) – IT Officer Scale I & SBI SCO",
+    "conducting_body": "Institute of Banking Personnel Selection (IBPS) / State Bank of India",
+    "department": "Public Sector Commercial Banks of India",
+    "role_title": "IT Officer (Scale I Assistant Manager)",
+    "pay_scale": "Scale I (₹48,480 – ₹85,920 + Bank Perks + Leased Accommodation)",
+    "category": "Banking, Fintech & Payments Infrastructure",
+    "eligible_degrees": ["4-year Engineering Degree in Computer Science / IT / Electronics / Computer Applications"],
+    "min_qualification_score": "Engineering Graduate",
+    "age_limit": "20–30 years",
+    "official_portal_url": "https://www.ibps.in/",
+    "selection_process": "Prelims Exam (English, Reasoning, Quantitative) • Mains Exam (Professional Knowledge) • Interview",
+    "exam_frequency": "Annual (Notification released in October-November)",
+    "description": "Technical officers deployed across 11 nationalized public sector banks and SBI managing Core Banking Solutions (Finacle/BaNCS), UPI switches, ATM transaction networks, cloud migration, and banking fraud analytics.",
+    "key_skills_tested": [
+      { "skill_id": "SKL-0047", "skill_name": "SQL", "importance": "CRITICAL" },
+      { "skill_id": "SKL-0011", "skill_name": "Java", "importance": "HIGH" },
+      { "skill_id": "SKL-0033", "skill_name": "Spring Boot", "importance": "HIGH" },
+      { "skill_id": "SKL-0041", "skill_name": "REST API", "importance": "HIGH" },
+      { "skill_id": "SKL-0112", "skill_name": "Linux", "importance": "MEDIUM" },
+      { "skill_id": "SKL-0048", "skill_name": "MySQL", "importance": "HIGH" }
+    ],
+    "syllabus_sections": [
+      {
+        "module": "Database Management & Core Banking Systems",
+        "topics": "Relational algebra, SQL complex queries, Joins, Triggers, Views, Normalization, ACID transactions, Database recovery, Finacle system architecture."
+      },
+      {
+        "module": "Data Communication, Networks & Security",
+        "topics": "TCP/IP, Network topology, Subnetting, Firewalls, Proxy servers, VPN, Banking malware defense, PCI-DSS compliance, SSL/TLS handshake."
+      },
+      {
+        "module": "Software Engineering & Web Technologies",
+        "topics": "SDLC, Object-Oriented Design, Java Enterprise basics, Microservices, API gateways, Automated testing, Disaster Recovery (DR) protocols."
+      }
+    ],
+    "study_materials": [
+      {
+        "title": "IBPS SO IT Officer Professional Knowledge Guide & Past 5 Years Papers",
+        "type": "Exam Solved Papers",
+        "url": "https://www.ibps.in/",
+        "free": true
+      },
+      {
+        "title": "RBI Cyber Security Framework Guidelines for Scheduled Commercial Banks",
+        "type": "Regulatory Standard",
+        "url": "https://www.rbi.org.in/",
+        "free": true
+      }
+    ],
+    "application_procedure": [
+      "1. Register on IBPS portal (ibps.in) during the annual CRP SPL notification.",
+      "2. Clear Prelims objective test.",
+      "3. Clear Mains examination focused entirely on IT Professional Knowledge.",
+      "4. Attend combined interview with participating bank executives."
+    ]
+  },
+  {
+    "exam_id": "GOV-UPSC-008",
+    "exam_name": "UPSC Engineering Services Examination (ESE / IES)",
+    "conducting_body": "Union Public Service Commission (UPSC)",
+    "department": "Central Government Technical Ministries (Railways, Telecommunications, Defence)",
+    "role_title": "Assistant Executive Engineer / Indian Telecommunications Service",
+    "pay_scale": "Group 'A' Gazetted (₹56,100 – ₹2,25,000 + Central Govt Perks)",
+    "category": "Civil & Engineering Services (Group A)",
+    "eligible_degrees": ["Degree in Engineering (ECE / Electrical / Telecommunication / Computer Systems)"],
+    "min_qualification_score": "Bachelor's Degree in Engineering",
+    "age_limit": "21–30 years",
+    "official_portal_url": "https://upsc.gov.in/",
+    "selection_process": "Stage 1: Preliminary Exam • Stage 2: Conventional Mains Technical • Stage 3: Personality Test (Interview)",
+    "exam_frequency": "Annual national examination (Prelims in February)",
+    "description": "The pinnacle of government technical appointments. Direct Group 'A' gazetted entry into leadership roles formulating national broadband policy, military telecommunications, digital spectrum allocation, and national telecom standards.",
+    "key_skills_tested": [
+      { "skill_id": "SKL-0015", "skill_name": "C++", "importance": "HIGH" },
+      { "skill_id": "SKL-0012", "skill_name": "Python", "importance": "MEDIUM" },
+      { "skill_id": "SKL-0112", "skill_name": "Linux", "importance": "HIGH" },
+      { "skill_id": "SKL-0041", "skill_name": "REST API", "importance": "MEDIUM" }
+    ],
+    "syllabus_sections": [
+      {
+        "module": "Paper 1: General Studies & Engineering Aptitude",
+        "topics": "Current national/international issues, Engineering ethics, Project management, Environmental studies, Quality standards (ISO), ICT tools."
+      },
+      {
+        "module": "Paper 2: Computer & Telecommunications Engineering",
+        "topics": "Computer Architecture, Operating Systems, Data Structures, Digital Signal Processing, Mobile Communications (5G, LTE), Optical Fiber, Satellite Systems."
+      }
+    ],
+    "study_materials": [
+      {
+        "title": "UPSC ESE Official Previous 15 Years Solved Question Papers",
+        "type": "Official Question Papers",
+        "url": "https://upsc.gov.in/examinations/previous-question-papers",
+        "free": true
+      },
+      {
+        "title": "UPSC Official ESE Notification & Detailed Syllabus PDF",
+        "type": "Syllabus Guide",
+        "url": "https://upsc.gov.in/",
+        "free": true
+      }
+    ],
+    "application_procedure": [
+      "1. Register on UPSC One-Time Registration (OTR) portal (upsconline.nic.in).",
+      "2. Apply during September-October window.",
+      "3. Clear Stage 1 objective preliminary examination in February.",
+      "4. Clear Stage 2 descriptive conventional examination in June.",
+      "5. Attend UPSC Personality Test at Dholpur House, New Delhi."
+    ]
+  },
+  {
+    "exam_id": "GOV-STATE-009",
+    "exam_name": "State PSC – Assistant System Engineer & Technical Officer (e-Governance)",
+    "conducting_body": "State Public Service Commission (e.g. TNPSC, KPSC, APPSC, MPSC)",
+    "department": "State Electronics & Information Technology Departments",
+    "role_title": "Assistant System Engineer / IT Analyst (Group B)",
+    "pay_scale": "Level 8–9 (₹37,700 – ₹1,19,500 + State Dearness Allowance)",
+    "category": "State Public Service & Digital Administration",
+    "eligible_degrees": ["B.E.", "B.Tech in CSE / IT / ECE", "MCA"],
+    "min_qualification_score": "Bachelor's Degree in Engineering / Technology",
+    "age_limit": "21–32 years (relaxation for state domicile categories)",
+    "official_portal_url": "https://www.tnpsc.gov.in/",
+    "selection_process": "Single/Two-stage Computer Based Test (Paper 1: Subject CS, Paper 2: General Studies) • Certificate Verification",
+    "exam_frequency": "Annual / Periodic state notifications",
+    "description": "Technical officers administering state e-governance portals, public distribution system (PDS) digitization, land records digitisation, state data centres (SDC), and citizen welfare IT pipelines.",
+    "key_skills_tested": [
+      { "skill_id": "SKL-0048", "skill_name": "MySQL", "importance": "HIGH" },
+      { "skill_id": "SKL-0011", "skill_name": "Java", "importance": "HIGH" },
+      { "skill_id": "SKL-0033", "skill_name": "Spring Boot", "importance": "MEDIUM" },
+      { "skill_id": "SKL-0041", "skill_name": "REST API", "importance": "HIGH" },
+      { "skill_id": "SKL-0021", "skill_name": "React", "importance": "MEDIUM" }
+    ],
+    "syllabus_sections": [
+      {
+        "module": "Computer Science Core (Degree Standard)",
+        "topics": "Data structures, Database Management Systems, Computer Networks, Operating Systems, Web Technologies, Software Engineering, Mobile Applications."
+      },
+      {
+        "module": "General Studies & Aptitude",
+        "topics": "General Science, Current Events, Geography and History of India/State, Indian Polity, Mental Ability and Logical Aptitude."
+      }
+    ],
+    "study_materials": [
+      {
+        "title": "State PSC Technical Services Previous Year Question Archives",
+        "type": "State Question Papers",
+        "url": "https://www.tnpsc.gov.in/",
+        "free": true
+      },
+      {
+        "title": "State e-Governance Agency (TNeGA / CeG) Open Source Architecture Guidelines",
+        "type": "Government Manual",
+        "url": "https://tnega.tn.gov.in/",
+        "free": true
+      }
+    ],
+    "application_procedure": [
+      "1. Register on State PSC One-Time Registration portal.",
+      "2. Apply against Combined Technical Services examination notice.",
+      "3. Select Assistant System Engineer / Technical Officer post code.",
+      "4. Attend CBT exam and document verification."
+    ]
+  },
+  {
+    "exam_id": "GOV-SSC-010",
+    "exam_name": "Staff Selection Commission – Combined Graduate Level (SSC CGL IT & Audit)",
+    "conducting_body": "Staff Selection Commission (SSC)",
+    "department": "Ministries of Government of India (External Affairs, Defence, Income Tax, CBIC)",
+    "role_title": "Assistant Section Officer (ASO) / Inspector / Sub-Inspector",
+    "pay_scale": "Level 7 (₹44,900 – ₹1,42,400 + Central Perks)",
+    "category": "Central Government Administration & Analytics",
+    "eligible_degrees": ["Bachelor's Degree in any discipline (B.E., B.Tech, B.Sc, B.Com, B.A.)"],
+    "min_qualification_score": "Graduation degree",
+    "age_limit": "20–30 years",
+    "official_portal_url": "https://ssc.gov.in/",
+    "selection_process": "Tier 1: General Screening CBT • Tier 2: Mathematical Abilities, Reasoning, English, General Awareness + Mandatory Computer Knowledge Module",
+    "exam_frequency": "Annual national examination (May-July notification)",
+    "description": "Prestigious administrative, intelligence, and analytical careers across Central Government Ministries, Central Vigilance Commission, Intelligence Bureau (IB), and Ministry of External Affairs with mandatory computer proficiency standards.",
+    "key_skills_tested": [
+      { "skill_id": "SKL-0047", "skill_name": "SQL", "importance": "MEDIUM" },
+      { "skill_id": "SKL-0012", "skill_name": "Python", "importance": "MEDIUM" },
+      { "skill_id": "SKL-0112", "skill_name": "Linux", "importance": "MEDIUM" }
+    ],
+    "syllabus_sections": [
+      {
+        "module": "Tier 2: Computer Knowledge Module (Mandatory Qualifying)",
+        "topics": "Computer Basics (CPU, memory, ports, input/output), Software (Windows, Linux, MS Office, OpenOffice), Internet & Networking (LAN, WAN, Protocols, Cyber Threats, Antivirus, Firewalls)."
+      },
+      {
+        "module": "Tier 2: Quantitative Aptitude & Reasoning",
+        "topics": "Advanced Mathematics (Trigonometry, Algebra, Mensuration, Statistics, Probability), Verbal and Non-Verbal Analytical Reasoning, English Comprehension."
+      }
+    ],
+    "study_materials": [
+      {
+        "title": "SSC CGL Official Previous 5-Year Tier 1 & Tier 2 Question Papers",
+        "type": "Past Papers",
+        "url": "https://ssc.gov.in/",
+        "free": true
+      },
+      {
+        "title": "SSC Official Computer Knowledge Module Standard Syllabus & Test Sets",
+        "type": "Study Guide",
+        "url": "https://ssc.gov.in/",
+        "free": true
+      }
+    ],
+    "application_procedure": [
+      "1. Register on new SSC portal (ssc.gov.in) with live photograph capture.",
+      "2. Apply for annual Combined Graduate Level Examination.",
+      "3. Clear Tier 1 computer-based test.",
+      "4. Clear Tier 2 examination and computer proficiency test.",
+      "5. Allocation to central ministries based on merit ranking."
+    ]
+  }
+]

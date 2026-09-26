@@ -1,0 +1,62 @@
+# SkillSync AI Configuration
+# Configurable and tunable weights across the hybrid recommendation engine
+
+# Three-tier verification status weights
+verification_status_weights:
+  ASSESSMENT_VERIFIED: 1.00
+  EVIDENCE_BACKED: 0.80
+  CLAIMED: 0.40
+  MISSING: 0.00
+
+# Requirement category weights
+requirement_category_weights:
+  MANDATORY: 1.00
+  IMPORTANT: 0.75
+  OPTIONAL: 0.40
+  FRONTIER: 0.25
+
+# Prerequisite policy configuration
+prerequisite_policy:
+  allow_evidence_backed: true
+  allow_claimed_with_penalty: true
+  claimed_prereq_penalty: 0.30
+
+# Skill importance weights
+skill_importance_weights:
+  CRITICAL: 1.00
+  HIGH: 0.80
+  MEDIUM: 0.50
+  LOW: 0.20
+
+# Multi-factor priority recommendation weights for next best action
+# priority_score = w_c * career_importance + w_p * prerequisite_readiness + w_m * market_demand + w_d * difficulty_fit + w_v * verification_boost
+recommendation_ranking_weights:
+  career_importance: 0.30
+  prerequisite_readiness: 0.25
+  market_demand: 0.15
+  difficulty_fit: 0.15
+  verification_boost: 0.15
+
+# Multi-factor career pathway recommendation weights
+pathway_scoring_weights:
+  skill_alignment: 0.30
+  verification_strength: 0.20
+  competency_alignment: 0.20
+  project_alignment: 0.15
+  interest_alignment: 0.10
+  prerequisite_readiness: 0.05
+
+# Multi-factor job matching weights
+job_matching_weights:
+  mandatory_coverage: 0.45
+  preferred_coverage: 0.20
+  evidence_strength: 0.15
+  semantic_similarity: 0.10
+  competency_alignment: 0.10
+
+# Default thresholds
+thresholds:
+  assessment_pass_score: 70.0
+  fuzzy_match_min_ratio: 0.88
+  semantic_similarity_threshold: 0.65
+  candidate_similarity_threshold: 0.70
